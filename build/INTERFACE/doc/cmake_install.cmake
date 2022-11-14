@@ -1,4 +1,4 @@
-# Install script for directory: /home/pauline/Documents/S3/c++/tp6/projet/projet/myLib/doc
+# Install script for directory: /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib/doc
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

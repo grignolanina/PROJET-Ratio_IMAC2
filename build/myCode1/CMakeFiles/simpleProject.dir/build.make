@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pauline/Documents/S3/c++/tp6/projet/projet
+CMAKE_SOURCE_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pauline/Documents/S3/c++/tp6/projet/projet/build
+CMAKE_BINARY_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build"
 
 # Include any dependencies generated for this target.
 include myCode1/CMakeFiles/simpleProject.dir/depend.make
@@ -59,29 +59,29 @@ include myCode1/CMakeFiles/simpleProject.dir/flags.make
 
 myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o: myCode1/CMakeFiles/simpleProject.dir/flags.make
 myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o: ../myCode1/src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simpleProject.dir/src/main.cpp.o -c /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o"
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simpleProject.dir/src/main.cpp.o -c "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp"
 
 myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/simpleProject.dir/src/main.cpp.i"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/main.cpp > CMakeFiles/simpleProject.dir/src/main.cpp.i
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp" > CMakeFiles/simpleProject.dir/src/main.cpp.i
 
 myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/simpleProject.dir/src/main.cpp.s"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/main.cpp -o CMakeFiles/simpleProject.dir/src/main.cpp.s
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp" -o CMakeFiles/simpleProject.dir/src/main.cpp.s
 
 myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o: myCode1/CMakeFiles/simpleProject.dir/flags.make
 myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o: ../myCode1/src/plop.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simpleProject.dir/src/plop.cpp.o -c /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/plop.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o"
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/simpleProject.dir/src/plop.cpp.o -c "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp"
 
 myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/simpleProject.dir/src/plop.cpp.i"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/plop.cpp > CMakeFiles/simpleProject.dir/src/plop.cpp.i
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp" > CMakeFiles/simpleProject.dir/src/plop.cpp.i
 
 myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/simpleProject.dir/src/plop.cpp.s"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && /bin/clang++-10 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/plop.cpp -o CMakeFiles/simpleProject.dir/src/plop.cpp.s
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && /usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp" -o CMakeFiles/simpleProject.dir/src/plop.cpp.s
 
 # Object files for target simpleProject
 simpleProject_OBJECTS = \
@@ -95,8 +95,8 @@ bin/simpleProject: myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o
 bin/simpleProject: myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o
 bin/simpleProject: myCode1/CMakeFiles/simpleProject.dir/build.make
 bin/simpleProject: myCode1/CMakeFiles/simpleProject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../bin/simpleProject"
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/simpleProject.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../bin/simpleProject"
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/simpleProject.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 myCode1/CMakeFiles/simpleProject.dir/build: bin/simpleProject
@@ -104,10 +104,10 @@ myCode1/CMakeFiles/simpleProject.dir/build: bin/simpleProject
 .PHONY : myCode1/CMakeFiles/simpleProject.dir/build
 
 myCode1/CMakeFiles/simpleProject.dir/clean:
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 && $(CMAKE_COMMAND) -P CMakeFiles/simpleProject.dir/cmake_clean.cmake
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" && $(CMAKE_COMMAND) -P CMakeFiles/simpleProject.dir/cmake_clean.cmake
 .PHONY : myCode1/CMakeFiles/simpleProject.dir/clean
 
 myCode1/CMakeFiles/simpleProject.dir/depend:
-	cd /home/pauline/Documents/S3/c++/tp6/projet/projet/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pauline/Documents/S3/c++/tp6/projet/projet /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1 /home/pauline/Documents/S3/c++/tp6/projet/projet/build /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1 /home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1/CMakeFiles/simpleProject.dir/DependInfo.cmake --color=$(COLOR)
+	cd "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1/CMakeFiles/simpleProject.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : myCode1/CMakeFiles/simpleProject.dir/depend
 

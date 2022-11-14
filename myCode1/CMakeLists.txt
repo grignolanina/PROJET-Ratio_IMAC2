@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.13)
 project(simpleProject)
 
 # file to compile and name of the executable
-add_executable(simpleProject src/main.cpp src/plop.cpp include/plop.hpp) #entre parentheses(nomDuProjet, les fichiers à compiler, et les includes (tous les hpp))
+add_executable(simpleProject src/main.cpp src/plop.cpp include/plop.hpp)
 
 # include directory
 target_include_directories(simpleProject PRIVATE "include")

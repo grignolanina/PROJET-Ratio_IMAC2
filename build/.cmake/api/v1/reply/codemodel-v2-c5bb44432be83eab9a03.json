@@ -1,0 +1,149 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"projectIndex" : 0,
+					"source" : "."
+				},
+				{
+					"build" : "myCode1",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "myCode1",
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"build" : "INTERFACE",
+					"childIndexes" : 
+					[
+						3
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "myLib",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "INTERFACE/doc",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.13"
+					},
+					"parentIndex" : 2,
+					"projectIndex" : 2,
+					"source" : "myLib/doc",
+					"targetIndexes" : 
+					[
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "myCmakeTest"
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "simpleProject",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2,
+						3
+					],
+					"name" : "VectorD",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 2,
+					"id" : "VectorD::@8f2e06132bc3ad500312",
+					"jsonFile" : "target-VectorD-Debug-dd80aa8cad8174fe1ba3.json",
+					"name" : "VectorD",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "html::@823755c9640417a52d4c",
+					"jsonFile" : "target-html-Debug-71f06bebc55ecfe3950c.json",
+					"name" : "html",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "simpleProject::@e0f3069e2053f66a3215",
+					"jsonFile" : "target-simpleProject-Debug-c857ba1718809ce7cdc3.json",
+					"name" : "simpleProject",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build",
+		"source" : "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/main.cpp" "/home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o"
-  "/home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1/src/plop.cpp" "/home/pauline/Documents/S3/c++/tp6/projet/projet/build/myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o"
+  "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1/CMakeFiles/simpleProject.dir/src/main.cpp.o"
+  "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1/CMakeFiles/simpleProject.dir/src/plop.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/pauline/Documents/S3/c++/tp6/projet/projet/myLib
+# Install script for directory: /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -46,7 +46,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/include/VectorD" TYPE FILE FILES "/home/pauline/Documents/S3/c++/tp6/projet/projet/myLib/include/VectorD.hpp")
+file(INSTALL DESTINATION "/usr/local/include/VectorD" TYPE FILE FILES "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib/include/VectorD.hpp")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -58,12 +58,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/home/pauline/Documents/S3/c++/tp6/projet/projet/build/INTERFACE/libVectorD.a")
+file(INSTALL DESTINATION "/usr/local/lib" TYPE STATIC_LIBRARY FILES "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/INTERFACE/libVectorD.a")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/pauline/Documents/S3/c++/tp6/projet/projet/build/INTERFACE/doc/cmake_install.cmake")
+  include("/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/INTERFACE/doc/cmake_install.cmake")
 
 endif()
 

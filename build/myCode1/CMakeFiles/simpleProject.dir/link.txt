@@ -1,1 +1,1 @@
-/bin/clang++-10  -g   CMakeFiles/simpleProject.dir/src/main.cpp.o CMakeFiles/simpleProject.dir/src/plop.cpp.o  -o ../bin/simpleProject 
+/usr/bin/clang++  -g   CMakeFiles/simpleProject.dir/src/main.cpp.o CMakeFiles/simpleProject.dir/src/plop.cpp.o  -o ../bin/simpleProject 

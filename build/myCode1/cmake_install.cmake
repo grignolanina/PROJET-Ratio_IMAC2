@@ -1,4 +1,4 @@
-# Install script for directory: /home/pauline/Documents/S3/c++/tp6/projet/projet/myCode1
+# Install script for directory: /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

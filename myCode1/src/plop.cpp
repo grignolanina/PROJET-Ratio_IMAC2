@@ -2,7 +2,7 @@
 
 #include "plop.hpp"
 
-void plop()
+void ploup()
 {
     std::cout << "plop !!!" << std::endl;
 }

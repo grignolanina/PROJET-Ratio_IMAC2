@@ -5,8 +5,8 @@
 
 int main() {
 
-    // appel de plop
-    plop();
+    // appel de ploup
+    ploup();
     
     return 0;
 }

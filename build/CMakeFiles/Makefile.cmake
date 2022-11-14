@@ -12,18 +12,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.16.3/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.16.3/CMakeSystem.cmake"
   "../myCode1/CMakeLists.txt"
-  "../myCode2/CMakeLists.txt"
-  "../myCode3/CMakeLists.txt"
   "../myLib/CMakeLists.txt"
   "../myLib/doc/CMakeLists.txt"
   "../myLib/doc/Doxyfile-html.cmake"
-  "/usr/lib/cmake/eigen3/Eigen3Config.cmake"
-  "/usr/lib/cmake/eigen3/Eigen3ConfigVersion.cmake"
-  "/usr/lib/cmake/eigen3/Eigen3Targets.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig-version.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules-release.cmake"
-  "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -61,19 +52,13 @@ set(CMAKE_MAKEFILE_OUTPUTS
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "myCode1/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "myCode2/CMakeFiles/CMakeDirectoryInformation.cmake"
   "INTERFACE/CMakeFiles/CMakeDirectoryInformation.cmake"
   "INTERFACE/doc/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "myCode3/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "myCode1/CMakeFiles/simpleProject.dir/DependInfo.cmake"
-  "myCode2/CMakeFiles/stabilisation.dir/DependInfo.cmake"
   "INTERFACE/CMakeFiles/VectorD.dir/DependInfo.cmake"
   "INTERFACE/doc/CMakeFiles/html.dir/DependInfo.cmake"
-  "myCode3/CMakeFiles/main3.dir/DependInfo.cmake"
-  "myCode3/CMakeFiles/main2.dir/DependInfo.cmake"
-  "myCode3/CMakeFiles/main1.dir/DependInfo.cmake"
   )

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pauline/Documents/S3/c++/tp6/projet/projet
+CMAKE_SOURCE_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pauline/Documents/S3/c++/tp6/projet/projet/build
+CMAKE_BINARY_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles /home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Documents/S3/c++/tp6/projet/projet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -170,19 +170,6 @@ simpleProject/fast:
 .PHONY : simpleProject/fast
 
 #=============================================================================
-# Target rules for targets named stabilisation
-
-# Build rule for target.
-stabilisation: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stabilisation
-.PHONY : stabilisation
-
-# fast build rule for target.
-stabilisation/fast:
-	$(MAKE) -f myCode2/CMakeFiles/stabilisation.dir/build.make myCode2/CMakeFiles/stabilisation.dir/build
-.PHONY : stabilisation/fast
-
-#=============================================================================
 # Target rules for targets named VectorD
 
 # Build rule for target.
@@ -208,45 +195,6 @@ html/fast:
 	$(MAKE) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/build
 .PHONY : html/fast
 
-#=============================================================================
-# Target rules for targets named main3
-
-# Build rule for target.
-main3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main3
-.PHONY : main3
-
-# fast build rule for target.
-main3/fast:
-	$(MAKE) -f myCode3/CMakeFiles/main3.dir/build.make myCode3/CMakeFiles/main3.dir/build
-.PHONY : main3/fast
-
-#=============================================================================
-# Target rules for targets named main2
-
-# Build rule for target.
-main2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main2
-.PHONY : main2
-
-# fast build rule for target.
-main2/fast:
-	$(MAKE) -f myCode3/CMakeFiles/main2.dir/build.make myCode3/CMakeFiles/main2.dir/build
-.PHONY : main2/fast
-
-#=============================================================================
-# Target rules for targets named main1
-
-# Build rule for target.
-main1: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 main1
-.PHONY : main1
-
-# fast build rule for target.
-main1/fast:
-	$(MAKE) -f myCode3/CMakeFiles/main1.dir/build.make myCode3/CMakeFiles/main1.dir/build
-.PHONY : main1/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -260,12 +208,8 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... simpleProject"
-	@echo "... stabilisation"
 	@echo "... VectorD"
 	@echo "... html"
-	@echo "... main3"
-	@echo "... main2"
-	@echo "... main1"
 .PHONY : help
 
 
