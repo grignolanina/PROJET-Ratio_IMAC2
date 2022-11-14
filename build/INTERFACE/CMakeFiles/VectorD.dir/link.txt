@@ -1,0 +1,2 @@
+/bin/ar qc libVectorD.a  CMakeFiles/VectorD.dir/src/VectorD.cpp.o
+/bin/ranlib libVectorD.a
