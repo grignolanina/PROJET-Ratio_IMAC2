@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
 
 # give a name to the project
-project(Ratio LANGUAGES C CXX)
+project(Ratio)
 
 # automatic get all files in a directory
 file(GLOB_RECURSE source_files src/*.cpp)

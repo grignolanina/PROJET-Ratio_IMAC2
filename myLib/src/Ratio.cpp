@@ -1,5 +1,5 @@
 #include "Ratio.hpp"
-#include <vector>
+#include <algorithm>
 
 
 // Ratio convert_float_to_ratio(float x, int nb_iter){
@@ -40,4 +40,20 @@ int& Ratio::num(){
 
 int& Ratio::denom(){
 	return m_denom;
+}
+
+Ratio Ratio::operator+(const Ratio &r){
+    Ratio result = Ratio(); 
+    result.m_num = this->m_num * r.m_denom + this->m_denom * r.m_num;
+    result.m_denom = this->m_denom*r.m_denom;
+    result.pgcd();
+
+    return result;
+}
+
+void Ratio::pgcd(){
+    
+    int pgcd = std::__gcd(this->m_num, this->m_denom);
+    this->m_num = this->m_num/pgcd;
+    this->m_denom = this->m_denom/pgcd;
 }
