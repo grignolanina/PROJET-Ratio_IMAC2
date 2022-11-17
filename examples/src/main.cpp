@@ -8,19 +8,19 @@ int main() {
     // appel de ploup
     //ploup();
 
-    Ratio r1(1,2);
-    std::cout << r1.num()<<std::endl;
-    std::cout << r1.denom()<<std::endl;
+    Ratio r3(1,2);
+    std::cout << r3.num()<<std::endl;
+    std::cout << r3.denom()<<std::endl;
 
-    Ratio r2(3,4);
+    Ratio r4(3,4);
 
-    Ratio r3 = r1 + r2;
+    Ratio r5 = r3 + r4;
 
-    std::cout << "r1 + r2 :" << std::endl << "num : " << r3.num() << std::endl << "denum : " << r3.denom() << std::endl;
+    std::cout << "r1 + r2 :" << std::endl << "num : " << r5.num() << std::endl << "denum : " << r5.denom() << std::endl;
     
-    Ratio r4 = -r1;
+    Ratio r6 = -r3;
     // std::cout << r1.m_denom << std::endl;
-    std::cout << " - r1 : " << std::endl << "num : " << r4.num() << std:: endl << "denum : " << r4.denom() << std::endl; 
+    std::cout << " - r1 : " << std::endl << "num : " << r6.num() << std:: endl << "denum : " << r6.denom() << std::endl; 
 
     
     return 0;
