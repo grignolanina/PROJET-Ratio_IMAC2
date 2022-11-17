@@ -1,4 +1,4 @@
-# Install script for directory: /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio
+# Install script for directory: /home/pauline/Documents/S3/c++/PROJET/Ratio
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/INTERFACE/cmake_install.cmake")
-  include("/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/examples/cmake_install.cmake")
+  include("/home/pauline/Documents/S3/c++/PROJET/Ratio/build/INTERFACE/cmake_install.cmake")
+  include("/home/pauline/Documents/S3/c++/PROJET/Ratio/build/examples/cmake_install.cmake")
 
 endif()
 
@@ -52,5 +52,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

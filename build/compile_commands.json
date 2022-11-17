@@ -1,12 +1,12 @@
 [
 {
-  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/INTERFACE",
-  "command": "/usr/bin/clang++   -I/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/Ratio.dir/src/Ratio.cpp.o -c /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.cpp",
-  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.cpp"
+  "directory": "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/INTERFACE",
+  "command": "/bin/clang++-10   -I/home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/Ratio.dir/src/Ratio.cpp.o -c /home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/src/Ratio.cpp",
+  "file": "/home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/src/Ratio.cpp"
 },
 {
-  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/examples",
-  "command": "/usr/bin/clang++   -I/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples/src/main.cpp",
-  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples/src/main.cpp"
+  "directory": "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/examples",
+  "command": "/bin/clang++-10   -I/home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c /home/pauline/Documents/S3/c++/PROJET/Ratio/examples/src/main.cpp",
+  "file": "/home/pauline/Documents/S3/c++/PROJET/Ratio/examples/src/main.cpp"
 }
 ]

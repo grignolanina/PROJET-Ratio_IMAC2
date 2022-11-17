@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio
+CMAKE_SOURCE_DIR = /home/pauline/Documents/S3/c++/PROJET/Ratio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build
+CMAKE_BINARY_DIR = /home/pauline/Documents/S3/c++/PROJET/Ratio/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/examples/CMakeFiles/progress.marks
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Documents/S3/c++/PROJET/Ratio/build/CMakeFiles /home/pauline/Documents/S3/c++/PROJET/Ratio/build/examples/CMakeFiles/progress.marks
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/pauline/Documents/S3/c++/PROJET/Ratio/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 examples/CMakeFiles/main.dir/rule:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/main.dir/rule
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/main.dir/rule
 .PHONY : examples/CMakeFiles/main.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ main: examples/CMakeFiles/main.dir/rule
 
 # fast build rule for target.
 main/fast:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/build
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/build
 .PHONY : main/fast
 
 src/main.o: src/main.cpp.o
@@ -177,7 +177,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.o
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -186,7 +186,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.i
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -195,7 +195,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.s
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -225,6 +225,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/pauline/Documents/S3/c++/PROJET/Ratio/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
