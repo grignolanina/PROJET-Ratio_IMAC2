@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test"
+CMAKE_SOURCE_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build"
+CMAKE_BINARY_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles/progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,30 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named simpleProject
+# Target rules for targets named Ratio
 
 # Build rule for target.
-simpleProject: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 simpleProject
-.PHONY : simpleProject
+Ratio: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Ratio
+.PHONY : Ratio
 
 # fast build rule for target.
-simpleProject/fast:
-	$(MAKE) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/build
-.PHONY : simpleProject/fast
-
-#=============================================================================
-# Target rules for targets named VectorD
-
-# Build rule for target.
-VectorD: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 VectorD
-.PHONY : VectorD
-
-# fast build rule for target.
-VectorD/fast:
-	$(MAKE) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/build
-.PHONY : VectorD/fast
+Ratio/fast:
+	$(MAKE) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/build
+.PHONY : Ratio/fast
 
 #=============================================================================
 # Target rules for targets named html
@@ -195,6 +182,19 @@ html/fast:
 	$(MAKE) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/build
 .PHONY : html/fast
 
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/build
+.PHONY : main/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -207,9 +207,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... simpleProject"
-	@echo "... VectorD"
+	@echo "... Ratio"
 	@echo "... html"
+	@echo "... main"
 .PHONY : help
 
 

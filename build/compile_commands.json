@@ -1,17 +1,12 @@
 [
 {
-  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1",
-  "command": "/usr/bin/clang++   -I\"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/include\"  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/simpleProject.dir/src/main.cpp.o -c \"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp\"",
-  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/main.cpp"
+  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/INTERFACE",
+  "command": "/usr/bin/clang++   -I/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/Ratio.dir/src/Ratio.cpp.o -c /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.cpp",
+  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.cpp"
 },
 {
-  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/myCode1",
-  "command": "/usr/bin/clang++   -I\"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/include\"  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/simpleProject.dir/src/plop.cpp.o -c \"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp\"",
-  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myCode1/src/plop.cpp"
-},
-{
-  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/INTERFACE",
-  "command": "/usr/bin/clang++   -I\"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib/include\"  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/VectorD.dir/src/VectorD.cpp.o -c \"/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib/src/VectorD.cpp\"",
-  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/myLib/src/VectorD.cpp"
+  "directory": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/examples",
+  "command": "/usr/bin/clang++   -I/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/include  -g   -Wall -Wextra -Wpedantic -pedantic-errors -o CMakeFiles/main.dir/src/main.cpp.o -c /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples/src/main.cpp",
+  "file": "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples/src/main.cpp"
 }
 ]

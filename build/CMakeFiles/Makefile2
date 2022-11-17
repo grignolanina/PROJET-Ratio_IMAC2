@@ -44,29 +44,29 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test"
+CMAKE_SOURCE_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build"
+CMAKE_BINARY_DIR = /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: myCode1/all
 all: INTERFACE/all
+all: examples/all
 
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: myCode1/preinstall
 preinstall: INTERFACE/preinstall
+preinstall: examples/preinstall
 
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: myCode1/clean
 clean: INTERFACE/clean
+clean: examples/clean
 
 .PHONY : clean
 
@@ -74,7 +74,7 @@ clean: INTERFACE/clean
 # Directory level rules for directory INTERFACE
 
 # Recursive "all" directory target.
-INTERFACE/all: INTERFACE/CMakeFiles/VectorD.dir/all
+INTERFACE/all: INTERFACE/CMakeFiles/Ratio.dir/all
 INTERFACE/all: INTERFACE/doc/all
 
 .PHONY : INTERFACE/all
@@ -85,7 +85,7 @@ INTERFACE/preinstall: INTERFACE/doc/preinstall
 .PHONY : INTERFACE/preinstall
 
 # Recursive "clean" directory target.
-INTERFACE/clean: INTERFACE/CMakeFiles/VectorD.dir/clean
+INTERFACE/clean: INTERFACE/CMakeFiles/Ratio.dir/clean
 INTERFACE/clean: INTERFACE/doc/clean
 
 .PHONY : INTERFACE/clean
@@ -109,76 +109,49 @@ INTERFACE/doc/clean: INTERFACE/doc/CMakeFiles/html.dir/clean
 .PHONY : INTERFACE/doc/clean
 
 #=============================================================================
-# Directory level rules for directory myCode1
+# Directory level rules for directory examples
 
 # Recursive "all" directory target.
-myCode1/all: myCode1/CMakeFiles/simpleProject.dir/all
+examples/all: examples/CMakeFiles/main.dir/all
 
-.PHONY : myCode1/all
+.PHONY : examples/all
 
 # Recursive "preinstall" directory target.
-myCode1/preinstall:
+examples/preinstall:
 
-.PHONY : myCode1/preinstall
+.PHONY : examples/preinstall
 
 # Recursive "clean" directory target.
-myCode1/clean: myCode1/CMakeFiles/simpleProject.dir/clean
+examples/clean: examples/CMakeFiles/main.dir/clean
 
-.PHONY : myCode1/clean
-
-#=============================================================================
-# Target rules for target myCode1/CMakeFiles/simpleProject.dir
-
-# All Build rule for target.
-myCode1/CMakeFiles/simpleProject.dir/all:
-	$(MAKE) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/depend
-	$(MAKE) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num=3,4,5 "Built target simpleProject"
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/all
-
-# Build rule for subdir invocation for target.
-myCode1/CMakeFiles/simpleProject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 3
-	$(MAKE) -f CMakeFiles/Makefile2 myCode1/CMakeFiles/simpleProject.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/rule
-
-# Convenience name for target.
-simpleProject: myCode1/CMakeFiles/simpleProject.dir/rule
-
-.PHONY : simpleProject
-
-# clean rule for target.
-myCode1/CMakeFiles/simpleProject.dir/clean:
-	$(MAKE) -f myCode1/CMakeFiles/simpleProject.dir/build.make myCode1/CMakeFiles/simpleProject.dir/clean
-.PHONY : myCode1/CMakeFiles/simpleProject.dir/clean
+.PHONY : examples/clean
 
 #=============================================================================
-# Target rules for target INTERFACE/CMakeFiles/VectorD.dir
+# Target rules for target INTERFACE/CMakeFiles/Ratio.dir
 
 # All Build rule for target.
-INTERFACE/CMakeFiles/VectorD.dir/all:
-	$(MAKE) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/depend
-	$(MAKE) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num=1,2 "Built target VectorD"
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/all
+INTERFACE/CMakeFiles/Ratio.dir/all:
+	$(MAKE) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/depend
+	$(MAKE) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles --progress-num=1,2 "Built target Ratio"
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/all
 
 # Build rule for subdir invocation for target.
-INTERFACE/CMakeFiles/VectorD.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 2
-	$(MAKE) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/VectorD.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/rule
+INTERFACE/CMakeFiles/Ratio.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 INTERFACE/CMakeFiles/Ratio.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/rule
 
 # Convenience name for target.
-VectorD: INTERFACE/CMakeFiles/VectorD.dir/rule
+Ratio: INTERFACE/CMakeFiles/Ratio.dir/rule
 
-.PHONY : VectorD
+.PHONY : Ratio
 
 # clean rule for target.
-INTERFACE/CMakeFiles/VectorD.dir/clean:
-	$(MAKE) -f INTERFACE/CMakeFiles/VectorD.dir/build.make INTERFACE/CMakeFiles/VectorD.dir/clean
-.PHONY : INTERFACE/CMakeFiles/VectorD.dir/clean
+INTERFACE/CMakeFiles/Ratio.dir/clean:
+	$(MAKE) -f INTERFACE/CMakeFiles/Ratio.dir/build.make INTERFACE/CMakeFiles/Ratio.dir/clean
+.PHONY : INTERFACE/CMakeFiles/Ratio.dir/clean
 
 #=============================================================================
 # Target rules for target INTERFACE/doc/CMakeFiles/html.dir
@@ -187,14 +160,14 @@ INTERFACE/CMakeFiles/VectorD.dir/clean:
 INTERFACE/doc/CMakeFiles/html.dir/all:
 	$(MAKE) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/depend
 	$(MAKE) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir="/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" --progress-num= "Built target html"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles --progress-num= "Built target html"
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/all
 
 # Build rule for subdir invocation for target.
 INTERFACE/doc/CMakeFiles/html.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 INTERFACE/doc/CMakeFiles/html.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet test/build/CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/rule
 
 # Convenience name for target.
@@ -206,6 +179,33 @@ html: INTERFACE/doc/CMakeFiles/html.dir/rule
 INTERFACE/doc/CMakeFiles/html.dir/clean:
 	$(MAKE) -f INTERFACE/doc/CMakeFiles/html.dir/build.make INTERFACE/doc/CMakeFiles/html.dir/clean
 .PHONY : INTERFACE/doc/CMakeFiles/html.dir/clean
+
+#=============================================================================
+# Target rules for target examples/CMakeFiles/main.dir
+
+# All Build rule for target.
+examples/CMakeFiles/main.dir/all: INTERFACE/CMakeFiles/Ratio.dir/all
+	$(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/depend
+	$(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles --progress-num=3,4 "Built target main"
+.PHONY : examples/CMakeFiles/main.dir/all
+
+# Build rule for subdir invocation for target.
+examples/CMakeFiles/main.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 examples/CMakeFiles/main.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/CMakeFiles 0
+.PHONY : examples/CMakeFiles/main.dir/rule
+
+# Convenience name for target.
+main: examples/CMakeFiles/main.dir/rule
+
+.PHONY : main
+
+# clean rule for target.
+examples/CMakeFiles/main.dir/clean:
+	$(MAKE) -f examples/CMakeFiles/main.dir/build.make examples/CMakeFiles/main.dir/clean
+.PHONY : examples/CMakeFiles/main.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
