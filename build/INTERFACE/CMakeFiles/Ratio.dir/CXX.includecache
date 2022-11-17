@@ -10,9 +10,14 @@
 
 /home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/src/Ratio.cpp
 Ratio.hpp
+<<<<<<< HEAD
 /home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/src/Ratio.hpp
 algorithm
 -
 iostream
+=======
+/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.hpp
+cmath
+>>>>>>> NINA
 -
 
