@@ -9,7 +9,13 @@ class Ratio {
 	int m_num;
 	int m_denom;
 
-	
+	//Ratio &operateur= (const Ratio &r);
+	Ratio operator+(const Ratio &r);
+	Ratio operator-(const Ratio &r);
+	Ratio operator-();
+	Ratio operator*(const Ratio &r);
+	Ratio operator*(const int &value);
+
 
 	private:
 	//denom et num
