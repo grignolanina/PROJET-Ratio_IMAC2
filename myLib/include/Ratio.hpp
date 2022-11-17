@@ -34,7 +34,8 @@ class Ratio {
 	private:
 	int m_num;
 	int m_denom;
-
+	
+	public:
 	//Ratio &operateur= (const Ratio &r);
 	Ratio operator+(const Ratio &r);
 	Ratio operator-(const Ratio &r);
@@ -42,15 +43,17 @@ class Ratio {
 	Ratio operator*(const Ratio &r);
 	Ratio operator*(const int &value);
 
-	public:
+	
 	/// \brief fonction to access to the numerator of a vector
 	/// \return ratio.num() 
 	int& num();
 
 	/// \brief fonction to access to the denominator of a vector
 	/// \return ratio.denom() 
-	public:
+	
 	int& denom();
 
-	
+	/// \brief fonction which gives the irreductible quotient of a ratio
+	/// \return pgcd()
+	void pgcd();
 };
