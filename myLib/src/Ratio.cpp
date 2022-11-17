@@ -1,7 +1,6 @@
 #include "Ratio.hpp"
 #include <vector>
 
-Ratio::Ratio(int num, int denom): m_num(num), m_denom(denom){}
 
 // Ratio convert_float_to_ratio(float x, int nb_iter){
 //     Ratio r(0,0);
