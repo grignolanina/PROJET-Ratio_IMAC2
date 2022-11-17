@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples/src/main.cpp" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/examples/CMakeFiles/main.dir/src/main.cpp.o"
+  "/home/pauline/Documents/S3/c++/PROJET/Ratio/examples/src/main.cpp" "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/examples/CMakeFiles/main.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
@@ -15,7 +15,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/INTERFACE/CMakeFiles/Ratio.dir/DependInfo.cmake"
+  "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/INTERFACE/CMakeFiles/Ratio.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

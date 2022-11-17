@@ -1,4 +1,4 @@
-# Install script for directory: /WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/examples
+# Install script for directory: /home/pauline/Documents/S3/c++/PROJET/Ratio/examples
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -35,6 +35,12 @@ class Ratio {
 	int m_num;
 	int m_denom;
 
+	//Ratio &operateur= (const Ratio &r);
+	Ratio operator+(const Ratio &r);
+	Ratio operator-(const Ratio &r);
+	Ratio operator-();
+	Ratio operator*(const Ratio &r);
+	Ratio operator*(const int &value);
 
 	public:
 	/// \brief fonction to access to the numerator of a vector

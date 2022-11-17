@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/myLib/src/Ratio.cpp" "/WindowsData/Users/Nina/Documents/IMAC/COURS/2A/Programmation_objet/projet/Ratio/build/INTERFACE/CMakeFiles/Ratio.dir/src/Ratio.cpp.o"
+  "/home/pauline/Documents/S3/c++/PROJET/Ratio/myLib/src/Ratio.cpp" "/home/pauline/Documents/S3/c++/PROJET/Ratio/build/INTERFACE/CMakeFiles/Ratio.dir/src/Ratio.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
