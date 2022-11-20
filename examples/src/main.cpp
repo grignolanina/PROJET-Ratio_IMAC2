@@ -4,42 +4,47 @@
 
 
 int main() {
+    /*
+    *
+    * OPERATORS CLASSIC TESTS
+    * 
+    */
 
     Ratio r1(1,2);
     Ratio r2(3,4);
-    Ratio result;
-    result=r1-r2;
-    std::cout << "- :" << std::endl;
-    std::cout <<"getNum : " << result.getNum() << std::endl;
-    std::cout << "getDenom : "<< result.getDenom() << std::endl;
-    // appel de ploup
-    //ploup();
+    int value = 3;
+    std::cout << "Ratio 1 (r1) : " ;
+    r1.display();
+    std::cout << "Ratio 2 (r2) : " ;
+    r2.display();
+    std::cout << "Value (value) : " << value << std::endl << std::endl;
 
-    Ratio r3(1,2);
-    std::cout << r3.getNum()<<std::endl;
-    std::cout << r3.getDenom()<<std::endl;
+    std::cout << "Addition (r1 + r2): ";
+    (r1+r2).display();
 
-    result=r1*r2;
-    std::cout << "* :" << std::endl;
-    std::cout <<"getNum : " << result.getNum() << std::endl;
-    std::cout << "getDenom : "<< result.getDenom() << std::endl;
-    Ratio r4(3,4);
+    std::cout << "Addition (r1 + value): ";
+    (r1+value).display();
 
-    Ratio r5 = r3 + r4;
+    std::cout << "Subtraction (r1 - r2): ";
+    (r1-r2).display();
 
-    std::cout << "r1 + r2 :" << std::endl << "getNum : " << r5.getNum() << std::endl << "denum : " << r5.getDenom() << std::endl;
-    
-    Ratio r6 = -r3;
-    // std::cout << r1.m_denom << std::endl;
-    std::cout << " - r1 : " << std::endl << "getNum : " << r6.getNum() << std:: endl << "denum : " << r6.getDenom() << std::endl; 
+    std::cout << "Subtraction (r1 - value): ";
+    (r1-value).display();
 
-    result=r2*2;
-    std::cout << "*2 :" << std::endl;
-    std::cout <<"getNum : " << result.getNum() << std::endl;
-    std::cout << "getDenom : "<< result.getDenom() << std::endl;
+    std::cout << "Multiplication (r1 * r2): ";
+    (r1*r2).display();
 
-    r1.setNum()=4;
-    std::cout << "mon getNum"<< r1.getNum() << std::endl;
+    std::cout << "Multiplication (r1 * value): ";
+    (r1*value).display();
+
+    std::cout << "Division (r1 / r2): " ;
+    (r1/r2).display();
+
+    std::cout << "Division (r1 / value): " ;
+    (r1/value).display();
+
+    std::cout << "Inverse de r2: ";
+    (r2.inverse()).display();
     
     return 0;
 }
