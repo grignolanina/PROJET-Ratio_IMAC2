@@ -96,6 +96,25 @@ class Ratio {
 	/// \return the boolean result of the comparation
 	bool operator!=(const Ratio &r);
 
+	/// \brief test if *this is strictly higher than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator>(const Ratio &r);
+
+	/// \brief test if *this is higher(or equal) than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator>=(const Ratio &r);
+
+	/// \brief test if *this is strictly lower than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator<(const Ratio &r);
+
+	/// \brief test if *this is lower (or equal) than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator<=(const Ratio &r);
 
 
 	/// \brief fonction to set to the numerator of a vector

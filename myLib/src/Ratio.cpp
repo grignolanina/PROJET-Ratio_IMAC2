@@ -164,3 +164,31 @@ bool Ratio::operator!=(const Ratio &r){
 
 	return false;
 }
+
+bool Ratio::operator>(const Ratio &r){
+	if( (*this-r) > 0)
+		return true;
+	
+	return false;
+}
+
+bool Ratio::operator>=(const Ratio &r){
+	if( (*this-r) >= 0)
+		return true;
+	
+	return false;
+}
+
+bool Ratio::operator<(const Ratio &r){
+	if( (*this-r) < 0)
+		return true;
+	
+	return false;
+}
+
+bool Ratio::operator<=(const Ratio &r){
+	if( (*this-r) < 0)
+		return true;
+	
+	return false;
+}
