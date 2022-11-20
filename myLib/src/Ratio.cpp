@@ -1,5 +1,6 @@
 #include "Ratio.hpp"
-#include <cmath>
+#include <algorithm>
+#include <iostream>
 
 // Ratio convert_float_to_ratio(float x, int nb_iter){
 //     Ratio r(0,0);
@@ -69,4 +70,30 @@ Ratio Ratio::operator*(const int &value){
 	result.m_denom = this->m_denom;
 
 	return result;
+}
+
+Ratio Ratio::operator+(const Ratio &r){
+    Ratio result = Ratio(); 
+    result.m_num = this->m_num * r.m_denom + this->m_denom * r.m_num;
+    result.m_denom = this->m_denom*r.m_denom;
+    result.pgcd();
+
+    return result;
+}
+
+Ratio Ratio::operator-(){
+    Ratio result;
+    result.m_num = (-1) * this->m_num;
+    result.m_denom = this->m_denom;
+    result.pgcd();
+    
+    return result;
+
+}
+
+void Ratio::pgcd(){
+    
+    int pgcd = std::__gcd(this->m_num, this->m_denom);
+    this->m_num = this->m_num/std::abs(pgcd);
+    this->m_denom = this->m_denom/std::abs(pgcd);
 }
