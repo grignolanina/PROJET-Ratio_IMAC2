@@ -33,14 +33,6 @@ class Ratio {
 	private:
 	int m_num;
 	int m_denom;
-	
-	public:
-	//Ratio &operateur= (const Ratio &r);
-	Ratio operator+(const Ratio &r);
-	Ratio operator-(const Ratio &r);
-	Ratio operator-();
-	Ratio operator*(const Ratio &r);
-	Ratio operator*(const int &value);
 
 	public:
 	//Ratio &operateur= (const Ratio &r);

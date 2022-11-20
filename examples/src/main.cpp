@@ -16,8 +16,8 @@ int main() {
     //ploup();
 
     Ratio r3(1,2);
-    std::cout << r3.num()<<std::endl;
-    std::cout << r3.denom()<<std::endl;
+    std::cout << r3.getNum()<<std::endl;
+    std::cout << r3.getDenom()<<std::endl;
 
     result=r1*r2;
     std::cout << "* :" << std::endl;
@@ -27,11 +27,11 @@ int main() {
 
     Ratio r5 = r3 + r4;
 
-    std::cout << "r1 + r2 :" << std::endl << "num : " << r5.num() << std::endl << "denum : " << r5.denom() << std::endl;
+    std::cout << "r1 + r2 :" << std::endl << "getNum : " << r5.getNum() << std::endl << "denum : " << r5.getDenom() << std::endl;
     
     Ratio r6 = -r3;
     // std::cout << r1.m_denom << std::endl;
-    std::cout << " - r1 : " << std::endl << "num : " << r6.num() << std:: endl << "denum : " << r6.denom() << std::endl; 
+    std::cout << " - r1 : " << std::endl << "getNum : " << r6.getNum() << std:: endl << "denum : " << r6.getDenom() << std::endl; 
 
     result=r2*2;
     std::cout << "*2 :" << std::endl;
