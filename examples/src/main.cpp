@@ -4,24 +4,47 @@
 
 
 int main() {
-
-    // appel de ploup
-    //ploup();
+    /*
+    *
+    * OPERATORS CLASSIC TESTS
+    * 
+    */
 
     Ratio r1(1,2);
-    std::cout << r1.num()<<std::endl;
-    std::cout << r1.denom()<<std::endl;
-
     Ratio r2(3,4);
+    int value = 3;
+    std::cout << "Ratio 1 (r1) : " ;
+    r1.display();
+    std::cout << "Ratio 2 (r2) : " ;
+    r2.display();
+    std::cout << "Value (value) : " << value << std::endl << std::endl;
 
-    Ratio r3 = r1 + r2;
+    std::cout << "Addition (r1 + r2): ";
+    (r1+r2).display();
 
-    std::cout << "r1 + r2 :" << std::endl << "num : " << r3.num() << std::endl << "denum : " << r3.denom() << std::endl;
-    
-    Ratio r4 = -r1;
-    // std::cout << r1.m_denom << std::endl;
-    std::cout << " - r1 : " << std::endl << "num : " << r4.num() << std:: endl << "denum : " << r4.denom() << std::endl; 
+    std::cout << "Addition (r1 + value): ";
+    (r1+value).display();
 
+    std::cout << "Subtraction (r1 - r2): ";
+    (r1-r2).display();
+
+    std::cout << "Subtraction (r1 - value): ";
+    (r1-value).display();
+
+    std::cout << "Multiplication (r1 * r2): ";
+    (r1*r2).display();
+
+    std::cout << "Multiplication (r1 * value): ";
+    (r1*value).display();
+
+    std::cout << "Division (r1 / r2): " ;
+    (r1/r2).display();
+
+    std::cout << "Division (r1 / value): " ;
+    (r1/value).display();
+
+    std::cout << "Inverse de r2: ";
+    (r2.inverse()).display();
     
     return 0;
 }
