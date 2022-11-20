@@ -68,5 +68,14 @@ int main() {
     std::cout << "Test r1 != r3 : ";
     std::cout << (r1 != r3) <<std::endl;
 
+    std::cout << "Test r1 < r3 : ";
+    std::cout << (r1 < r3) << std::endl;
+
+    std::cout << "Test r1 <= r3 : ";
+    std::cout << (r1 <= r3) <<std::endl;
+
+    std::cout << "Test r1 > r2 : ";
+    std::cout << (r1 > r2) <<std::endl;
+
     return 0;
 }
