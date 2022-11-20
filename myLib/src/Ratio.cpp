@@ -155,3 +155,12 @@ bool Ratio::operator==(const Ratio &r){
 	return false;
 
 }
+
+bool Ratio::operator!=(const Ratio &r){
+
+	if(this->m_num != r.m_num || this->m_denom != r.m_denom){
+		return true;
+	}
+
+	return false;
+}

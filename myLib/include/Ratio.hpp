@@ -91,6 +91,11 @@ class Ratio {
 	/// \return the boolean result of the comparation
 	bool operator==(const Ratio &r);
 
+	/// \brief compare the non-equality of a ratio with *this
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator!=(const Ratio &r);
+
 
 
 	/// \brief fonction to set to the numerator of a vector
