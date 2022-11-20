@@ -12,6 +12,7 @@ int main() {
 
     Ratio r1(1,2);
     Ratio r2(3,4);
+    Ratio r3(r1);
     int value = 3;
     float fvalue = 0.78;
 
@@ -19,6 +20,8 @@ int main() {
     r1.display();
     std::cout << "Ratio 2 (r2) : " ;
     r2.display();
+    std::cout << "Ratio 3 (r3) : " ;
+    r3.display();
     std::cout << "Value (value) : " << value << std::endl;
     std::cout << "Float Value (fvalue) : " << value << std::endl << std::endl;
 
@@ -49,9 +52,15 @@ int main() {
     std::cout << "Inverse de r2: ";
     (r2.inverse()).display();
     
-    std::cout << "Conversion de fvalue en ratio r3 : " ;
-    Ratio r3(fvalue);
-    r3.display();
+    std::cout << "Conversion de fvalue en ratio r4 : " ;
+    Ratio r4(fvalue);
+    r4.display();
+
+    std::cout << "Test r1 == r2 : ";
+    std::cout << (r1 == r2) <<std::endl;
+
+    std::cout << "Test r1 == r3 : ";
+    std::cout << (r1 == r3) <<std::endl;
 
     return 0;
 }
