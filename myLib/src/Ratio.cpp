@@ -142,3 +142,16 @@ void Ratio::irreductible(){
     this->m_num = this->m_num/std::abs(pgcd);
     this->m_denom = this->m_denom/std::abs(pgcd);
 }
+
+bool Ratio::operator==(const Ratio &r){
+
+	// this->irreductible();
+	// r.irreductible();
+
+	if(this->m_num == r.m_num && this->m_denom == r.m_denom){
+		return true;
+	}
+
+	return false;
+
+}
