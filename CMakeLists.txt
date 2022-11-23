@@ -29,9 +29,6 @@ message(VERBOSE "CMAKE_CXX_COMPILER      : " ${CMAKE_CXX_COMPILER} "\n")
 # not clear to me, but vscode can't work fine without
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-# Prevents compiler-specific extensions to C++ because they might allow code to compile on your machine but not on other people's machine
-#set_target_properties(${PROJECT_NAME} PROPERTIES CXX_EXTENSIONS OFF)
-
 # (optional) add a "output" directory in the project binary directory (build)
 file(MAKE_DIRECTORY ${PROJECT_BINARY_DIR}/output)
 
@@ -44,12 +41,18 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 # add myLib
 message(STATUS "myLib cmake part ..." )
 add_subdirectory(myLib INTERFACE)
-## au fait j'ai pas que des projets indépendants, j'ai aussi une lib personnelle
-## je veux l'utiliser dans tout mon projet
-## tout le projet qui seront dans des les dossiers enfants (comme la lib) connaitrons la librairie que je donne dans la ligne du dessous
-include_directories(${CMAKE_SOURCE_DIR}/myLib/include) # important : other projects called by this cmake will know this include directory
+include_directories(${CMAKE_SOURCE_DIR}/myLib/include) 
 
-##  va dans le dossier examples et le cmake la bas te dira quoi faire
 # add examples
 message(STATUS "examples cmake part ..." )
 add_subdirectory(examples)
+
+
+# add myTest
+find_package(GTest OPTIONAL_COMPONENTS)
+if(GTEST_FOUND)
+	message(STATUS "myTest cmake part ..." )
+	add_subdirectory(myTest)
+elseif()
+	message(WARNING "google test not found, skipping myTest ..." )
+endif()

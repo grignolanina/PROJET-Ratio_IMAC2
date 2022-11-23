@@ -65,14 +65,16 @@ Ratio Ratio::operator-(const Ratio &r){
 }
 
 Ratio Ratio::operator-(const int &value){
-	Ratio convert = Ratio(value,1); 
-    return (*this - convert);
+	Ratio result = (*this) - Ratio(value,1);
+	result.irreductible();
+    return result;
 }
 
 Ratio Ratio::operator*(const Ratio &r){
 	Ratio result = Ratio();
 	result.m_num = this->m_num*r.m_num;
 	result.m_denom=this->m_denom*r.m_denom;
+	result.irreductible();
 	return result;
 }
 
@@ -80,7 +82,7 @@ Ratio Ratio::operator*(const int &value){
 	Ratio result = Ratio();
 	result.m_num = this->m_num*value;
 	result.m_denom = this->m_denom;
-
+	result.irreductible();
 	return result;
 }
 
@@ -120,8 +122,9 @@ Ratio Ratio::operator+(const Ratio &r){
 }
 
 Ratio Ratio::operator+(const int &value){
-	Ratio convert = Ratio(value,1); 
-    return (*this + convert);
+	Ratio result = (*this) + Ratio(value,1); 
+	result.irreductible();
+    return result;
 }
 
 Ratio Ratio::operator-(){
