@@ -17,6 +17,10 @@ class Ratio {
 	/// \param denom denom : the denum of the ratio
 	Ratio(int num, unsigned int denom);
 
+	/// \brief parameters constructor with a given float number
+	/// \param x : the float which will be convert in a ratio
+	Ratio(float x);
+
 
 	/// \brief copy-constructor
 	/// \param r : the source ratio to be copied
@@ -82,6 +86,35 @@ class Ratio {
 	/// \return the inverse ratio
 	Ratio inverse();
 
+	/// \brief compare the equality of a ratio with *this
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator==(const Ratio &r);
+
+	/// \brief compare the non-equality of a ratio with *this
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator!=(const Ratio &r);
+
+	/// \brief test if *this is strictly higher than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator>(const Ratio &r);
+
+	/// \brief test if *this is higher(or equal) than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator>=(const Ratio &r);
+
+	/// \brief test if *this is strictly lower than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator<(const Ratio &r);
+
+	/// \brief test if *this is lower (or equal) than an other ratio
+	/// \param r : ratio to compare to the calling ratio
+	/// \return the boolean result of the comparation
+	bool operator<=(const Ratio &r);
 
 
 	/// \brief fonction to set to the numerator of a vector
@@ -111,3 +144,9 @@ class Ratio {
 
 	
 };
+ 
+/// \brief convert a float in a ratio
+/// \param x : float we want to convert
+///\param nb_iter : number of iterations we want to do to find the ratio
+/// \return the sum of the current ratio and the argument ratio
+Ratio convert_float_to_ratio(float x, int nb_iter);
