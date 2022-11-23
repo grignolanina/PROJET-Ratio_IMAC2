@@ -6,13 +6,13 @@ class Ratio {
 
 	public:
 	// Ratio(int num = 0, int denom = 1);
-	/// \brief constructor from a num and a denom and default constructor
+	/// \brief default constructor
 	/// \param num denom : the num of the ratio (optional)
 	/// \param denom denom : the denum of the ratio (optional)
 	Ratio();
 
 
-	/// \brief constructor from a num and a denom and default constructor
+	/// \brief constructor from a num and a denom
 	/// \param num denom : the num of the ratio
 	/// \param denom denom : the denum of the ratio
 	Ratio(int num, unsigned int denom);
