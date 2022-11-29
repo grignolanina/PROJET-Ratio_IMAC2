@@ -1,7 +1,11 @@
 #pragma once
+#include <numeric>
+#include <iostream>
+#include <stdexcept>
 
 /// \class Ratio
 /// \brief class defining a rational for linear algebra operations
+template<typename T>
 class Ratio {
 
 	public:
@@ -9,22 +13,31 @@ class Ratio {
 	/// \brief default constructor
 	/// \param num denom : the num of the ratio (optional)
 	/// \param denom denom : the denum of the ratio (optional)
-	Ratio();
+	Ratio(): m_num(0), m_denom(1){};
 
 
 	/// \brief constructor from a num and a denom
 	/// \param num denom : the num of the ratio
 	/// \param denom denom : the denum of the ratio
-	Ratio(int num, unsigned int denom);
+	Ratio(T num, T denom): m_num(num), m_denom(denom){
+		// if(denom==0){
+		// 	throw std::invalid_argument("division by 0");
+		// }
+	};
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	Ratio(float x);
+	// Ratio(float x):m_num(ConvertFloatRatio<T>(x,5).m_num), m_denom(ConvertFloatRatio<T>(x,5).m_denom){};
 
 
 	/// \brief copy-constructor
 	/// \param r : the source ratio to be copied
-	Ratio(const Ratio & r);
+	// Ratio(const Ratio & r)=default;
+	Ratio(const Ratio & r):m_num(r.m_num), m_denom(r.m_denom){};
+
+
+	//rajouter constructeur
+	//long int en int
 
 
 	/// \brief destructor
@@ -32,8 +45,9 @@ class Ratio {
 
 	
 	private:
-	int m_num;
-	unsigned int m_denom;
+	T m_num;
+	//mettre en unsigned
+	T m_denom;
 
 	public:
 	//Ratio &operateur= (const Ratio &r);
@@ -149,4 +163,188 @@ class Ratio {
 /// \param x : float we want to convert
 ///\param nb_iter : number of iterations we want to do to find the ratio
 /// \return the sum of the current ratio and the argument ratio
-Ratio ConvertFloatRatio(float x, int nb_iter);
+template<typename T>
+Ratio<T> ConvertFloatRatio(float x, int nb_iter){
+
+    Ratio<int> r; // valeur par défaut est 0/1
+    if( x == 0 || nb_iter == 0){
+        return r; //return 0/1
+    }
+
+    else if( std::abs(x)<1 ){
+		if(x<0){
+			r = ConvertFloatRatio<T>(((-1)/(-x)), nb_iter).inverse();
+		}
+		else{
+			r = ConvertFloatRatio<T>((1/x), nb_iter).inverse();
+		}
+		return r.irreductible();
+    }
+
+    else{
+        int q = (int)x;
+		Ratio<int> qRatio(q,1);
+        r = qRatio + ConvertFloatRatio<T>(x - q, nb_iter-1); 
+		return r.irreductible();
+    }
+}
+
+// template<typename T>
+// Ratio<T>::Ratio(): m_num(0), m_denom(1){
+// }
+
+// template<typename T>
+// Ratio<T>::Ratio(T num, T denom): m_num(num), m_denom(denom){
+// 		// if(denom==0){
+// 		// 	throw std::invalid_argument("division by 0");
+// 		// }
+// }
+
+// template<typename T>
+// Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
+	
+// }
+
+// template<typename T>
+// Ratio<T>::Ratio(const Ratio & r): m_num(r.m_num), m_denom(r.m_denom){
+// }
+
+template<typename T>
+int& Ratio<T>::setNum(){
+	return m_num;
+}
+
+template<typename T>
+unsigned int& Ratio<T>::setDenom(){
+	return m_denom;
+}
+
+template<typename T>
+const int& Ratio<T>::getNum() const{
+	return m_num;
+}
+
+template<typename T>
+const unsigned int& Ratio<T>::getDenom() const{
+	return m_denom;
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator-(const Ratio &r){
+	return (Ratio(((this->m_num*r.m_denom) - (this->m_denom*r.m_num)),(this->m_denom*r.m_denom))).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator-(const int &value){;
+    return (Ratio((*this) - Ratio(value,1))).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator*(const Ratio &r){
+	return (Ratio((this->m_num*r.m_num),(this->m_denom*r.m_denom))).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator*(const int &value){
+	return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator/(const Ratio &r){
+	return Ratio((this->m_num*r.m_denom),(this->m_denom*r.m_num)).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator/(const int &value){
+	return Ratio((this->m_num),(this->m_denom*value)).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::inverse(){
+	if(this->m_num < 0){
+		return (Ratio(-(this->m_denom),-(this->m_num))).irreductible();
+	}
+	else{
+		return (Ratio((this->m_denom),(this->m_num))).irreductible();
+	}
+	
+}
+
+
+template<typename T>
+Ratio<T> Ratio<T>::operator+(const Ratio &r){
+    return (Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom))).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator+(const int &value){
+    return ((*this) + Ratio(value,1)).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator-(){
+    return Ratio(((-1) * this->m_num),(this->m_denom)).irreductible();
+}
+
+template<typename T>
+void Ratio<T>::display()const{
+	std::cout << this->m_num << "/" << this->m_denom << std::endl;
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::irreductible(){    
+    int pgcd = std::gcd(this->m_num, this->m_denom);
+    this->m_num = this->m_num/std::abs(pgcd);
+    this->m_denom = this->m_denom/std::abs(pgcd);
+	return(*this);
+}
+
+template<typename T>
+bool Ratio<T>::operator==(const Ratio &r){
+	if(this->m_num == r.m_num && this->m_denom == r.m_denom){
+		return true;
+	}
+
+	return false;
+
+}
+
+template<typename T>
+bool Ratio<T>::operator!=(const Ratio &r){
+	if(this->m_num != r.m_num || this->m_denom != r.m_denom){
+		return true;
+	}
+	return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator>(const Ratio &r){
+	if( (*this-r).m_num > 0){
+		return true;
+	}
+	return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator>=(const Ratio &r){
+	if( (*this-r).m_num >= 0){
+		return true;
+	}
+	return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator<(const Ratio &r){
+	if( ((*this)-r).m_num < 0){
+		return true;
+	}
+	return false;
+}
+
+template<typename T>
+bool Ratio<T>::operator<=(const Ratio &r){
+	if( ((*this)-r).m_num <= 0){
+		return true;
+	}
+	return false;
+}
