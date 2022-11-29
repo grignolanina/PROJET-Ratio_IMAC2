@@ -149,4 +149,4 @@ class Ratio {
 /// \param x : float we want to convert
 ///\param nb_iter : number of iterations we want to do to find the ratio
 /// \return the sum of the current ratio and the argument ratio
-Ratio convert_float_to_ratio(float x, int nb_iter);
+Ratio ConvertFloatRatio(float x, int nb_iter);
