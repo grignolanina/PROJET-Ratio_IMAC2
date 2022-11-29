@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <numeric>
 #include <iostream>
+#include <stdexcept>
 
 Ratio ConvertFloatRatio(float x, int nb_iter){
 
@@ -35,7 +36,9 @@ Ratio::Ratio(): m_num(0), m_denom(1){
 }
 
 Ratio::Ratio(int num, unsigned int denom): m_num(num), m_denom(denom){
-		//add exception
+		// if(denom==0){
+		// 	throw std::invalid_argument("division by 0");
+		// }
 }
 
 Ratio::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
@@ -62,85 +65,51 @@ const unsigned int& Ratio::getDenom() const{
 }
 
 Ratio Ratio::operator-(const Ratio &r){
-	Ratio result = Ratio();
-	result.m_num = (this->m_num*r.m_denom) - (this->m_denom*r.m_num);
-	result.m_denom=this->m_denom*r.m_denom;
-	result.irreductible();
-	return result;
+	return (Ratio(((this->m_num*r.m_denom) - (this->m_denom*r.m_num)),(this->m_denom*r.m_denom))).irreductible();
 }
 
-Ratio Ratio::operator-(const int &value){
-	Ratio convert = Ratio(value,1); 
-    return (*this - convert);
+Ratio Ratio::operator-(const int &value){;
+    return (Ratio((*this) - Ratio(value,1))).irreductible();
 }
 
 Ratio Ratio::operator*(const Ratio &r){
-	Ratio result = Ratio();
-	result.m_num = this->m_num*r.m_num;
-	result.m_denom=this->m_denom*r.m_denom;
-	return result;
+	return (Ratio((this->m_num*r.m_num),(this->m_denom*r.m_denom))).irreductible();
 }
 
 Ratio Ratio::operator*(const int &value){
-	Ratio result = Ratio();
-	result.m_num = this->m_num*value;
-	result.m_denom = this->m_denom;
-
-	return result;
+	return Ratio((this->m_num*value),(this->m_denom)).irreductible();
 }
 
 Ratio Ratio::operator/(const Ratio &r){
-	Ratio result = Ratio();
-	result.m_num = this->m_num*r.m_denom;
-	result.m_denom = this->m_denom*r.m_num;
-	result.irreductible();
-	return result;
+	return Ratio((this->m_num*r.m_denom),(this->m_denom*r.m_num)).irreductible();
 }
 
 Ratio Ratio::operator/(const int &value){
-	Ratio result = Ratio();
-	result.m_num = this->m_num;
-	result.m_denom=this->m_denom*value;
-	result.irreductible();
-	return result;
+	return Ratio((this->m_num),(this->m_denom*value)).irreductible();
 }
 
 Ratio Ratio::inverse(){
-	Ratio result = Ratio();
-	if(this->m_num <0){
-		result.m_num= -(this->m_denom);
-		result.m_denom = -(this->m_num);
+	if(this->m_num < 0){
+		return Ratio(-(this->m_denom),-(this->m_num)).irreductible();
 	}
 	else{
-		result.m_num= this->m_denom;
-		result.m_denom = this->m_num;
+		return Ratio((this->m_denom),(this->m_num)).irreductible();
 	}
-	result.irreductible();
-	return result;
+	
 }
 
 
 
 Ratio Ratio::operator+(const Ratio &r){
-    Ratio result = Ratio(); 
-    result.m_num = this->m_num * r.m_denom + this->m_denom * r.m_num;
-    result.m_denom = this->m_denom*r.m_denom;
-    result.irreductible();
-
-    return result;
+    return Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom)).irreductible();
 }
 
 Ratio Ratio::operator+(const int &value){
-	Ratio convert = Ratio(value,1); 
-    return (*this + convert);
+    return ((*this) + Ratio(value,1)).irreductible();
 }
 
 Ratio Ratio::operator-(){
-    Ratio result;
-    result.m_num = (-1) * this->m_num;
-    result.m_denom = this->m_denom;
-    result.irreductible();
-    return result;
+    return Ratio(((-1) * this->m_num),(this->m_denom)).irreductible();
 }
 
 void Ratio::display()const{
@@ -148,17 +117,14 @@ void Ratio::display()const{
 }
 
 
-void Ratio::irreductible(){    
+Ratio Ratio::irreductible(){    
     int pgcd = std::gcd(this->m_num, this->m_denom);
     this->m_num = this->m_num/std::abs(pgcd);
     this->m_denom = this->m_denom/std::abs(pgcd);
+	return(*this);
 }
 
 bool Ratio::operator==(const Ratio &r){
-
-	// this->irreductible();
-	// r.irreductible();
-
 	if(this->m_num == r.m_num && this->m_denom == r.m_denom){
 		return true;
 	}
