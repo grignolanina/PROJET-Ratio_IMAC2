@@ -27,7 +27,7 @@ class Ratio {
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	// Ratio(float x):m_num(ConvertFloatRatio<T>(x,5).m_num), m_denom(ConvertFloatRatio<T>(x,5).m_denom){};
+	Ratio(float x);
 
 
 	/// \brief copy-constructor
@@ -200,10 +200,10 @@ Ratio<T> ConvertFloatRatio(float x, int nb_iter){
 // 		// }
 // }
 
-// template<typename T>
-// Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
+template<typename T>
+Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio<T>(x,5).m_num), m_denom(ConvertFloatRatio<T>(x,5).m_denom){
 	
-// }
+}
 
 // template<typename T>
 // Ratio<T>::Ratio(const Ratio & r): m_num(r.m_num), m_denom(r.m_denom){
