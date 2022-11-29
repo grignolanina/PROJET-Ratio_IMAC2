@@ -4,24 +4,29 @@
 #include <iostream>
 #include <stdexcept>
 
-Ratio convert_float_to_ratio(float x, int nb_iter){
+Ratio ConvertFloatRatio(float x, int nb_iter){
 
     Ratio r; // valeur par défaut est 0/1
     if( x == 0 || nb_iter == 0){
         return r; //return 0/1
     }
 
-    else if( x<1 ){
-
-        r = convert_float_to_ratio((1/x), nb_iter).inverse();
-		r.irreductible();
+    else if( std::abs(x)<1 ){
+		if(x<0){
+			r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+			r.irreductible();
+		}
+		else{
+			r = ConvertFloatRatio((1/x), nb_iter).inverse();
+			r.irreductible();
+		}
 		return r;
     }
 
     else{
         int q = (int)x;
 		Ratio qRatio(q,1);
-        r = qRatio + convert_float_to_ratio(x - q, nb_iter-1); 
+        r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
 		r.irreductible();
 		return r;
     }
@@ -36,7 +41,7 @@ Ratio::Ratio(int num, unsigned int denom): m_num(num), m_denom(denom){
 		// }
 }
 
-Ratio::Ratio(float x) : m_num(convert_float_to_ratio(x,5).m_num), m_denom(convert_float_to_ratio(x,5).m_denom){
+Ratio::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
 	
 }
 
@@ -84,7 +89,13 @@ Ratio Ratio::operator/(const int &value){
 }
 
 Ratio Ratio::inverse(){
-	return Ratio((this->m_denom),(this->m_num)).irreductible();
+	if(this->m_num < 0){
+		return Ratio(-(this->m_denom),-(this->m_num)).irreductible();
+	}
+	else{
+		return Ratio((this->m_denom),(this->m_num)).irreductible();
+	}
+	
 }
 
 
