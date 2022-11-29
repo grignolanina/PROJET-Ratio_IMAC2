@@ -53,6 +53,7 @@ int main() {
     (r2.inverse()).display();
     
     std::cout << "Conversion de fvalue en ratio r4 : " ;
+
     Ratio r4(fvalue);
     r4.display();
 
@@ -76,6 +77,15 @@ int main() {
 
     std::cout << "Test r1 > r2 : ";
     std::cout << (r1 > r2) <<std::endl;
+
+    // try {
+    //     Ratio r5(3,0);
+    // }
+    // catch(const std::exception &e){
+	//     std::cout << "c'est quoi ?" << e.what() ;
+    // }
+
+    
 
     return 0;
 }

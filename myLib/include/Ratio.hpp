@@ -140,7 +140,7 @@ class Ratio {
 
 	/// \brief fonction which gives the irreductible quotient of a ratio
 	/// \return irreductible ratio
-	void irreductible();
+	Ratio irreductible();
 
 	
 };
