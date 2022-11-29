@@ -10,9 +10,9 @@ int main() {
     * 
     */
 
-    Ratio r1(1,2);
-    Ratio r2(3,4);
-    Ratio r3(r1);
+    Ratio<int> r1(1,2);
+    Ratio<int> r2(3,4);
+    Ratio<int> r3(r1);
     int value = 3;
     float fvalue = 0.78;
     float negfvalue = -2.5;
@@ -56,12 +56,12 @@ int main() {
     
     std::cout << "Conversion de fvalue en ratio r4 : " ;
 
-    Ratio r4(fvalue);
-    r4.display();
+    // Ratio r4(fvalue);
+    // r4.display();
 
-    std::cout << "Conversion de negfvalue en ratio r5 : " ;
-    Ratio r5(negfvalue);
-    r5.display();
+    // std::cout << "Conversion de negfvalue en ratio r5 : " ;
+    // Ratio r5(negfvalue);
+    // r5.display();
 
     std::cout << "Test r1 == r2 : ";
     std::cout << (r1 == r2) <<std::endl;
