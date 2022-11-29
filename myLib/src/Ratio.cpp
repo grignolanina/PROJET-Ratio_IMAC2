@@ -89,7 +89,13 @@ Ratio Ratio::operator/(const int &value){
 }
 
 Ratio Ratio::inverse(){
-	return Ratio((this->m_denom),(this->m_num)).irreductible();
+	if(this->m_num < 0){
+		return Ratio(-(this->m_denom),-(this->m_num)).irreductible();
+	}
+	else{
+		return Ratio((this->m_denom),(this->m_num)).irreductible();
+	}
+	
 }
 
 
