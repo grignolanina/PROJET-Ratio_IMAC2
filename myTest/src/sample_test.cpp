@@ -227,6 +227,8 @@ TEST (RatioArithmetic, diviseRandomRatio){
 	ASSERT_EQ(result.getDenom(), (b*c)/std::gcd((a*d), (b*c)));
 }
 
+//multiplie par l'inverse ==1
+
 TEST (RatioArithmetic, diviseEqualToMultipleInverseRatio){
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
