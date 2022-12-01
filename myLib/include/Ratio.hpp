@@ -348,3 +348,16 @@ bool Ratio<T>::operator<=(const Ratio &r){
 	}
 	return false;
 }
+
+
+// il faut décider de l'affichage qu'on veut au final !
+template<typename T>
+std::ostream& operator<< (std::ostream& stream, const Ratio<T>& r){
+
+	stream << r.getNum();
+	stream << "\n― \n"	;
+	stream << r.getDenom();
+	stream << "\n";	
+
+	return stream;
+}
