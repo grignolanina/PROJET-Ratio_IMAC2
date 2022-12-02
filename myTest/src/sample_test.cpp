@@ -9,6 +9,7 @@
 
 TEST (RatioConstructor, defaultConstructor) { 
 	Ratio<int> r1;
+	r1.display();
 	ASSERT_EQ(r1.getNum(), 0);
 	ASSERT_EQ(r1.getDenom(), 1);
 }
@@ -102,6 +103,25 @@ TEST (RatioArithmetic, plusRandomRatio) {
 	ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
 }
+
+// TEST (RatioArithmetic, plusRandomRatioConvert) {
+// 	const size_t maxSize = 1000;  // max size of the tested vectors
+// 	std::mt19937 generator(0);
+// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+// 	float a = gen();
+// 	float b = gen();
+
+// 	Ratio<int> r1(a,b);
+// 	Ratio<int> r2(c,d);
+// 	Ratio<int> result;
+// 	result = r1+r2;
+
+// 	ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
+// 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
+// }
 
 TEST (RatioArithmetic, minusKnowedRatio) {
 	Ratio<int> r1(1,2);
