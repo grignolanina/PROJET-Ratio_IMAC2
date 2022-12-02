@@ -92,6 +92,8 @@ int main() {
 	//     std::cout << "c'est quoi ?" << e.what() ;
     // }
 
+    std::cout << "Essai d'affichage avec ostream : " <<std::endl;
+    std::cout<< r1;
     
 
     return 0;

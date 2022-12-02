@@ -212,10 +212,10 @@ Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
 // 		// }
 // }
 
-// template<typename T>
-// Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
+template<typename T>
+Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio<T>(x,5).m_num), m_denom(ConvertFloatRatio<T>(x,5).m_denom){
 	
-// }
+}
 
 // template<typename T>
 // Ratio<T>::Ratio(const Ratio & r): m_num(r.m_num), m_denom(r.m_denom){
@@ -369,4 +369,16 @@ bool Ratio<T>::operator<=(const Ratio &r){
 		return true;
 	}
 	return false;
+}
+
+
+// il faut décider de l'affichage qu'on veut au final !
+template<typename T>
+std::ostream& operator<< (std::ostream& stream, const Ratio<T>& r){
+
+	stream << r.getNum();
+	stream << "/"	;
+	stream << r.getDenom();
+
+	return stream;
 }
