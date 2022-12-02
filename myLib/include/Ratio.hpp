@@ -3,6 +3,7 @@
 #include <iostream>
 #include <stdexcept>
 
+
 /// \class Ratio
 /// \brief class defining a rational for linear algebra operations
 template<typename T>
@@ -20,6 +21,13 @@ class Ratio {
 	/// \param num denom : the num of the ratio
 	/// \param denom denom : the denum of the ratio
 	Ratio(T num, T denom): m_num(num), m_denom(denom){
+		if(this->m_denom <0){
+			this->m_num= -this->m_num;
+			this->m_denom = -this->m_denom;
+		}
+
+		this->irreductible();
+
 		// if(denom==0){
 		// 	throw std::invalid_argument("division by 0");
 		// }
@@ -27,7 +35,7 @@ class Ratio {
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	Ratio(float x);
+	Ratio(float x):Ratio(ConvertFloatRatio(x,5)){};
 
 
 	/// \brief copy-constructor
@@ -145,7 +153,7 @@ class Ratio {
 
 	/// \brief fonction to access to the denominator of a vector
 	/// \return ratio.denom() 
-	const unsigned int& getDenom()const;
+	const int& getDenom()const;
 
 	/// \brief display the ratio calling properly in the terminal
 	/// \return ratio
@@ -156,6 +164,10 @@ class Ratio {
 	/// \return irreductible ratio
 	Ratio irreductible();
 
+
+	static Ratio ConvertFloatRatio(float x, int nb_iter);
+
+
 	
 };
  
@@ -164,27 +176,27 @@ class Ratio {
 ///\param nb_iter : number of iterations we want to do to find the ratio
 /// \return the sum of the current ratio and the argument ratio
 template<typename T>
-Ratio<T> ConvertFloatRatio(float x, int nb_iter){
+Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
 
-    Ratio<int> r; // valeur par défaut est 0/1
+    Ratio<T> r; // valeur par défaut est 0/1
     if( x == 0 || nb_iter == 0){
         return r; //return 0/1
     }
 
     else if( std::abs(x)<1 ){
 		if(x<0){
-			r = ConvertFloatRatio<T>(((-1)/(-x)), nb_iter).inverse();
+			r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
 		}
 		else{
-			r = ConvertFloatRatio<T>((1/x), nb_iter).inverse();
+			r = ConvertFloatRatio((1/x), nb_iter).inverse();
 		}
 		return r.irreductible();
     }
 
     else{
         int q = (int)x;
-		Ratio<int> qRatio(q,1);
-        r = qRatio + ConvertFloatRatio<T>(x - q, nb_iter-1); 
+		Ratio<T> qRatio(q,1);
+        r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
 		return r.irreductible();
     }
 }
@@ -225,7 +237,7 @@ const int& Ratio<T>::getNum() const{
 }
 
 template<typename T>
-const unsigned int& Ratio<T>::getDenom() const{
+const int& Ratio<T>::getDenom() const{
 	return m_denom;
 }
 
@@ -298,6 +310,16 @@ Ratio<T> Ratio<T>::irreductible(){
     this->m_denom = this->m_denom/std::abs(pgcd);
 	return(*this);
 }
+
+//pour denom positif 
+// template<typename T>
+// Ratio<T> Ratio<T>::sign(){
+// 	if(this->getDenom<0){
+// 		this->setNum()= -this->getNum();
+// 		this->setDenom()= -this->getDenom();
+// 	}
+// 	return(*this);
+// }
 
 template<typename T>
 bool Ratio<T>::operator==(const Ratio &r){
