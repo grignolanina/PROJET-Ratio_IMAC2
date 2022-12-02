@@ -355,9 +355,8 @@ template<typename T>
 std::ostream& operator<< (std::ostream& stream, const Ratio<T>& r){
 
 	stream << r.getNum();
-	stream << "\n― \n"	;
+	stream << "/"	;
 	stream << r.getDenom();
-	stream << "\n";	
 
 	return stream;
 }
