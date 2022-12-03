@@ -85,6 +85,10 @@ int main() {
     std::cout << "Test r1 > r2 : ";
     std::cout << (r1 > r2) <<std::endl;
 
+
+    std::cout << "Essai d'affichage avec ostream : " <<std::endl;
+    std::cout<< r1;
+
     // try {
     //     Ratio r5(3,0);
     // }
