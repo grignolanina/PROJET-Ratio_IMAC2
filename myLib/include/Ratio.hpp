@@ -5,6 +5,8 @@
 
 #include "RatioException.hpp"
 
+static const unsigned int NB_ITER = 5;
+
 
 /// \class Ratio
 /// \brief class defining a rational for linear algebra operations
@@ -38,7 +40,7 @@ class Ratio {
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	Ratio(float x):Ratio(ConvertFloatRatio(x,5)){};
+	Ratio(float x):Ratio(ConvertFloatRatio(x,NB_ITER)){};
 
 
 	/// \brief copy-constructor
