@@ -3,6 +3,7 @@
 #include "Ratio.hpp"
 
 
+
 int main() {
     /*
     *
@@ -92,10 +93,8 @@ int main() {
     std::cout << "Essai d'affichage avec ostream : " <<std::endl;
     std::cout<< r1;
 
-
-
-    try {
-        Ratio r5(3,0);
+     try {
+        r1.infinite();
     }
     #if 1
         catch(const RatioException &e){
@@ -106,6 +105,25 @@ int main() {
             std::cerr << e.what() << std::endl;
         }
     #endif
+
+    std::cout << r1.infinite();
+
+
+    try {
+        Ratio r5(2,0);
+    }
+    #if 1
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #else
+        catch(const std::exception &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
+
+
+   
 
     
 
