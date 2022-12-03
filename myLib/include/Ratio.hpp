@@ -1,7 +1,9 @@
 #pragma once
 #include <numeric>
+#include <string>
 #include <iostream>
-#include <stdexcept>
+
+#include "RatioException.hpp"
 
 
 /// \class Ratio
@@ -28,9 +30,9 @@ class Ratio {
 
 		this->irreductible();
 
-		// if(denom==0){
-		// 	throw std::invalid_argument("division by 0");
-		// }
+		if(denom==0){
+			throw RatioException("Ratio() constructor with denom equal : " + std::to_string(this->m_denom), 1, ErrorType::fatal);
+		}
 	};
 
 	/// \brief parameters constructor with a given float number
@@ -163,6 +165,11 @@ class Ratio {
 	/// \brief fonction which gives the irreductible quotient of a ratio
 	/// \return irreductible ratio
 	Ratio irreductible();
+
+	/// \brief fonction which gives the absoluture quotient of a ratio
+	/// \return the absolute value of the ratio
+	Ratio abs();
+
 
 
 	static Ratio ConvertFloatRatio(float x, int nb_iter);
@@ -309,6 +316,15 @@ Ratio<T> Ratio<T>::irreductible(){
     this->m_num = this->m_num/std::abs(pgcd);
     this->m_denom = this->m_denom/std::abs(pgcd);
 	return(*this);
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::abs(){  
+	if((*this)<0){
+		return -(*this);
+	}else{
+		return (*this);
+	}
 }
 
 //pour denom positif 

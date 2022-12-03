@@ -53,6 +53,9 @@ int main() {
 
     std::cout << "Inverse de r2: ";
     (r2.inverse()).display();
+
+    std::cout << "Abs de r2: ";
+    (r2.abs()).display();
     
     std::cout << "Conversion de fvalue en ratio r4 : " ;
 
@@ -76,8 +79,8 @@ int main() {
     std::cout << "Test r1 != r3 : ";
     std::cout << (r1 != r3) <<std::endl;
 
-    std::cout << "Test r1 < r3 : ";
-    std::cout << (r1 < r3) << std::endl;
+    std::cout << "Test r1 < r2 : ";
+    std::cout << (r1 < r2) << std::endl;
 
     std::cout << "Test r1 <= r3 : ";
     std::cout << (r1 <= r3) <<std::endl;
@@ -89,12 +92,20 @@ int main() {
     std::cout << "Essai d'affichage avec ostream : " <<std::endl;
     std::cout<< r1;
 
-    // try {
-    //     Ratio r5(3,0);
-    // }
-    // catch(const std::exception &e){
-	//     std::cout << "c'est quoi ?" << e.what() ;
-    // }
+
+
+    try {
+        Ratio r5(3,0);
+    }
+    #if 1
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #else
+        catch(const std::exception &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
 
     
 
