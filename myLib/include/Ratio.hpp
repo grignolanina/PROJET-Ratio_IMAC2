@@ -10,6 +10,9 @@
 //static const unsigned int NB_ITER = 5;
 //dans l'idée ça pour PI mais en dehors de la classe
 
+
+namespace ratio {
+
 /// \class Ratio
 /// \brief class defining a rational for linear algebra operations
 template<typename T>
@@ -240,37 +243,41 @@ class Ratio {
 	/*****************************************************************
 	STATIC VARIABLE
 	******************************************************************/
-	/// \brief fonction which multiply by infinte the calling ratio
-	/// \return ratio 1/0
-	constexpr static Ratio multiplyInfinite()noexcept{return Ratio(1/0);};
+	// /// \brief fonction which multiply by infinte the calling ratio
+	// /// \return ratio 1/0
+	// constexpr static Ratio multiplyInfinite()noexcept{return Ratio(1/0);};
 
-	/// \brief fonction which multiply by the zero the calling ratio
-	/// \return ratio 0/1
-	constexpr static Ratio multiplyZero()noexcept{return Ratio(0/1);};
+	// /// \brief fonction which multiply by the zero the calling ratio
+	// /// \return ratio 0/1
+	// constexpr static Ratio multiplyZero()noexcept{return Ratio(0/1);};
 
-	/// \brief fonction which givr the pi ratio
-	/// \return ratio M_Pi/1
-	constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
+	// /// \brief fonction which givr the pi ratio
+	// /// \return ratio M_Pi/1
+	// constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
+
+
+	/*****************************************************************
+	STATIC VARIABLE
+	******************************************************************/
+	/// \brief give the ratio zero
+	// template<typename T>
+	inline constexpr static Ratio<T> zero()noexcept{return Ratio<T>(0,1);}
+
+
+	/// \brief give the ratio infinte
+	// template<typename T>
+	// inline constexpr static Ratio<T> infinite()noexcept{return Ratio<T>(1,0);}
+
+
+	/// \brief give the ratio pi
+	// template<typename T>
+	inline constexpr static Ratio<T> pi()noexcept{return Ratio<T>(355,113);}
 
 
 
 
 };
 
-// 	template<typename T>
-// 	inline constexpr static Ratio<T> Pi()=Ratio<T>(22/7)};
-
-// 	template<typename T>
-// 	constexpr static Ratio<T> Pi()noexcept{return Ratio<T>(22/7);};
-
-
-// 	template<typename T>
-// 	Ratio<T> zero(1/0);
-
-// 	template<typename T>
-// 	Ratio<T> pi(22/7);
-
-// }
 
 
 /*****************************************************************
@@ -504,3 +511,8 @@ float Ratio<T>::ConvertRatioToFloat(){
 }
 
 
+
+
+
+
+}
