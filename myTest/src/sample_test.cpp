@@ -114,13 +114,54 @@ TEST (RatioArithmetic, plusRandomRatio) {
 // 	float a = gen();
 // 	float b = gen();
 
-// 	Ratio<int> r1(a,b);
-// 	Ratio<int> r2(c,d);
+// 	std::cout << " mon float a : "<< a << std::endl;
+// 	std::cout << " mon float b : "<< b << std::endl;
+
+
+// 	Ratio<int> r1(a);
+// 	Ratio<int> r2(b);
+
+// 	std::cout << " mon ratio avec a : "<< r1;
+// 	std::cout << " mon ratio avec b : "<< r2;
+
+// 	std::cout << std::endl;
+
+
+
 // 	Ratio<int> result;
 // 	result = r1+r2;
 
-// 	ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
-// 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
+// 	std::cout << "a+b : " << a+b << std::endl;
+// 	std::cout << " mon ratio avec r1 + r2 : "<< result;
+//     std::cout << "result en double du ratio : " << (double)result.getNum()/result.getDenom() << std::endl;
+
+// 	std::cout << std::endl;
+
+// 	Ratio<int> r3(a+b);
+// 	std::cout << " mon ratio avec r3(a+b) : "<< r3;
+// 	std::cout << "r3 en double du ratio : " << (double)r3.getNum()/r3.getDenom() << std::endl;
+
+// 	std::cout << std::endl;
+
+// 	Ratio<int> epsilon(1, 100);
+// 	std::cout << "epsilon : " << epsilon;
+
+// 	std::cout << std::endl;
+	
+// 	std::cout << "epsilon : " << epsilon;
+
+
+// 	// std::cout <<  "abs de result - r3 : " << (result-r3).abs();
+
+// 	Ratio<int> result2(result-r3);
+// 	result2.abs();
+
+
+
+// 	ASSERT_GT(epsilon, result2);
+
+// 	// ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
+// 	// ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
 // }
 
 TEST (RatioArithmetic, minusKnowedRatio) {

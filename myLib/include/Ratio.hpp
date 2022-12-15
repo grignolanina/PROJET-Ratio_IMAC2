@@ -1,7 +1,11 @@
 #pragma once
 #include <numeric>
+#include <string>
 #include <iostream>
-#include <stdexcept>
+
+#include "RatioException.hpp"
+
+static const unsigned int NB_ITER = 5;
 
 
 /// \class Ratio
@@ -10,7 +14,10 @@ template<typename T>
 class Ratio {
 
 	public:
-	// Ratio(int num = 0, int denom = 1);
+
+	/*****************************************************************
+	CONSTRUCTORS
+	******************************************************************/
 	/// \brief default constructor
 	/// \param num denom : the num of the ratio (optional)
 	/// \param denom denom : the denum of the ratio (optional)
@@ -25,17 +32,15 @@ class Ratio {
 			this->m_num= -this->m_num;
 			this->m_denom = -this->m_denom;
 		}
-
 		this->irreductible();
-
-		// if(denom==0){
-		// 	throw std::invalid_argument("division by 0");
-		// }
+		if(denom==0){
+			throw RatioException("Ratio() constructor with denom equal : " + std::to_string(this->m_denom), 1, ErrorType::fatal);
+		}
 	};
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	Ratio(float x):Ratio(ConvertFloatRatio(x,5)){};
+	Ratio(float x):Ratio(ConvertFloatRatio(x,NB_ITER)){};
 
 
 	/// \brief copy-constructor
@@ -48,16 +53,48 @@ class Ratio {
 	//long int en int
 
 
+	/*****************************************************************
+	DESTRUCTOR
+	******************************************************************/
 	/// \brief destructor
 	~Ratio() = default;
 
-	
+
 	private:
+
+	/*****************************************************************
+	VARIABLES
+	******************************************************************/
 	T m_num;
 	//mettre en unsigned
 	T m_denom;
 
+
 	public:
+
+	/*****************************************************************
+	GETTER & SETTER
+	******************************************************************/
+	/// \brief fonction to set to the numerator of a vector
+	/// \return ratio.num() 
+	int& setNum();
+
+	/// \brief fonction to set to the denominator of a vector
+	/// \return ratio.denom() 
+	unsigned int& setDenom();
+
+	/// \brief fonction to access to the numerator of a vector
+	/// \return ratio.num() 
+	const int& getNum()const;
+
+	/// \brief fonction to access to the denominator of a vector
+	/// \return ratio.denom() 
+	const int& getDenom()const;
+
+
+	/*****************************************************************
+	ARITHMETICS CLASSICS OPERATORS
+	******************************************************************/
 	//Ratio &operateur= (const Ratio &r);
 
 	/// \brief add a ratio to *this
@@ -104,10 +141,10 @@ class Ratio {
 	/// \return the divided ratio
 	Ratio operator/(const int &value);
 
-	/// \brief inverse the calling ratio
-	/// \return the inverse ratio
-	Ratio inverse();
 
+	/*****************************************************************
+	COMPARE OPERATORS
+	******************************************************************/
 	/// \brief compare the equality of a ratio with *this
 	/// \param r : ratio to compare to the calling ratio
 	/// \return the boolean result of the comparation
@@ -139,106 +176,82 @@ class Ratio {
 	bool operator<=(const Ratio &r);
 
 
-	/// \brief fonction to set to the numerator of a vector
-	/// \return ratio.num() 
-	int& setNum();
+	/*****************************************************************
+	ARITHMETICS OTHERS OPERATORS
+	******************************************************************/
+	/// \brief inverse the calling ratio
+	/// \return the inverse ratio
+	Ratio inverse();
 
-	/// \brief fonction to set to the denominator of a vector
-	/// \return ratio.denom() 
-	unsigned int& setDenom();
+	/// \brief fonction which gives the absoluture quotient of a ratio
+	/// \return the absolute value of the ratio
+	Ratio abs();
 
-	/// \brief fonction to access to the numerator of a vector
-	/// \return ratio.num() 
-	const int& getNum()const;
+	//PARTIE ENTIERE
+	//COS 
+	//SIN
+	//EXP
+	//RACINE
+	//etc.
 
-	/// \brief fonction to access to the denominator of a vector
-	/// \return ratio.denom() 
-	const int& getDenom()const;
 
+	/*****************************************************************
+	AFFICHAGE
+	******************************************************************/
 	/// \brief display the ratio calling properly in the terminal
 	/// \return ratio
 	void display()const;
+
+
+	/*****************************************************************
+	CONVERTION
+	******************************************************************/
+	/// \brief convert a float in a ratio
+	/// \param x : float we want to convert
+	///\param nb_iter : number of iterations we want to do to find the ratio
+	/// \return the sum of the current ratio and the argument ratio
+	static Ratio ConvertFloatRatio(float x, int nb_iter);
 
 
 	/// \brief fonction which gives the irreductible quotient of a ratio
 	/// \return irreductible ratio
 	Ratio irreductible();
 
+	/*****************************************************************
+	STATIC VARIABLE
+	******************************************************************/
+	/// \brief fonction which multiply by infinte the calling ratio
+	/// \return ratio 1/0
+	constexpr static Ratio infinite()noexcept{return Ratio(1/0);};
 
-	static Ratio ConvertFloatRatio(float x, int nb_iter);
+	/// \brief fonction which multiply by the zero the calling ratio
+	/// \return ratio 0/1
+	constexpr static Ratio zero()noexcept{return Ratio(0/1);};
+	//verif les constexpr static noexcept et les mettre en bas
+
+	//pas reellement des variables statiques, voir comment faire
 
 
-	
+
+
 };
- 
-/// \brief convert a float in a ratio
-/// \param x : float we want to convert
-///\param nb_iter : number of iterations we want to do to find the ratio
-/// \return the sum of the current ratio and the argument ratio
+
+/*****************************************************************
+ARITHMETICS CLASSICS OPERATORS
+******************************************************************/
 template<typename T>
-Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
-
-    Ratio<T> r; // valeur par défaut est 0/1
-    if( x == 0 || nb_iter == 0){
-        return r; //return 0/1
-    }
-
-    else if( std::abs(x)<1 ){
-		if(x<0){
-			r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
-		}
-		else{
-			r = ConvertFloatRatio((1/x), nb_iter).inverse();
-		}
-		return r.irreductible();
-    }
-
-    else{
-        int q = (int)x;
-		Ratio<T> qRatio(q,1);
-        r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
-		return r.irreductible();
-    }
-}
-
-// template<typename T>
-// Ratio<T>::Ratio(): m_num(0), m_denom(1){
-// }
-
-// template<typename T>
-// Ratio<T>::Ratio(T num, T denom): m_num(num), m_denom(denom){
-// 		// if(denom==0){
-// 		// 	throw std::invalid_argument("division by 0");
-// 		// }
-// }
-
-// template<typename T>
-// Ratio<T>::Ratio(float x) : m_num(ConvertFloatRatio(x,5).m_num), m_denom(ConvertFloatRatio(x,5).m_denom){
-	
-// }
-
-// template<typename T>
-// Ratio<T>::Ratio(const Ratio & r): m_num(r.m_num), m_denom(r.m_denom){
-// }
-
-template<typename T>
-int& Ratio<T>::setNum(){
-	return m_num;
+Ratio<T> Ratio<T>::operator+(const Ratio &r){
+    return (Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom))).irreductible();
 }
 
 template<typename T>
-unsigned int& Ratio<T>::setDenom(){
-	return m_denom;
+Ratio<T> Ratio<T>::operator+(const int &value){
+    return ((*this) + Ratio(value,1)).irreductible();
 }
 
 template<typename T>
-const int& Ratio<T>::getNum() const{
-	return m_num;
-}
-
-template<typename T>
-const int& Ratio<T>::getDenom() const{
-	return m_denom;
+Ratio<T> Ratio<T>::operator-(){
+    return Ratio(((-1) * this->m_num),(this->m_denom)).irreductible();
 }
 
 template<typename T>
@@ -271,64 +284,15 @@ Ratio<T> Ratio<T>::operator/(const int &value){
 	return Ratio((this->m_num),(this->m_denom*value)).irreductible();
 }
 
-template<typename T>
-Ratio<T> Ratio<T>::inverse(){
-	if(this->m_num < 0){
-		return (Ratio(-(this->m_denom),-(this->m_num))).irreductible();
-	}
-	else{
-		return (Ratio((this->m_denom),(this->m_num))).irreductible();
-	}
-	
-}
-
-
-template<typename T>
-Ratio<T> Ratio<T>::operator+(const Ratio &r){
-    return (Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom))).irreductible();
-}
-
-template<typename T>
-Ratio<T> Ratio<T>::operator+(const int &value){
-    return ((*this) + Ratio(value,1)).irreductible();
-}
-
-template<typename T>
-Ratio<T> Ratio<T>::operator-(){
-    return Ratio(((-1) * this->m_num),(this->m_denom)).irreductible();
-}
-
-template<typename T>
-void Ratio<T>::display()const{
-	std::cout << this->m_num << "/" << this->m_denom << std::endl;
-}
-
-template<typename T>
-Ratio<T> Ratio<T>::irreductible(){    
-    int pgcd = std::gcd(this->m_num, this->m_denom);
-    this->m_num = this->m_num/std::abs(pgcd);
-    this->m_denom = this->m_denom/std::abs(pgcd);
-	return(*this);
-}
-
-//pour denom positif 
-// template<typename T>
-// Ratio<T> Ratio<T>::sign(){
-// 	if(this->getDenom<0){
-// 		this->setNum()= -this->getNum();
-// 		this->setDenom()= -this->getDenom();
-// 	}
-// 	return(*this);
-// }
-
+/*****************************************************************
+COMPARE OPERATORS
+******************************************************************/
 template<typename T>
 bool Ratio<T>::operator==(const Ratio &r){
 	if(this->m_num == r.m_num && this->m_denom == r.m_denom){
 		return true;
 	}
-
 	return false;
-
 }
 
 template<typename T>
@@ -370,3 +334,113 @@ bool Ratio<T>::operator<=(const Ratio &r){
 	}
 	return false;
 }
+
+
+/*****************************************************************
+ARITHMETICS OTHERS OPERATORS
+******************************************************************/
+template<typename T>
+Ratio<T> Ratio<T>::inverse(){
+	if(this->m_num < 0){
+		return (Ratio(-(this->m_denom),-(this->m_num))).irreductible();
+	}
+	else{
+		return (Ratio((this->m_denom),(this->m_num))).irreductible();
+	}
+	
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::abs(){  
+	if((*this)<0){
+		return -(*this);
+	}else{
+		return (*this);
+	}
+}
+
+/*****************************************************************
+GETTER & SETTER
+******************************************************************/
+template<typename T>
+int& Ratio<T>::setNum(){
+	return m_num;
+}
+
+template<typename T>
+unsigned int& Ratio<T>::setDenom(){
+	return m_denom;
+}
+
+template<typename T>
+const int& Ratio<T>::getNum() const{
+	return m_num;
+}
+
+template<typename T>
+const int& Ratio<T>::getDenom() const{
+	return m_denom;
+}
+
+
+
+
+
+
+/*****************************************************************
+AFFICHAGE
+******************************************************************/
+template<typename T>
+void Ratio<T>::display()const{
+	std::cout << this->m_num << "/" << this->m_denom << std::endl;
+}
+
+template<typename T>
+std::ostream& operator<< (std::ostream& stream, const Ratio<T>& r){
+
+	stream << r.getNum();
+	stream << "/"	;
+	stream << r.getDenom();
+	stream << "\n";
+
+	return stream;
+}
+
+/*****************************************************************
+CONVERTION
+******************************************************************/
+template<typename T>
+Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
+
+    Ratio<T> r; // valeur par défaut est 0/1
+    if( x == 0 || nb_iter == 0){
+        return r; //return 0/1
+    }
+
+    else if( std::abs(x)<1 ){
+		if(x<0){
+			r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+		}
+		else{
+			r = ConvertFloatRatio((1/x), nb_iter).inverse();
+		}
+		return r.irreductible();
+    }
+
+    else{
+        int q = (int)x;
+		Ratio<T> qRatio(q,1);
+        r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
+		return r.irreductible();
+    }
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::irreductible(){    
+    int pgcd = std::gcd(this->m_num, this->m_denom);
+    this->m_num = this->m_num/std::abs(pgcd);
+    this->m_denom = this->m_denom/std::abs(pgcd);
+	return(*this);
+}
+
+
