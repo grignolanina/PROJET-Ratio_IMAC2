@@ -115,7 +115,7 @@ int main() {
 
 
     try {
-        //Ratio r5(2,0);
+      //  Ratio r5(2,0);
     }
     #if 1
         catch(const RatioException &e){
