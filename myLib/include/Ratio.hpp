@@ -2,11 +2,13 @@
 #include <numeric>
 #include <string>
 #include <iostream>
+#include <cmath>
 
 #include "RatioException.hpp"
 
-static const unsigned int NB_ITER = 5;
-
+//pas faire
+//static const unsigned int NB_ITER = 5;
+//dans l'idée ça pour PI mais en dehors de la classe
 
 /// \class Ratio
 /// \brief class defining a rational for linear algebra operations
@@ -40,7 +42,7 @@ class Ratio {
 
 	/// \brief parameters constructor with a given float number
 	/// \param x : the float which will be convert in a ratio
-	Ratio(float x):Ratio(ConvertFloatRatio(x,NB_ITER)){};
+	Ratio(float x):Ratio(ConvertFloatRatio(x,7)){};
 
 
 	/// \brief copy-constructor
@@ -187,6 +189,19 @@ class Ratio {
 	/// \return the absolute value of the ratio
 	Ratio abs();
 
+	/// \brief fonction which gives the square root of a ratio
+	/// \return the square root value of the ratio
+	double sqrt();
+
+	/// \brief fonction which gives the cosinus of a ratio
+	/// \return the value of the cosinus of the ratio
+	double cosinus();
+
+	/// \brief fonction which gives an approciamtion of the cosinus of a ratio
+	/// \return the value of the approximated cosinus of the ratio
+	double cosinus2();
+
+
 	//PARTIE ENTIERE
 	//COS 
 	//SIN
@@ -217,24 +232,50 @@ class Ratio {
 	/// \return irreductible ratio
 	Ratio irreductible();
 
+
+	/// \brief convert this calling ratio in a float
+	/// \param x
+	float ConvertRatioToFloat();
+
 	/*****************************************************************
 	STATIC VARIABLE
 	******************************************************************/
 	/// \brief fonction which multiply by infinte the calling ratio
 	/// \return ratio 1/0
-	constexpr static Ratio infinite()noexcept{return Ratio(1/0);};
+	constexpr static Ratio multiplyInfinite()noexcept{return Ratio(1/0);};
 
 	/// \brief fonction which multiply by the zero the calling ratio
 	/// \return ratio 0/1
-	constexpr static Ratio zero()noexcept{return Ratio(0/1);};
-	//verif les constexpr static noexcept et les mettre en bas
+	constexpr static Ratio multiplyZero()noexcept{return Ratio(0/1);};
 
-	//pas reellement des variables statiques, voir comment faire
+	/// \brief fonction which multiply by pi the calling ratio
+	/// \return ratio 22/7
+	constexpr static Ratio multiplyPi()noexcept{return Ratio(22/7);};
+
+	/// \brief fonction which givr the pi ratio
+	/// \return ratio 22/7
+	constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
 
 
 
 
 };
+
+// 	template<typename T>
+// 	inline constexpr static Ratio<T> Pi()=Ratio<T>(22/7)};
+
+// 	template<typename T>
+// 	constexpr static Ratio<T> Pi()noexcept{return Ratio<T>(22/7);};
+
+
+// 	template<typename T>
+// 	Ratio<T> zero(1/0);
+
+// 	template<typename T>
+// 	Ratio<T> pi(22/7);
+
+// }
+
 
 /*****************************************************************
 ARITHMETICS CLASSICS OPERATORS
@@ -359,6 +400,21 @@ Ratio<T> Ratio<T>::abs(){
 	}
 }
 
+template<typename T>
+double Ratio<T>::sqrt(){  
+	return std::sqrt(m_num)/std::sqrt(m_denom);
+}
+
+template<typename T>
+double Ratio<T>::cosinus(){  
+	return std::cos((double)m_num/m_denom);
+}
+
+template<typename T>
+double Ratio<T>::cosinus2(){  
+	return std::cos(m_num)/std::cos(m_denom);
+}
+
 /*****************************************************************
 GETTER & SETTER
 ******************************************************************/
@@ -411,8 +467,11 @@ CONVERTION
 ******************************************************************/
 template<typename T>
 Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
-
     Ratio<T> r; // valeur par défaut est 0/1
+
+	
+
+
     if( x == 0 || nb_iter == 0){
         return r; //return 0/1
     }
@@ -441,6 +500,11 @@ Ratio<T> Ratio<T>::irreductible(){
     this->m_num = this->m_num/std::abs(pgcd);
     this->m_denom = this->m_denom/std::abs(pgcd);
 	return(*this);
+}
+
+template<typename T>
+float Ratio<T>::ConvertRatioToFloat(){
+	return this->m_num/(float)this->m_denom;
 }
 
 
