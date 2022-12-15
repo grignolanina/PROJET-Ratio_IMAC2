@@ -2,6 +2,7 @@
 #include <numeric>
 #include <string>
 #include <iostream>
+#include <cmath>
 
 #include "RatioException.hpp"
 
@@ -187,6 +188,19 @@ class Ratio {
 	/// \return the absolute value of the ratio
 	Ratio abs();
 
+	/// \brief fonction which gives the square root of a ratio
+	/// \return the square root value of the ratio
+	double sqrt();
+
+	/// \brief fonction which gives the cosinus of a ratio
+	/// \return the value of the cosinus of the ratio
+	double cosinus();
+
+	/// \brief fonction which gives an approciamtion of the cosinus of a ratio
+	/// \return the value of the approximated cosinus of the ratio
+	double cosinus2();
+
+
 	//PARTIE ENTIERE
 	//COS 
 	//SIN
@@ -230,6 +244,10 @@ class Ratio {
 	//verif les constexpr static noexcept et les mettre en bas
 
 	//pas reellement des variables statiques, voir comment faire
+
+	/// \brief fonction which givr the pi ratio
+	/// \return ratio 22/7
+	constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
 
 
 
@@ -357,6 +375,21 @@ Ratio<T> Ratio<T>::abs(){
 	}else{
 		return (*this);
 	}
+}
+
+template<typename T>
+double Ratio<T>::sqrt(){  
+	return std::sqrt(m_num)/std::sqrt(m_denom);
+}
+
+template<typename T>
+double Ratio<T>::cosinus(){  
+	return std::cos((double)m_num/m_denom);
+}
+
+template<typename T>
+double Ratio<T>::cosinus2(){  
+	return std::cos(m_num)/std::cos(m_denom);
 }
 
 /*****************************************************************
