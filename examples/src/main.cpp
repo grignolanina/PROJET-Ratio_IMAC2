@@ -110,7 +110,7 @@ int main() {
 
 
     try {
-        Ratio r5(2,0);
+      //  Ratio r5(2,0);
     }
     #if 1
         catch(const RatioException &e){
@@ -122,8 +122,8 @@ int main() {
         }
     #endif
 
-
-   
+    float t = 36.15464;
+    std::cout << "t : " << t << std::endl;
 
     
 
