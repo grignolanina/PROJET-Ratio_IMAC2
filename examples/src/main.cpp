@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <math.h>
 
 #include "Ratio.hpp"
 
@@ -93,8 +95,11 @@ int main() {
     std::cout << "Essai d'affichage avec ostream : " <<std::endl;
     std::cout<< r1;
 
-     try {
-        r1.infinite();
+    // std::cout << "pi : "<<  ratio::Pi() << std::endl;
+
+    try {
+        // r1.infinite(); //passe pas par l'exception car noexcept
+        // Ratio<int> flip(1,0);
     }
     #if 1
         catch(const RatioException &e){
@@ -106,11 +111,11 @@ int main() {
         }
     #endif
 
-    std::cout << r1.infinite();
+    // std::cout << r1.infinite();
 
 
     try {
-        Ratio r5(2,0);
+        //Ratio r5(2,0);
     }
     #if 1
         catch(const RatioException &e){
@@ -121,6 +126,34 @@ int main() {
             std::cerr << e.what() << std::endl;
         }
     #endif
+    
+    // Ratio<int> ratioTest(24,7);
+
+    // std::cout << "inFloat is : " << ratioTest << std::endl;
+    // float test = ratioTest.ConvertRatioToFloat();
+
+    // std::cout << "inFloat in float is : " << test << std::endl;
+
+
+    std::cout << "test de troncature : " << std::endl;
+    float t = 10.517968;
+    std::cout<< "t is : " << std::setprecision(20) << t << std::endl;
+    t = trunc(t*100);
+    std::cout << "t multiply: " << std::setprecision(20) << t << std::endl;
+    std::cout << "t tronc: " << std::setprecision(20) << t/100<< std::endl;
+    
+    
+    
+    // t = round(t*100)/100;
+    // std::cout << "t tronc: " << std::setprecision(20) << t<< std::endl;
+
+
+
+
+
+
+
+
 
 
    

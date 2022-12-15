@@ -1,15 +1,16 @@
 #include <random>
 
 #include <gtest/gtest.h>
+#include <iomanip>
+
 
 #include "Ratio.hpp"
 
-/////////////////////////////////////////////////////
-// constructors
-
+/*****************************************************************
+CONSTRUCTORS
+******************************************************************/
 TEST (RatioConstructor, defaultConstructor) { 
 	Ratio<int> r1;
-	r1.display();
 	ASSERT_EQ(r1.getNum(), 0);
 	ASSERT_EQ(r1.getDenom(), 1);
 }
@@ -22,55 +23,47 @@ TEST (RatioConstructor, copyConstructor) {
 }
 
 
-// //faire l'exception avant de l'activer
-//exception message ?
-// TEST (RatioConstructor, paramConstructor){
-// 	Ratio r1(2,0);
-// 	ASSERT_NE(r1.getDenom(), 0);
+TEST (RatioConstructor, paramConstructor){
+	const size_t maxSize = 1000;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-// 	//valeur aleatoire bug
-// 	// const size_t maxSize = 1000;  // max size of the tested vectors
-// 	// std::mt19937 generator(0);
-// 	// std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	// std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	// auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+	int a = gen();
+	int b = gen();
+	Ratio<int> r1(a,b);
 
-// 	// int val = (int)gen();
-
-
-// }
+	ASSERT_EQ(r1.getNum(), a);
+	ASSERT_EQ(r1.getDenom(), b);
 
 
 
-// TEST (RatioConstructor, paramConstructorExceptionMessage) {
+	// for(int run=0; run <100; run++){
+	// 	int a = gen();
+	// 	int b = gen();
+	// 	Ratio<int> r1(a,b);
 
-// 	const std::string expectedException = "Ratio constructor is impossible with a denominator equal to zero";
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+	// 	// ASSERT_EQ(r1.getNum(), a);
+	// 	// ASSERT_EQ(r1.getDenom(), b);
 
-// 	int num=gen();
-// 	int denom=gen();
+	// 	if(b<0){
+	// 		ASSERT_EQ(r1.getNum(), -a);
+	// 		ASSERT_EQ(r1.getDenom(), -b);
+	// 	}else{
+	// 		ASSERT_EQ(r1.getNum(), a);
+	// 		ASSERT_EQ(r1.getDenom(), b);
+	// 	}
+		
+	// }
 
-// 	if(denom!=0)
-// 		continue:
-
-// 	try{
-// 		Ratio r1(num, denom);
-// 	}
-// 	catch(const std::exception &e){
-// 		ASSERT_TRUE( std::string(e.what()).find(expectedException) == 0);
-
-// 	}
-// }
+	
+}
 
 
-
-
-/////////////////////////////////////////////////////
-// arithmetic
+/*****************************************************************
+ARITHMETICS CLASSICS OPERATORS
+******************************************************************/
 
 TEST (RatioArithmetic, plusKnowedRatio) {
 	Ratio<int> r1(1,2);
@@ -104,65 +97,31 @@ TEST (RatioArithmetic, plusRandomRatio) {
 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
 }
 
-// TEST (RatioArithmetic, plusRandomRatioConvert) {
-// 	const size_t maxSize = 1000;  // max size of the tested vectors
-// 	std::mt19937 generator(0);
-// 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-// 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-// 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+TEST (RatioArithmetic, plusRandomRatioConvert) {
+	const size_t maxSize = 1000;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-// 	float a = gen();
-// 	float b = gen();
+	float a = gen();
+	float b = gen();
 
-// 	std::cout << " mon float a : "<< a << std::endl;
-// 	std::cout << " mon float b : "<< b << std::endl;
-
-
-// 	Ratio<int> r1(a);
-// 	Ratio<int> r2(b);
-
-// 	std::cout << " mon ratio avec a : "<< r1;
-// 	std::cout << " mon ratio avec b : "<< r2;
-
-// 	std::cout << std::endl;
+	Ratio<int> r1(a);
+	Ratio<int> r2(b);
 
 
+	Ratio<int> result;
+	result = r1+r2;
 
-// 	Ratio<int> result;
-// 	result = r1+r2;
+	Ratio<int> r3(a+b);
 
-// 	std::cout << "a+b : " << a+b << std::endl;
-// 	std::cout << " mon ratio avec r1 + r2 : "<< result;
-//     std::cout << "result en double du ratio : " << (double)result.getNum()/result.getDenom() << std::endl;
+	float epsilon = 0.0001; // notre marge d'erreur
 
-// 	std::cout << std::endl;
+	float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 
-// 	Ratio<int> r3(a+b);
-// 	std::cout << " mon ratio avec r3(a+b) : "<< r3;
-// 	std::cout << "r3 en double du ratio : " << (double)r3.getNum()/r3.getDenom() << std::endl;
-
-// 	std::cout << std::endl;
-
-// 	Ratio<int> epsilon(1, 100);
-// 	std::cout << "epsilon : " << epsilon;
-
-// 	std::cout << std::endl;
-	
-// 	std::cout << "epsilon : " << epsilon;
-
-
-// 	// std::cout <<  "abs de result - r3 : " << (result-r3).abs();
-
-// 	Ratio<int> result2(result-r3);
-// 	result2.abs();
-
-
-
-// 	ASSERT_GT(epsilon, result2);
-
-// 	// ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
-// 	// ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d+b*c), (b*d)));
-// }
+	ASSERT_LT(absolute, epsilon);
+}
 
 TEST (RatioArithmetic, minusKnowedRatio) {
 	Ratio<int> r1(1,2);
@@ -193,6 +152,33 @@ TEST (RatioArithmetic, minusRandomRatio) {
 
 	ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d-b*c), (b*d)));
+}
+
+TEST (RatioArithmetic, minusRandomRatioConvert) {
+	const size_t maxSize = 1000;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+	float a = gen();
+	float b = gen();
+
+	Ratio<int> r1(a);
+	Ratio<int> r2(b);
+
+
+	Ratio<int> result;
+	result = r1-r2;
+
+	Ratio<int> r3(a-b);
+
+	float epsilon = 0.0001; // notre marge d'erreur
+
+	float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
+	
+	ASSERT_LT(absolute, epsilon);
+
 }
 
 
@@ -234,7 +220,7 @@ TEST (RatioArithmetic, multipleRandomRatio) {
 	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*c), (b*d)));
 }
 
-TEST (RatioArithmetic, inverseRatio){
+TEST (RatioArithmetic, multipleByInverseRatio){
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
@@ -249,6 +235,24 @@ TEST (RatioArithmetic, inverseRatio){
 
 	ASSERT_EQ(inverser1.getNum(), r1.getDenom());
 	ASSERT_EQ(inverser1.getDenom(), r1.getNum());
+}
+
+TEST (RatioArithmetic, multiplyByInverseEqualToOne){
+	const size_t maxSize = 1000;  // max size of the tested vectors
+	std::mt19937 generator(0);
+	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
+	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
+	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
+
+	int a = gen();
+	int b = gen();
+
+	Ratio<int> r1(a,b);
+	Ratio<int> resultMultipleInverse;
+	resultMultipleInverse = r1 * r1.inverse();
+
+	ASSERT_EQ(resultMultipleInverse.getNum(), 1);
+	ASSERT_EQ(resultMultipleInverse.getDenom(), 1);
 }
 
 TEST (RatioArithmetic, diviseKnowedRatio) {
@@ -288,8 +292,6 @@ TEST (RatioArithmetic, diviseRandomRatio){
 	ASSERT_EQ(result.getDenom(), (b*c)/std::gcd((a*d), (b*c)));
 }
 
-//multiplie par l'inverse ==1
-
 TEST (RatioArithmetic, diviseEqualToMultipleInverseRatio){
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
@@ -313,7 +315,6 @@ TEST (RatioArithmetic, diviseEqualToMultipleInverseRatio){
 	ASSERT_EQ(resultDivise.getNum(), resultMultipleInverse.getNum());
 	ASSERT_EQ(resultDivise.getDenom(), resultMultipleInverse.getDenom());
 }
-
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
