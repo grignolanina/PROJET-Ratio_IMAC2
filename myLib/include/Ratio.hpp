@@ -248,12 +248,8 @@ class Ratio {
 	/// \return ratio 0/1
 	constexpr static Ratio multiplyZero()noexcept{return Ratio(0/1);};
 
-	/// \brief fonction which multiply by pi the calling ratio
-	/// \return ratio 22/7
-	constexpr static Ratio multiplyPi()noexcept{return Ratio(22/7);};
-
 	/// \brief fonction which givr the pi ratio
-	/// \return ratio 22/7
+	/// \return ratio M_Pi/1
 	constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
 
 
