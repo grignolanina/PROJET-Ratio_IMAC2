@@ -38,7 +38,7 @@ int main(){
 
     std::cout << "Difference between both sqrt : " << std::setprecision(20) << std::abs(racineDouble - racineRatio) << std::endl;
     std::cout << "Difference with exact value (ratio) : " << std::setprecision(20) << std::abs(racineRatio - exactValue) << std::endl;
-    std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(racineDouble- exactValue) << std::endl;
+    std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(racineDouble- exactValue) << std::endl<<std::endl;
 
     
     // ----- 2. COSINUS -----
@@ -53,10 +53,29 @@ int main(){
     std::cout << "cos2(ratio)  : " << std::setprecision(20) << cosRatio2 << std::endl;
 
     std::cout << "Difference between both sqrt : " << std::setprecision(20) << std::abs(cosRatio - cosRatio2) << std::endl;
-    std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(cosRatio - exactValueCos) << std::endl;
+    std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(cosRatio - exactValueCos) << std::endl<<std::endl;
 
+    // ----- 3. SINUS -----
 
+    Ratio<int> piSurSix = r1.pi()/6;
+    double exactValueSin = 0.5;
 
+    double sinRatio = piSurSix.sinus();
+
+    std::cout << "sin (ratio) : " << std::setprecision(20) << sinRatio << std::endl;
+    std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(sinRatio - exactValueSin) << std::endl<<std::endl;
+
+    // ----- 4. POWER -----
+
+    std::cout << "Power1(ratio) : " << r1.pow1(3) <<std::endl;
+    Ratio<int> exactValuePow1(1,64);
+
+    std::cout << "Difference with exact value : " << std::setprecision(20) << (r1.pow1(3) - exactValuePow1).abs() << std::endl<<std::endl;
+
+    std::cout << "Power2 (ratio) : " << r1.pow2(3) <<std::endl;
+    Ratio<int> exactValuePow2(1,64);
+
+    std::cout << "Difference with exact value : " << std::setprecision(20) << (r1.pow2(3) - exactValuePow2).abs() << std::endl<<std::endl;
     
 
     return 0; 

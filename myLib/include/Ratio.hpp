@@ -201,6 +201,21 @@ class Ratio {
 	/// \return the value of the approximated cosinus of the ratio
 	double cosinus2();
 
+	/// \brief fonction which gives the sinus of a ratio
+	/// \return the value of the sinus of the ratio
+	double sinus();
+
+	/// \brief fonction which gives a ratio powered by an int number
+	/// \param k : power of the ratio
+	/// \return the ratio powered by k
+	Ratio pow1(int k);
+
+	/// \brief fonction which gives a ratio powered by an int number
+	/// \param k : power of the ratio
+	/// \return the ratio powered by k
+	Ratio pow2(int k);
+
+
 
 	//PARTIE ENTIERE
 	//COS 
@@ -409,6 +424,21 @@ double Ratio<T>::cosinus(){
 template<typename T>
 double Ratio<T>::cosinus2(){  
 	return std::cos(m_num)/std::cos(m_denom);
+}
+
+template<typename T>
+double Ratio<T>::sinus(){  
+	return std::sin((double)m_num/m_denom);
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::pow1(int k){  
+	return (k > 0)? (*this) * pow1(k-1) : 1;
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::pow2(int k){  
+	return std::pow(m_num,k)/std::pow(m_denom,k);
 }
 
 /*****************************************************************
