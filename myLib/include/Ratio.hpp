@@ -189,9 +189,13 @@ class Ratio {
 	/// \return the absolute value of the ratio
 	Ratio abs();
 
-	/// \brief fonction which gives the square root of a ratio
+	/// \brief fonction which gives the square root of a ratio by square rooting a and b separately
 	/// \return the square root value of the ratio
 	double sqrt();
+
+	/// \brief fonction which gives the square root of a ratio by taking a/b in the square root
+	/// \return the square root value of the ratio
+	double sqrt2();
 
 	/// \brief fonction which gives the cosinus of a ratio
 	/// \return the value of the cosinus of the ratio
@@ -414,6 +418,11 @@ Ratio<T> Ratio<T>::abs(){
 template<typename T>
 double Ratio<T>::sqrt(){  
 	return std::sqrt(m_num)/std::sqrt(m_denom);
+}
+
+template<typename T>
+double Ratio<T>::sqrt2(){  
+	return std::sqrt((double)m_num/m_denom);
 }
 
 template<typename T>
