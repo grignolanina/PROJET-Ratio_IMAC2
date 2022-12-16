@@ -19,8 +19,8 @@ int main(){
     int denom = 4;
 
     //creation of the ratios
-    Ratio<int> r1(num,denom);
-    Ratio<int> r2(r1);
+    ratio::Ratio<int> r1(num,denom);
+    ratio::Ratio<int> r2(r1);
 
 
     // ----- 1. SQUARE ROOT -----
@@ -65,7 +65,7 @@ int main(){
     //test of the implementation and of one bad approximation
 
     //trigonometric ratio
-    Ratio<int> piSurTrois = r1.pi()/3;
+    ratio::Ratio<int> piSurTrois = r1.pi()/3;
 
     //exact result if knowned
     double exactValueCos = 0.5;
@@ -83,7 +83,7 @@ int main(){
     // ----- 3. SINUS -----
 
     //trigonometric ratio
-    Ratio<int> piSurSix = r1.pi()/6;
+    ratio::Ratio<int> piSurSix = r1.pi()/6;
     double exactValueSin = 0.5;
 
     //calculates the sinus
@@ -97,7 +97,7 @@ int main(){
 
     //display pow
     std::cout << "Power1(ratio) : " << r1.pow1(15) <<std::endl;
-    Ratio<int> exactValuePow1(1,64);
+    ratio::Ratio<int> exactValuePow1(1,64);
 
     //calculates the execution time of pow1
     auto powStart1 = std::chrono::steady_clock::now();
@@ -110,7 +110,7 @@ int main(){
 
     //display pow2
     std::cout << "Power2 (ratio) : " << r1.pow2(15) <<std::endl;
-    Ratio<int> exactValuePow2(1,64);
+    ratio::Ratio<int> exactValuePow2(1,64);
 
     //calculates execution time
     auto powStart2 = std::chrono::steady_clock::now();

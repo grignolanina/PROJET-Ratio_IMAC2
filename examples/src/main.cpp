@@ -12,10 +12,9 @@ int main() {
     * OPERATORS CLASSIC TESTS
     * 
     */
-
-    Ratio<int> r1(6,12);
-    Ratio<int> r2(3,-4);
-    Ratio<int> r3(r1);
+    ratio::Ratio<int> r1(6,12);
+    ratio::Ratio<int> r2(3,-4);
+    ratio::Ratio<int> r3(r1);
     int value = 3;
     float fvalue = 14.21;
     float negfvalue = -2.5;
@@ -62,12 +61,12 @@ int main() {
     
     std::cout << "Conversion de fvalue en ratio r4 : " ;
 
-    Ratio<int> r4(fvalue);
+    ratio::Ratio<int> r4(fvalue);
     r4.display();
     std::cout << (double)r4.getNum()/r4.getDenom() << std::endl;
 
     std::cout << "Conversion de negfvalue en ratio r5 : " ;
-    Ratio<int> r5(negfvalue);
+    ratio::Ratio<int> r5(negfvalue);
     r5.display();
 
     std::cout << "Test r1 == r2 : ";
@@ -99,7 +98,7 @@ int main() {
 
     try {
         // r1.infinite(); //passe pas par l'exception car noexcept
-        // Ratio<int> flip(1,0);
+        // ratio::Ratio<int> flip(1,0);
     }
     #if 1
         catch(const RatioException &e){
@@ -127,7 +126,7 @@ int main() {
         }
     #endif
     
-    // Ratio<int> ratioTest(24,7);
+    // ratio::Ratio<int> ratioTest(24,7);
 
     // std::cout << "inFloat is : " << ratioTest << std::endl;
     // float test = ratioTest.ConvertRatioToFloat();
@@ -146,6 +145,12 @@ int main() {
     
     // t = round(t*100)/100;
     // std::cout << "t tronc: " << std::setprecision(20) << t<< std::endl;
+
+
+    std::cout << "test namespace : " << std::endl;
+    std::cout << "0 is " << ratio::Ratio<int>::zero() << std::endl;
+    // std::cout << "infinite is " << ratio::ratio::Ratio<int>::infinite() << std::endl;
+    std::cout << "pi is " << ratio::Ratio<int>::pi() << std::endl;
 
 
 
