@@ -10,14 +10,14 @@
 CONSTRUCTORS
 ******************************************************************/
 TEST (RatioConstructor, defaultConstructor) { 
-	Ratio<int> r1;
+	ratio::Ratio<int> r1;
 	ASSERT_EQ(r1.getNum(), 0);
 	ASSERT_EQ(r1.getDenom(), 1);
 }
 
 TEST (RatioConstructor, copyConstructor) {
-	Ratio<int> r1;
-	Ratio<int> r2(r1);
+	ratio::Ratio<int> r1;
+	ratio::Ratio<int> r2(r1);
 	ASSERT_EQ(r1.getNum(), r2.getNum());
 	ASSERT_EQ(r1.getDenom(), r2.getDenom());
 }
@@ -32,7 +32,7 @@ TEST (RatioConstructor, paramConstructor){
 
 	int a = gen();
 	int b = gen();
-	Ratio<int> r1(a,b);
+	ratio::Ratio<int> r1(a,b);
 
 	ASSERT_EQ(r1.getNum(), a);
 	ASSERT_EQ(r1.getDenom(), b);
@@ -42,7 +42,7 @@ TEST (RatioConstructor, paramConstructor){
 	// for(int run=0; run <100; run++){
 	// 	int a = gen();
 	// 	int b = gen();
-	// 	Ratio<int> r1(a,b);
+	// 	ratio::Ratio<int> r1(a,b);
 
 	// 	// ASSERT_EQ(r1.getNum(), a);
 	// 	// ASSERT_EQ(r1.getDenom(), b);
@@ -66,9 +66,9 @@ ARITHMETICS CLASSICS OPERATORS
 ******************************************************************/
 
 TEST (RatioArithmetic, plusKnowedRatio) {
-	Ratio<int> r1(1,2);
-	Ratio<int> r2(3,4);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(1,2);
+	ratio::Ratio<int> r2(3,4);
+	ratio::Ratio<int> result;
 	result = r1+r2;
 
 
@@ -88,9 +88,9 @@ TEST (RatioArithmetic, plusRandomRatio) {
 	int c = gen();
 	int b = gen();
 	int d = gen();
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1+r2;
 
 	ASSERT_EQ(result.getNum(), (a*d+b*c)/std::gcd((a*d+b*c), (b*d)));
@@ -107,14 +107,14 @@ TEST (RatioArithmetic, plusRandomRatioConvert) {
 	float a = gen();
 	float b = gen();
 
-	Ratio<int> r1(a);
-	Ratio<int> r2(b);
+	ratio::Ratio<int> r1(a);
+	ratio::Ratio<int> r2(b);
 
 
-	Ratio<int> result;
+	ratio::Ratio<int> result;
 	result = r1+r2;
 
-	Ratio<int> r3(a+b);
+	ratio::Ratio<int> r3(a+b);
 
 	float epsilon = 0.0001; // notre marge d'erreur
 
@@ -124,9 +124,9 @@ TEST (RatioArithmetic, plusRandomRatioConvert) {
 }
 
 TEST (RatioArithmetic, minusKnowedRatio) {
-	Ratio<int> r1(1,2);
-	Ratio<int> r2(3,4);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(1,2);
+	ratio::Ratio<int> r2(3,4);
+	ratio::Ratio<int> result;
 	result = r1-r2;
 
 
@@ -145,9 +145,9 @@ TEST (RatioArithmetic, minusRandomRatio) {
 	int c = gen();
 	int b = gen();
 	int d = gen();
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1-r2;
 
 	ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
@@ -164,14 +164,14 @@ TEST (RatioArithmetic, minusRandomRatioConvert) {
 	float a = gen();
 	float b = gen();
 
-	Ratio<int> r1(a);
-	Ratio<int> r2(b);
+	ratio::Ratio<int> r1(a);
+	ratio::Ratio<int> r2(b);
 
 
-	Ratio<int> result;
+	ratio::Ratio<int> result;
 	result = r1-r2;
 
-	Ratio<int> r3(a-b);
+	ratio::Ratio<int> r3(a-b);
 
 	float epsilon = 0.0001; // notre marge d'erreur
 
@@ -189,9 +189,9 @@ TEST (RatioArithmetic, multipleKnowedRatio) {
 	int b = 3;
 	int d = 4;
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1*r2;
 
 	ASSERT_EQ(result.getNum(), 1);
@@ -210,9 +210,9 @@ TEST (RatioArithmetic, multipleRandomRatio) {
 	int b = gen();
 	int d = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1*r2;
 
 
@@ -229,8 +229,8 @@ TEST (RatioArithmetic, multipleByInverseRatio){
 
 	int num = gen();
 	int denom = gen();
-	Ratio<int> r1(num,denom);
-	Ratio<int> inverser1;
+	ratio::Ratio<int> r1(num,denom);
+	ratio::Ratio<int> inverser1;
 	inverser1=r1.inverse();
 
 	ASSERT_EQ(inverser1.getNum(), r1.getDenom());
@@ -247,8 +247,8 @@ TEST (RatioArithmetic, multiplyByInverseEqualToOne){
 	int a = gen();
 	int b = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> resultMultipleInverse;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> resultMultipleInverse;
 	resultMultipleInverse = r1 * r1.inverse();
 
 	ASSERT_EQ(resultMultipleInverse.getNum(), 1);
@@ -261,9 +261,9 @@ TEST (RatioArithmetic, diviseKnowedRatio) {
 	int b = 3;
 	int d = 4;
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1/r2;
 
 	ASSERT_EQ(result.getNum(), 8);
@@ -282,9 +282,9 @@ TEST (RatioArithmetic, diviseRandomRatio){
 	int b = gen();
 	int d = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> result;
 	result = r1/r2;
 
 
@@ -304,11 +304,11 @@ TEST (RatioArithmetic, diviseEqualToMultipleInverseRatio){
 	int b = gen();
 	int d = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> resultDivise;
+	ratio::Ratio<int> r1(a,b);
+	ratio::Ratio<int> r2(c,d);
+	ratio::Ratio<int> resultDivise;
 	resultDivise = r1/r2;
-	Ratio<int> resultMultipleInverse;
+	ratio::Ratio<int> resultMultipleInverse;
 	resultMultipleInverse = r1 * r2.inverse();
 
 
