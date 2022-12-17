@@ -10,6 +10,54 @@
 //static const unsigned int NB_ITER = 5;
 //dans l'idée ça pour PI mais en dehors de la classe
 
+// Doxygen menu
+/// \version 0.1
+/// \mainpage
+/// \image html accueil.jpg
+/// \tableofcontents
+/// \section instroduction_sec Ratio projet
+/// This is a student project realised at the French engineering school IMAC, for the third semester for object programming and computer science mathematics courses.This work focused on the representation of floating point numbers in the form of rationals. You will therefore find there a research work on rational numbers, the mathematical rules that apply to them and a library allowing their manipulation.
+/// \section install_bigsec Dependecies
+/// \li Dependencies
+/// \li cmake (at least version  3.13)
+/// \li
+/// \li - Linux : sudo apt install cmake
+///\li - Mac : brew install cmake
+///\li - Windows : https://cmake.org/install
+///\li
+///\li Doxygen
+///\li
+///\li - Linux : sudo apt install doxygen
+///\li - Mac : brew install doxygen
+///\li - Windows : https://www.doxygen.nl/manual/install.html
+///\li
+///\li Google Test
+///\li
+///\li - Linux : sudo apt-get install libgtest-dev
+///\li - Mac : 
+///\li
+/// \li       cd /tmp
+/// \li       git clone https://github.com/google/googletest.git
+/// \li         cd googletest
+/// \li        mkdir build && cd build
+/// \li         cmake ..
+/// \li         make && sudo make install
+/// \li- Windows : ?
+/// \li
+/// \section install_bigsec Usage
+/// \li 
+/// \li Please use the CMake in the IDE : VSCode
+/// \li Before starting the project make sure you have the following extensions :
+/// \li • C/C++ (microsoft)
+/// \li • C/C++ extension pack (microsoft)
+/// \li • C/C++ Themes (microsoft)
+/// \li • Clang-Format (xaver)
+/// \li • CMake (twxs)
+/// \section install_bigsec Authors
+///\li
+/// \li GRIGNOLA Nina
+/// \li GOBE Pauline
+
 
 namespace ratio {
 
@@ -234,6 +282,10 @@ namespace ratio {
 		/// \brief fonction which gives the integer part of a ratio
 		/// \return the value of the interger part of the ratio
 		Ratio intPart();
+
+		///\brief fonction which gives the value of the exponential of the rational called
+		/// \return the value of the exponentiel of the ratio
+		Ratio exp();
 
 
 		/*****************************************************************
@@ -482,6 +534,12 @@ namespace ratio {
 	Ratio<T> Ratio<T>::intPart(){ 
 
 		return Ratio((int)(m_num/m_denom), 1);
+	}
+
+
+	template<typename T>
+	Ratio<T> Ratio<T>::exp(){
+
 	}
 
 	/*****************************************************************
