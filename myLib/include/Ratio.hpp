@@ -136,6 +136,11 @@ class Ratio {
 	/// \return the multiplication ratio
 	Ratio operator*(const int &value);
 
+	/// \brief multiply a ratio with a constant value
+	/// \param value : multiplicate factor
+	/// \return the multiplication ratio
+	Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
+
 	/// \brief divide a ratio to *this
 	/// \param r : ratio to divide to the calling ratio
 	/// \return the divided ratio
@@ -212,6 +217,10 @@ class Ratio {
 	/// \return the value of the sinus of the ratio
 	double sinus();
 
+	/// \brief fonction which gives the tangent of a ratio
+	/// \return the value of the tangent of the ratio
+	double tan();
+
 	/// \brief fonction which gives a ratio powered by an int number
 	/// \param k : power of the ratio
 	/// \return the ratio powered by k
@@ -222,14 +231,9 @@ class Ratio {
 	/// \return the ratio powered by k
 	Ratio pow2(int k);
 
-
-
-	//PARTIE ENTIERE
-	//COS 
-	//SIN
-	//EXP
-	//RACINE
-	//etc.
+	/// \brief fonction which gives the integer part of a ratio
+	/// \return the value of the interger part of the ratio
+	Ratio intPart();
 
 
 	/*****************************************************************
@@ -335,6 +339,12 @@ Ratio<T> Ratio<T>::operator*(const Ratio &r){
 template<typename T>
 Ratio<T> Ratio<T>::operator*(const int &value){
 	return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::operator*(const float &value){
+	float temporary = this->ConvertRatioToFloat()*value;
+	return Ratio(temporary).irreductible();
 }
 
 template<typename T>
@@ -448,6 +458,11 @@ double Ratio<T>::sinus(){
 }
 
 template<typename T>
+double Ratio<T>::tan(){  
+	return this->sinus()/this->cosinus();
+}
+
+template<typename T>
 Ratio<T> Ratio<T>::pow1(int k){  
 	return (k > 0)? (*this) * pow1(k-1) : 1;
 }
@@ -455,6 +470,12 @@ Ratio<T> Ratio<T>::pow1(int k){
 template<typename T>
 Ratio<T> Ratio<T>::pow2(int k){  
 	return std::pow(m_num,k)/std::pow(m_denom,k);
+}
+
+template<typename T>
+Ratio<T> Ratio<T>::intPart(){ 
+
+	return Ratio((int)(m_num/m_denom), 1);
 }
 
 /*****************************************************************
