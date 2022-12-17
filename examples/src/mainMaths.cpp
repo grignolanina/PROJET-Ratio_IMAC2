@@ -130,7 +130,7 @@ int main(){
 
     // ----- 6. INTEGER PART ------
 
-    Ratio<int> r6 = r1 * 25;
+    ratio::Ratio<int> r6 = r1 * 25;
     std::cout << "Integer Part of " << r6 << " : " << r6.intPart() << std::endl;
 
     
