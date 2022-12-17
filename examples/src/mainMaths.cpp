@@ -93,6 +93,10 @@ int main(){
     std::cout << "sin (ratio) : " << std::setprecision(20) << sinRatio << std::endl;
     std::cout << "Difference with exact value : " << std::setprecision(20) << std::abs(sinRatio - exactValueSin) << std::endl<<std::endl;
 
+    // ------ 3(bis). TEST OF TAGENT -----
+
+
+
     // ----- 4. POWER -----
 
     //display pow
@@ -119,6 +123,20 @@ int main(){
     std::chrono::duration<double> elapsed_seconds4 = powEnd2-powStart2;
     std::cout << "Execution time of pow2 (cmath library) : " << elapsed_seconds4.count() << " s" << std::endl;
     std::cout << "Difference with exact value : " << std::setprecision(20) << (r1.pow2(3) - exactValuePow2).abs() << std::endl<<std::endl;
+
+
+    // ----- 5. EXPONENTIAL ------
+
+
+    // ----- 6. INTEGER PART ------
+
+    Ratio<int> r6 = r1 * 25;
+    std::cout << "Integer Part of " << r6 << " : " << r6.intPart() << std::endl;
+
+    
+
+
+
     
 
     return 0; 
