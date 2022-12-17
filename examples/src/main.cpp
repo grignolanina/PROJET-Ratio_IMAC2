@@ -96,43 +96,28 @@ int main() {
 
     // std::cout << "pi : "<<  ratio::Pi() << std::endl;
 
-    try {
-        // r1.infinite(); //passe pas par l'exception car noexcept
-        // ratio::Ratio<int> flip(1,0);
-    }
-    #if 1
-        catch(const RatioException &e){
-            std::cerr << e.what() << std::endl;
+
+
+//----------TEST EXCEPTION CONSTRUCTEUR
+//add test infini quand ok
+    #if 0
+        try {
+            // r1.infinite(); //passe pas par l'exception car noexcept
+            // ratio::Ratio<int> flip(1,0);
         }
-    #else
-        catch(const std::exception &e){
+        catch(const RatioException &e){
             std::cerr << e.what() << std::endl;
         }
     #endif
 
-    // std::cout << r1.infinite();
-
-
-    try {
-      //  Ratio r5(2,0);
-    }
-    #if 1
+    #if 0
+        try {
+            Ratio r5(2,0);
+        }
         catch(const RatioException &e){
             std::cerr << e.what() << std::endl;
         }
-    #else
-        catch(const std::exception &e){
-            std::cerr << e.what() << std::endl;
-        }
     #endif
-    
-    // ratio::Ratio<int> ratioTest(24,7);
-
-    // std::cout << "inFloat is : " << ratioTest << std::endl;
-    // float test = ratioTest.ConvertRatioToFloat();
-
-    // std::cout << "inFloat in float is : " << test << std::endl;
-
 
     std::cout << "test de troncature : " << std::endl;
     float t = 10.517968;
