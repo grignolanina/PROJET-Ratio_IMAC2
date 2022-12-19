@@ -134,12 +134,12 @@ class Ratio {
 	/// \brief multiply a ratio with a constant value
 	/// \param value : multiplicate factor
 	/// \return the multiplication ratio
-	Ratio operator*(const int &value);
+	Ratio operator*(const T &value);
 
 	/// \brief multiply a ratio with a constant value
 	/// \param value : multiplicate factor
 	/// \return the multiplication ratio
-	Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
+	//Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
 
 	/// \brief divide a ratio to *this
 	/// \param r : ratio to divide to the calling ratio
@@ -149,7 +149,7 @@ class Ratio {
 	/// \brief divide a ratio with a constant value
 	/// \param value : deviding factor
 	/// \return the divided ratio
-	Ratio operator/(const int &value);
+	Ratio operator/(const  T &value);
 
 
 	/*****************************************************************
@@ -337,15 +337,25 @@ Ratio<T> Ratio<T>::operator*(const Ratio &r){
 }
 
 template<typename T>
-Ratio<T> Ratio<T>::operator*(const int &value){
-	return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+Ratio<T> Ratio<T>::operator*(const T &value){
+	if(std::is_integral<T>::value){
+		return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+	}
+	else if(std::is_floating_point<T>::value){
+		float temporary = this->ConvertRatioToFloat()*value;
+		return Ratio(temporary).irreductible();
+	}
+	else{
+		throw RatioException("Operator * : Value has not the right type (float or int) " + std::to_string(value), 1, ErrorType::fatal);
+		}
 }
 
-template<typename T>
-Ratio<T> Ratio<T>::operator*(const float &value){
-	float temporary = this->ConvertRatioToFloat()*value;
-	return Ratio(temporary).irreductible();
-}
+
+// template<typename T>
+// Ratio<T> Ratio<T>::operator*(const float &value){
+// 	float temporary = this->ConvertRatioToFloat()*value;
+// 	return Ratio(temporary).irreductible();
+// }
 
 template<typename T>
 Ratio<T> Ratio<T>::operator/(const Ratio &r){
@@ -353,8 +363,17 @@ Ratio<T> Ratio<T>::operator/(const Ratio &r){
 }
 
 template<typename T>
-Ratio<T> Ratio<T>::operator/(const int &value){
-	return Ratio((this->m_num),(this->m_denom*value)).irreductible();
+Ratio<T> Ratio<T>::operator/(const T &value){
+	if(std::is_integral<T>::value){
+		return Ratio((this->m_num),(this->m_denom*value)).irreductible();
+	}
+	else if(std::is_floating_point<T>::value){
+		float temporary = this->ConvertRatioToFloat()/value;
+		return Ratio(temporary).irreductible();
+	}
+	else{
+		throw RatioException("Operator / : Value has not the right type (float or int) " + std::to_string(value), 1, ErrorType::fatal);
+	}
 }
 
 /*****************************************************************
