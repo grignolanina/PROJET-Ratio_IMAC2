@@ -251,7 +251,7 @@ class Ratio {
 	/// \param x : float we want to convert
 	///\param nb_iter : number of iterations we want to do to find the ratio
 	/// \return the sum of the current ratio and the argument ratio
-	static Ratio ConvertFloatRatio(float x, int nb_iter);
+	static Ratio ConvertFloatRatio(T x, int nb_iter);
 
 
 	/// \brief fonction which gives the irreductible quotient of a ratio
@@ -529,9 +529,20 @@ std::ostream& operator<< (std::ostream& stream, const Ratio<T>& r){
 CONVERTION
 ******************************************************************/
 template<typename T>
-Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
+Ratio<T> Ratio<T>::ConvertFloatRatio(T x, int nb_iter){
     Ratio<T> r; // valeur par défaut est 0/1
 
+	if(! std::is_floating_point<T>::value){
+		if(std::is_integral<T>::value){
+			return Ratio(x,1);
+		}
+		else{
+			//A REVOIR !!!!
+			throw RatioException("ConvertFloatRatio(x, nb_iter) : " + std::to_string(x), 1, ErrorType::fatal);
+		}
+		
+		
+	}
 	
 
 
