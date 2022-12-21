@@ -134,10 +134,18 @@ int main() {
 
     std::cout << "test namespace : " << std::endl;
     std::cout << "0 is " << ratio::Ratio<int>::zero() << std::endl;
-    // std::cout << "infinite is " << ratio::ratio::Ratio<int>::infinite() << std::endl;
+    std::cout << "infinite is " << ratio::Ratio<int>::infinite() << std::endl;
     std::cout << "pi is " << ratio::Ratio<int>::pi() << std::endl;
 
-
+    //______tester pas exception pour le infinite
+    #if 0
+    try {
+        ratio::Ratio<int>::infinite();
+    }
+    catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+    }
+    #endif
 
 
 

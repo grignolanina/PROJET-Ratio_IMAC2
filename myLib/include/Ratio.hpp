@@ -325,21 +325,19 @@ namespace ratio {
 		STATIC VARIABLE
 		******************************************************************/
 		/// \brief give the ratio zero
-		// template<typename T>
-		inline constexpr static Ratio<T> zero()noexcept{return Ratio<T>(0,1);}
+		inline constexpr static Ratio<T> zero(){return Ratio<T>(0,1);}
 
 
 		/// \brief give the ratio infinte
-		// template<typename T>
-		// inline constexpr static Ratio<T> infinite()noexcept{return Ratio<T>(1,0);}
-
+		inline constexpr static Ratio<T> infinite(){
+			Ratio<T> r;
+			r.m_num = 1 ;
+			r.m_denom = 0;			
+			return r;
+		}
 
 		/// \brief give the ratio pi
-		// template<typename T>
-		inline constexpr static Ratio<T> pi()noexcept{return Ratio<T>(355,113);}
-
-
-
+		inline constexpr static Ratio<T> pi(){return Ratio<T>(355,113);}
 
 	};
 
