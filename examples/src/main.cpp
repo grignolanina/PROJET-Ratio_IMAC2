@@ -16,7 +16,7 @@ int main() {
     ratio::Ratio<int> r2(3,-4);
     ratio::Ratio<int> r3(r1);
     int value = 3;
-    float fvalue = 14.21;
+    float fvalue = 2.5;
     float negfvalue = -2.5;
 
     std::cout << "Ratio 1 (r1) : " ;
@@ -112,10 +112,10 @@ int main() {
 
     // std::cout << r1.infinite();
 
-
+    std::cout<< "Test de constructeur char/string : " <<std::endl;
     try {
         //Ratio r5(2,0);
-        
+        ratio::Ratio r5('a');
     }
     #if 1
         catch(const RatioException &e){
