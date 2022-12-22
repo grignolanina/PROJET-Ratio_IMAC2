@@ -133,6 +133,23 @@ int main(){
     ratio::Ratio<int> r6 = r1 * 25;
     std::cout << "Integer Part of " << r6 << " : " << r6.intPart() << std::endl;
 
+
+    //test exception negative sqrt
+    #if 0
+        ratio::Ratio<int> sqrtNeg(-4,7);
+        try{
+            sqrtNeg.sqrt();
+        }catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+
+        try{
+            sqrtNeg.sqrt2();
+        }catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
+
     
 
 

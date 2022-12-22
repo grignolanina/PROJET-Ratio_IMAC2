@@ -8,6 +8,8 @@ enum class ErrorType {minor, major, fatal};
 std::string ErrorType2Sstring(const ErrorType &errorType);
 
 
+/// \class RatioException
+/// \brief class defining exception about rational
 class RatioException : public std::exception
 {
 	public:

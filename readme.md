@@ -1,6 +1,6 @@
 # Ratio projet
 
-This is a student project realised at the French engineering school IMAC, for the third semester for object programming and computer science mathematics courses
+This is a student project realised at the French engineering school IMAC, for the third semester for object programming and computer science mathematics courses.This work focused on the representation of floating point numbers in the form of rationals. You will therefore find there a research work on rational numbers, the mathematical rules that apply to them and a library allowing their manipulation.
 
 ## Dependencies
 * cmake (at least version  3.13)
