@@ -83,7 +83,17 @@ namespace ratio {
 
 		/// \brief parameters constructor with a given float number
 		/// \param x : the float which will be convert in a ratio
-		Ratio(float x):Ratio(ConvertFloatRatio(x,7)){};
+		Ratio(float x):Ratio(ConvertFloatRatio(x,7)){
+		// 	if(! std::is_floating_point<T>::value){
+		// 	if(std::is_integral<T>::value){
+		// 		Ratio(x,1);
+		// 	}
+		// 	else{
+		// 		A REVOIR !!!!
+		// 		throw RatioException("ConvertFloatRatio(x, nb_iter) : " + std::to_string(x), 1, ErrorType::fatal);
+		// 	}	
+		// }
+		};
 
 
 		/// \brief copy-constructor
@@ -172,12 +182,12 @@ namespace ratio {
 		/// \brief multiply a ratio with a constant value
 		/// \param value : multiplicate factor
 		/// \return the multiplication ratio
-		Ratio operator*(const int &value);
+		Ratio operator*(const T &value);
 
-		/// \brief multiply a ratio with a constant value
-		/// \param value : multiplicate factor
-		/// \return the multiplication ratio
-		Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
+		// /// \brief multiply a ratio with a constant value
+		// /// \param value : multiplicate factor
+		// /// \return the multiplication ratio
+		// Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
 
 		/// \brief divide a ratio to *this
 		/// \param r : ratio to divide to the calling ratio
@@ -189,6 +199,10 @@ namespace ratio {
 		/// \return the divided ratio
 		Ratio operator/(const int &value);
 
+		/// \brief divide a ratio with a constant value
+		/// \param value : float deviding factor
+		/// \return the divided ratio
+		Ratio operator/(const  float &value);
 
 		/*****************************************************************
 		COMPARE OPERATORS
@@ -276,6 +290,10 @@ namespace ratio {
 		///\brief fonction which gives the value of the exponential of the rational called
 		/// \return the value of the exponentiel of the ratio
 		Ratio exp();
+
+		///\brief fonction which gives the value of the exponential of the rational called
+		/// \return the value of the exponentiel of the ratio
+		Ratio expLib();
 
 
 		/*****************************************************************
@@ -377,15 +395,21 @@ namespace ratio {
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator*(const int &value){
-		return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+	Ratio<T> Ratio<T>::operator*(const T &value){
+		if(std::is_integral<T>::value){
+			return Ratio((this->m_num*value),(this->m_denom)).irreductible();
+		}
+		else{
+			float temporary = this->ConvertRatioToFloat()*value;
+			return Ratio(temporary).irreductible();
+		}
 	}
 
-	template<typename T>
-	Ratio<T> Ratio<T>::operator*(const float &value){
-		float temporary = this->ConvertRatioToFloat()*value;
-		return Ratio(temporary).irreductible();
-	}
+	// template<typename T>
+	// Ratio<T> Ratio<T>::operator*(const float &value){
+	// 	float temporary = this->ConvertRatioToFloat()*value;
+	// 	return Ratio(temporary).irreductible();
+	// }
 
 	template<typename T>
 	Ratio<T> Ratio<T>::operator/(const Ratio &r){
@@ -396,6 +420,12 @@ namespace ratio {
 	Ratio<T> Ratio<T>::operator/(const int &value){
 		return Ratio((this->m_num),(this->m_denom*value)).irreductible();
 	}
+
+	template<typename T>
+	Ratio<T> Ratio<T>::operator/(const float &value){
+		float temporary = this->ConvertRatioToFloat()/value;
+		return Ratio(temporary).irreductible();
+}
 
 	/*****************************************************************
 	COMPARE OPERATORS
@@ -423,6 +453,7 @@ namespace ratio {
 		}
 		return false;
 	}
+
 
 	template<typename T>
 	bool Ratio<T>::operator>=(const Ratio &r){
@@ -524,11 +555,37 @@ namespace ratio {
 		return Ratio((int)(m_num/m_denom), 1);
 	}
 
+	int fact(int n){
+		return (n==0) ? 1 : n*fact(n-1);
+	}
 
 	template<typename T>
 	Ratio<T> Ratio<T>::exp(){
-
+		int n = 0;
+		ratio::Ratio<int> epsilon = Ratio(1,10000000000);
+		ratio::Ratio<int> sum(0);
+		bool stop = false;
+		while(!stop){
+			ratio::Ratio<int> temp = sum + this->pow1(n)/fact(n);
+			if((temp-sum).abs()<epsilon){
+				stop = true;
+			}
+			else{
+				sum = temp;
+				n++;
+			}
+		}
+		return sum;
 	}
+
+	template<typename T>
+	Ratio<T> Ratio<T>::expLib(){
+		std::cout<< Ratio(1.28) <<std::endl; 
+		return Ratio(std::exp((float)m_num/m_denom));
+	}
+
+
+
 
 	/*****************************************************************
 	GETTER & SETTER
