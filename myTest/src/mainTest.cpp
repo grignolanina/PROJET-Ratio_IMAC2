@@ -9,6 +9,9 @@
 #include "multiple.hpp"
 #include "divise.hpp"
 #include "Ratio.hpp"
+#include "cosSinTan.hpp"
+#include "pow.hpp"
+#include "intPart.hpp"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);

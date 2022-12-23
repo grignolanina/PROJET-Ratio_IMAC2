@@ -119,6 +119,17 @@ int main() {
         }
     #endif
 
+    #if 1
+        //test du type au constructeur
+        try {
+            ratio::Ratio<int> r5('a');
+        }
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
+
+
     std::cout << "test de troncature : " << std::endl;
     float t = 10.517968;
     std::cout<< "t is : " << std::setprecision(20) << t << std::endl;

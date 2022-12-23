@@ -22,6 +22,7 @@ int main(){
     ratio::Ratio<int> r1(num,denom);
     ratio::Ratio<int> r2(r1);
 
+    
 
     // ----- 1. SQUARE ROOT -----
 
@@ -127,6 +128,8 @@ int main(){
 
     // ----- 5. EXPONENTIAL ------
 
+    std::cout << "Exponentielle de r1 : " << r1.exp() << std::endl;
+    std::cout << "Exponentielle de r1 (avec cmath): " << r1.expLib() << std::endl;
 
     // ----- 6. INTEGER PART ------
 
