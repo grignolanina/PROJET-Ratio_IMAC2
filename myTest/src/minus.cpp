@@ -24,17 +24,19 @@ TEST (RatioArithmetic, minusRandomRatio) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int c = gen();
-	int b = gen();
-	int d = gen();
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
-	result = r1-r2;
+	for(int run=0; run <100; run++){
+		int a = gen();
+		int c = gen();
+		int b = gen();
+		int d = gen();
+		Ratio<int> r1(a,b);
+		Ratio<int> r2(c,d);
+		Ratio<int> result;
+		result = r1-r2;
 
-	ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
-	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d-b*c), (b*d)));
+		ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
+		ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d-b*c), (b*d)));
+	}
 }
 
 TEST (RatioArithmetic, minusRandomRatioConvert) {
@@ -44,22 +46,24 @@ TEST (RatioArithmetic, minusRandomRatioConvert) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	float a = gen();
-	float b = gen();
+	for(int run=0; run <100; run++){
+		float a = gen();
+		float b = gen();
 
-	Ratio<int> r1(a);
-	Ratio<int> r2(b);
+		Ratio<int> r1(a);
+		Ratio<int> r2(b);
 
 
-	Ratio<int> result;
-	result = r1-r2;
+		Ratio<int> result;
+		result = r1-r2;
 
-	Ratio<int> r3(a-b);
+		Ratio<int> r3(a-b);
 
-	float epsilon = 0.0001; // notre marge d'erreur
+		float epsilon = 0.0001; // notre marge d'erreur
 
-	float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
-	
-	ASSERT_LT(absolute, epsilon);
+		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
+		
+		ASSERT_LT(absolute, epsilon);
+	}
 
 }

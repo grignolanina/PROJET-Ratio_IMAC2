@@ -559,6 +559,8 @@ namespace ratio {
 		return Ratio((int)(m_num/m_denom), 1);
 	}
 
+
+	//no more used ?
 	int fact(int n){
 		return (n==0) ? 1 : n*fact(n-1);
 	}
