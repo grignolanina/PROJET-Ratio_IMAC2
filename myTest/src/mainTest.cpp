@@ -12,6 +12,7 @@
 #include "cosSinTan.hpp"
 #include "pow.hpp"
 #include "intPart.hpp"
+#include "expLn.hpp"
 
 int main(int argc, char **argv) {
 	::testing::InitGoogleTest(&argc, argv);
