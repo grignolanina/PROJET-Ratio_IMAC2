@@ -128,10 +128,17 @@ int main(){
 
     // ----- 5. EXPONENTIAL ------
 
-    std::cout << "Exponentielle de r1 : " << r1.exp() << std::endl;
-    std::cout << "Exponentielle de r1 (avec cmath): " << r1.expLib() << std::endl;
+    ratio::Ratio<int> rExp(std::exp((float)r1.getNum()/r1.getDenom()));
+    std::cout << "Exponentiel of r1 : " << r1.exp() << std::endl;
+    std::cout << "Exponentiel of r1 (with cmath): " << rExp << std::endl<<std::endl;
 
-    // ----- 6. INTEGER PART ------
+     // ----- 6. LOGARITHM ------
+
+    ratio::Ratio<int> rLog(std::log((float)r1.getNum()/r1.getDenom()));
+    std::cout << "Logarithm of r1 : " << r1.log() << std::endl;
+    std::cout << "Logarithm (cmath lib) :" << rLog <<std::endl<<std::endl;
+
+    // ----- 7. INTEGER PART ------
 
     ratio::Ratio<int> r6 = r1 * 25;
     std::cout << "Integer Part of " << r6 << " : " << r6.intPart() << std::endl;
