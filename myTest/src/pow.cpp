@@ -4,7 +4,7 @@
 #include <numeric>
 #include <cmath>
 #include "Ratio.hpp"
-#include "include/cosSinTan.hpp"
+#include "include/pow.hpp"
 
 TEST (RatioArithmetic, powKnowedRatio) {
 	Ratio<int> r1(1,2);
@@ -31,8 +31,9 @@ TEST (RatioArithmetic, powRandomRatio) {
         Ratio<int> r1(a,b);
         Ratio<int> result;
         result = r1.pow1(k);
-    }
+    
 
-	ASSERT_EQ(result.getNum(), std::pow(a,k)/std::gcd(std::pow(a,k), std::pow(b,k)));
-	ASSERT_EQ(result.getDenom(), std::pow(b,k)/std::gcd(std::pow(a,k), std::pow(b,k)));
+	    ASSERT_EQ(result.getNum(), std::pow(a,k)/std::gcd(std::pow(a,k), std::pow(b,k)));
+	    ASSERT_EQ(result.getDenom(), std::pow(b,k)/std::gcd(std::pow(a,k), std::pow(b,k)));
+    }
 }

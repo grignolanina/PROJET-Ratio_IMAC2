@@ -4,7 +4,7 @@
 #include <numeric>
 #include <cmath>
 #include "Ratio.hpp"
-#include "include/cosSinTan.hpp"
+#include "include/intPart.hpp"
 
 TEST (RatioArithmetic, intPartKnowedRatio) {
 	Ratio<int> r1(5,2);

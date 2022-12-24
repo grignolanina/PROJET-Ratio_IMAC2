@@ -295,6 +295,10 @@ namespace ratio {
 		/// \return the value of the exponentiel of the ratio
 		Ratio expLib();
 
+		///\brief fonction which gives the value of the logarithm of the rational called
+		/// \return the value of the logarithm of the ratio
+		Ratio log();
+
 
 		/*****************************************************************
 		AFFICHAGE
@@ -561,36 +565,18 @@ namespace ratio {
 
 	template<typename T>
 	Ratio<T> Ratio<T>::exp(){
-		// int n = 0;
-		// ratio::Ratio<int> epsilon = Ratio(1,10000000000);
-		// ratio::Ratio<int> sum(0);
-		// bool stop = false;
-		// while(!stop){
-		// 	ratio::Ratio<int> temp = sum + this->pow1(n)/fact(n);
-		// 	if((temp-sum).abs()<epsilon){
-		// 		stop = true;
-		// 	}
-		// 	else{
-		// 		sum = temp;
-		// 		n++;
-		// 	}
-		// }
-		// return sum;
-
-		
-
-
-
+		return pow(std::exp(m_num), pow(m_denom, -1));
 	}
 
 	template<typename T>
 	Ratio<T> Ratio<T>::expLib(){
-		std::cout<< Ratio(1.28) <<std::endl; 
 		return Ratio(std::exp((float)m_num/m_denom));
 	}
 
-
-
+	template<typename T>
+	Ratio<T> Ratio<T>::log(){
+		return std::log(m_num)-std::log(m_denom);
+	}
 
 	/*****************************************************************
 	GETTER & SETTER
