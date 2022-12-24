@@ -16,7 +16,7 @@ int main() {
     ratio::Ratio<int> r2(3,-4);
     ratio::Ratio<int> r3(r1);
     int value = 3;
-    float fvalue = 14.21;
+    float fvalue = 2.5;
     float negfvalue = -2.5;
 
     std::cout << "Ratio 1 (r1) : " ;
@@ -118,6 +118,17 @@ int main() {
             std::cerr << e.what() << std::endl;
         }
     #endif
+
+    #if 1
+        //test du type au constructeur
+        try {
+            ratio::Ratio<int> r5('a');
+        }
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
+
 
     std::cout << "test de troncature : " << std::endl;
     float t = 10.517968;
