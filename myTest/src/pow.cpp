@@ -23,13 +23,15 @@ TEST (RatioArithmetic, powRandomRatio) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
-    int k = gen();
+    for(int run=0; run <100; run++){
+        int a = gen();
+        int b = gen();
+        int k = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> result;
-	result = r1.pow1(k);
+        Ratio<int> r1(a,b);
+        Ratio<int> result;
+        result = r1.pow1(k);
+    }
 
 	ASSERT_EQ(result.getNum(), std::pow(a,k)/std::gcd(std::pow(a,k), std::pow(b,k)));
 	ASSERT_EQ(result.getDenom(), std::pow(b,k)/std::gcd(std::pow(a,k), std::pow(b,k)));

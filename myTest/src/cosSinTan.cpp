@@ -22,18 +22,18 @@ TEST (RatioArithmetic, cosRandomRatio){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
+	for(int run=0; run <100; run++){
+		int a = gen();
+		int b = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> result;
-	result = r1.cos();
-    theory = Ratio(std::cos((float)a/b));
-    
-
-
-	ASSERT_EQ(result.getNum(),theory.getNum());
-	ASSERT_EQ(result.getDenom(), theory.getDenom());
+		Ratio<int> r1(a,b);
+		Ratio<int> result;
+		result = r1.cos();
+		theory = Ratio(std::cos((float)a/b));
+	
+		ASSERT_EQ(result.getNum(),theory.getNum());
+		ASSERT_EQ(result.getDenom(), theory.getDenom());
+	}
 }
 
 TEST (RatioArithmetic, sinKnowedRatio) {
@@ -52,18 +52,22 @@ TEST (RatioArithmetic, sinRandomRatio){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
+	for(int run=0; run <100; run++){
 
-	Ratio<int> r1(a,b);
-	Ratio<int> result;
-	result = r1.sin();
-    theory = Ratio(std::sin((float)a/b));
-    
+		int a = gen();
+		int b = gen();
+
+		Ratio<int> r1(a,b);
+		Ratio<int> result;
+		result = r1.sin();
+		theory = Ratio(std::sin((float)a/b));
+	
+		ASSERT_EQ(result.getNum(),theory.getNum());
+		ASSERT_EQ(result.getDenom(), theory.getDenom());
+	}
 
 
-	ASSERT_EQ(result.getNum(),theory.getNum());
-	ASSERT_EQ(result.getDenom(), theory.getDenom());
+	
 }
 
 TEST (RatioArithmetic, tanKnowedRatio) {
@@ -82,16 +86,18 @@ TEST (RatioArithmetic, tanRandomRatio){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
+	for(int run=0; run <100; run++){
+		int a = gen();
+		int b = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> result;
-	result = r1.tan();
-    theory = Ratio(std::tan((float)a/b));
-    
+		Ratio<int> r1(a,b);
+		Ratio<int> result;
+		result = r1.tan();
+		theory = Ratio(std::tan((float)a/b));
+		
 
 
-	ASSERT_EQ(result.getNum(),theory.getNum());
-	ASSERT_EQ(result.getDenom(), theory.getDenom());
+		ASSERT_EQ(result.getNum(),theory.getNum());
+		ASSERT_EQ(result.getDenom(), theory.getDenom());
+	}
 }

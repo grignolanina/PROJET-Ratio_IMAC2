@@ -22,13 +22,15 @@ TEST (RatioArithmetic, intPartRandomRatio) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
+    for(int run=0; run <100; run++){
+        int a = gen();
+        int b = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> result;
-	result = r1.intPart();
+        Ratio<int> r1(a,b);
+        Ratio<int> result;
+        result = r1.intPart();
 
-	ASSERT_EQ(result.getNum(), (int)a/b);
-	ASSERT_EQ(result.getDenom(), 1);
+        ASSERT_EQ(result.getNum(), (int)a/b);
+        ASSERT_EQ(result.getDenom(), 1);
+    }
 }
