@@ -561,21 +561,26 @@ namespace ratio {
 
 	template<typename T>
 	Ratio<T> Ratio<T>::exp(){
-		int n = 0;
-		ratio::Ratio<int> epsilon = Ratio(1,10000000000);
-		ratio::Ratio<int> sum(0);
-		bool stop = false;
-		while(!stop){
-			ratio::Ratio<int> temp = sum + this->pow1(n)/fact(n);
-			if((temp-sum).abs()<epsilon){
-				stop = true;
-			}
-			else{
-				sum = temp;
-				n++;
-			}
-		}
-		return sum;
+		// int n = 0;
+		// ratio::Ratio<int> epsilon = Ratio(1,10000000000);
+		// ratio::Ratio<int> sum(0);
+		// bool stop = false;
+		// while(!stop){
+		// 	ratio::Ratio<int> temp = sum + this->pow1(n)/fact(n);
+		// 	if((temp-sum).abs()<epsilon){
+		// 		stop = true;
+		// 	}
+		// 	else{
+		// 		sum = temp;
+		// 		n++;
+		// 	}
+		// }
+		// return sum;
+
+		
+
+
+
 	}
 
 	template<typename T>
