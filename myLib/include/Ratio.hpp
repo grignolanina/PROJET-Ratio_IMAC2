@@ -147,6 +147,11 @@ namespace ratio {
 		//Ratio &operateur= (const Ratio &r);
 
 		/// \brief add a ratio to *this
+		/// \param r : ratio wich we want to copy
+		/// \return the sum of the current ratio and the argument ratio
+		constexpr Ratio &operator=(const Ratio &r);
+
+		/// \brief add a ratio to *this
 		/// \param r : ratio to add to the calling ratio
 		/// \return the sum of the current ratio and the argument ratio
 		constexpr Ratio operator+(const Ratio &r) const;
@@ -154,7 +159,8 @@ namespace ratio {
 		/// \brief add a value to *this
 		/// \param value : value to add to the calling ratio
 		/// \return the sum of the current ratio and the value
-		constexpr Ratio operator+(const int &value) const;
+		template<typename U>
+		constexpr Ratio operator+(const U &value) const;
 
 		/// \brief substract a ratio to *this
 		/// \param r : ratio to substract to the calling ratio
@@ -164,7 +170,8 @@ namespace ratio {
 		/// \brief substract a value to *this
 		/// \param value : value to substract to the calling ratio
 		/// \return the substract of the current ratio and the value
-		constexpr Ratio operator-(const int &value) const;
+		template<typename U>
+		constexpr Ratio operator-(const U &value) const;
 
 		/// \brief unary minus
 		/// \return the minus of the calling ratio
@@ -175,10 +182,6 @@ namespace ratio {
 		/// \return the multiplication ratio
 		constexpr Ratio operator*(const Ratio &r) const;
 
-		// /// \brief multiply a ratio with a constant value
-		// /// \param value : multiplicate factor
-		// /// \return the multiplication ratio
-		// Ratio operator*(const int &value);
 
 		/// \brief multiply a ratio with a constant value
 		/// \param value : multiplicate factor, must be a int, float or double
@@ -186,11 +189,6 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator*(const U &value) const; 
 
-		/// \brief multiply a constant value with a ratio
-		/// \param value : multiplicate factor
-		/// \return the multiplication ratio
-		// template<typename U>
-		// friend Ratio operator*(const U &value, const Ratio &r); 
 
 		/// \brief divide a ratio to *this
 		/// \param r : ratio to divide to the calling ratio
@@ -216,31 +214,66 @@ namespace ratio {
 		/// \return the boolean result of the comparation
 		constexpr bool operator==(const Ratio &r) const;
 
+		/// \brief compare the equality of a ratio with *this
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator==(const U &value) const;
+
 		/// \brief compare the non-equality of a ratio with *this
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
 		constexpr bool operator!=(const Ratio &r) const;
+
+		/// \brief compare the non-equality of a ratio with *this
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator!=(const U &value) const;
 
 		/// \brief test if *this is strictly higher than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
 		constexpr bool operator>(const Ratio &r) const;
 
+		/// \brief test if *this is strictly higher than an other ratio
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator>(const U &value) const;
+
 		/// \brief test if *this is higher(or equal) than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
 		constexpr bool operator>=(const Ratio &r) const;
+
+		/// \brief test if *this is strictly higher than an other ratio
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator>=(const U &value) const;
 
 		/// \brief test if *this is strictly lower than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
 		constexpr bool operator<(const Ratio &r) const;
 
+		/// \brief test if *this is strictly higher than an other ratio
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator<(const U &value) const;
+
 		/// \brief test if *this is lower (or equal) than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
 		constexpr bool operator<=(const Ratio &r) const;
 
+		/// \brief test if *this is strictly higher than an other ratio
+		/// \param value : value to compare to the calling ratio
+		/// \return the boolean result of the comparation
+		template<typename U>
+		constexpr bool operator<=(const U &value) const;
 
 		/*****************************************************************
 		ARITHMETICS OTHERS OPERATORS
@@ -373,12 +406,22 @@ namespace ratio {
 	ARITHMETICS CLASSICS OPERATORS
 	******************************************************************/
 	template<typename T>
+	constexpr Ratio<T> &Ratio<T>::operator=(const Ratio &r){
+		if((*this) != r){
+			m_num = r.m_num;
+			m_denom = r.m_denom;
+		}
+		return (*this);
+	}
+
+	template<typename T>
 	constexpr Ratio<T> Ratio<T>::operator+(const Ratio &r)const{
 		return (Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom))).irreductible();
 	}
 
 	template<typename T>
-	constexpr Ratio<T> Ratio<T>::operator+(const int &value) const{
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator+(const U &value) const{
 		return ((*this) + Ratio(value,1)).irreductible();
 	}
 
@@ -393,7 +436,8 @@ namespace ratio {
 	}
 
 	template<typename T>
-	constexpr Ratio<T> Ratio<T>::operator-(const int &value) const{;
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator-(const U &value) const{;
 		return (Ratio((*this) - Ratio(value,1))).irreductible();
 	}
 
@@ -402,23 +446,12 @@ namespace ratio {
 		return (Ratio((this->m_num*r.m_num),(this->m_denom*r.m_denom))).irreductible();
 	}
 
-	// template<typename T>
-	// Ratio<T> Ratio<T>::operator*(const int &value){
-	// 		std::cout << std::is_integral<T>::value << std::endl; 
-			
-	// 			return Ratio((this->m_num*value),(this->m_denom)).irreductible();
-	// }
-
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator*(const U &value) const{
 		return ((*this)*Ratio(value)).irreductible();
 	}
 
-	// template<typename T>
-	// Ratio<T> operator*(const float &value, const Ratio<T> &r) const{
-	// 	return Ratio((r.getNum()*value),(r.getDenom()));
-	// }
 
 	template<typename T>
 	constexpr Ratio<T> Ratio<T>::operator/(const Ratio &r) const{
@@ -449,6 +482,15 @@ namespace ratio {
 	}
 
 	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator==(const U &value) const{
+		if((*this)==Ratio(value)){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
 	constexpr bool Ratio<T>::operator!=(const Ratio &r) const{
 		if(this->m_num != r.m_num || this->m_denom != r.m_denom){
 			return true;
@@ -457,8 +499,26 @@ namespace ratio {
 	}
 
 	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator!=(const U &value) const{
+		if((*this)!=Ratio(value)){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
 	constexpr bool Ratio<T>::operator>(const Ratio &r) const{
 		if( (*this-r).m_num > 0){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator>(const U &value) const{
+		if((*this)>Ratio(value)){
 			return true;
 		}
 		return false;
@@ -474,6 +534,15 @@ namespace ratio {
 	}
 
 	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator>=(const U &value) const{
+		if((*this)>=Ratio(value)){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
 	constexpr bool Ratio<T>::operator<(const Ratio &r) const{
 		if( ((*this)-r).m_num < 0){
 			return true;
@@ -482,8 +551,26 @@ namespace ratio {
 	}
 
 	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator<(const U &value) const{
+		if((*this)<Ratio(value)){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
 	constexpr bool Ratio<T>::operator<=(const Ratio &r) const{
 		if( ((*this)-r).m_num <= 0){
+			return true;
+		}
+		return false;
+	}
+
+	template<typename T>
+	template<typename U>
+	constexpr bool Ratio<T>::operator<=(const U &value) const{
+		if((*this)<=Ratio(value)){
 			return true;
 		}
 		return false;
