@@ -83,17 +83,8 @@ namespace ratio {
 
 		/// \brief parameters constructor with a given float number
 		/// \param x : the float which will be convert in a ratio
-		constexpr Ratio(float x):Ratio(ConvertFloatRatio(x,7)){
-		// 	if(! std::is_floating_point<T>::value){
-		// 	if(std::is_integral<T>::value){
-		// 		Ratio(x,1);
-		// 	}
-		// 	else{
-		// 		A REVOIR !!!!
-		// 		throw RatioException("ConvertFloatRatio(x, nb_iter) : " + std::to_string(x), 1, ErrorType::fatal);
-		// 	}	
-		// }
-		};
+		template<typename U>
+		constexpr Ratio(U x):Ratio(ConvertFloatRatio(x,7)){};
 
 
 		/// \brief copy-constructor
@@ -375,7 +366,8 @@ namespace ratio {
 		/// \param x : float we want to convert
 		///\param nb_iter : number of iterations we want to do to find the ratio
 		/// \return the sum of the current ratio and the argument ratio
-		constexpr static Ratio ConvertFloatRatio( const float &x,  const int &nb_iter);
+		template<typename U>
+		constexpr static Ratio ConvertFloatRatio( const U &x,  const int &nb_iter);
 
 
 		/// \brief fonction which gives the irreductible quotient of a ratio
@@ -751,28 +743,36 @@ namespace ratio {
 	CONVERTION
 	******************************************************************/
 	template<typename T>
-	constexpr Ratio<T> Ratio<T>::ConvertFloatRatio(const float &x, const int &nb_iter){
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::ConvertFloatRatio(const U &x, const int &nb_iter){
 		Ratio<T> r; // valeur par défaut est 0/1
-
-		if( x == 0 || nb_iter == 0){
-			return r; //return 0/1
+		if constexpr (std::is_integral<U>::value){
+			return Ratio(x,1);
 		}
-
-		else if( std::abs(x)<1 ){
-			if(x<0){
-				r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+		else if constexpr(std::is_floating_point<U>::value){
+			if( x == 0 || nb_iter == 0){
+				return r; //return 0/1
 			}
+
+			else if( std::abs(x)<1 ){
+				if(x<0){
+					r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+				}
+				else{
+					r = ConvertFloatRatio((1/x), nb_iter).inverse();
+				}
+				return r.irreductible();
+			}
+
 			else{
-				r = ConvertFloatRatio((1/x), nb_iter).inverse();
+				int q = (int)x;
+				Ratio<T> qRatio(q,1);
+				r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
+				return r.irreductible();
 			}
-			return r.irreductible();
 		}
-
 		else{
-			int q = (int)x;
-			Ratio<T> qRatio(q,1);
-			r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
-			return r.irreductible();
+			throw RatioException("Value with wrong type in constructor",4, ErrorType::fatal);
 		}
 	}
 

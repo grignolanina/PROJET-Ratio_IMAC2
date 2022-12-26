@@ -97,6 +97,7 @@ int main() {
     std::cout << "Essai d'affichage avec ostream : " <<std::endl;
     std::cout<< r1;
 
+
     // std::cout << "pi : "<<  ratio::Pi() << std::endl;
 
 
@@ -159,6 +160,15 @@ int main() {
     catch(const RatioException &e){
             std::cerr << e.what() << std::endl;
     }
+    #endif
+
+    #if 1
+        try {
+           ratio::Ratio<int> rtest("hah");
+        }
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
     #endif
 
 
