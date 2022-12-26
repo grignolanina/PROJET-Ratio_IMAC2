@@ -162,6 +162,12 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator+(const U &value) const;
 
+		/// \brief add a value to *this
+		/// \param value : value to add to the calling ratio
+		/// \return the sum of the current ratio and the value
+		template<typename U>
+		constexpr Ratio operator+=(const U &value); 
+
 		/// \brief substract a ratio to *this
 		/// \param r : ratio to substract to the calling ratio
 		/// \return the substract of the current ratio and the argument ratio
@@ -172,6 +178,12 @@ namespace ratio {
 		/// \return the substract of the current ratio and the value
 		template<typename U>
 		constexpr Ratio operator-(const U &value) const;
+
+		/// \brief substract a value to *this
+		/// \param value : value to substract to the calling ratio
+		/// \return the substract of the current ratio and the value
+		template<typename U>
+		constexpr Ratio operator-=(const U &value); 
 
 		/// \brief unary minus
 		/// \return the minus of the calling ratio
@@ -189,6 +201,12 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator*(const U &value) const; 
 
+		/// \brief multiply a ratio with a constant value
+		/// \param value : multiplicate factor, must be a int, float or double
+		/// \return the multiplication ratio
+		template<typename U>
+		constexpr Ratio operator*=(const U &value); 
+
 
 		/// \brief divide a ratio to *this
 		/// \param r : ratio to divide to the calling ratio
@@ -201,10 +219,15 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator/(const U &value) const;
 
-		/// \brief divide a ratio with a constant value
-		/// \param value : float deviding factor
-		/// \return the divided ratio
-		constexpr Ratio operator/(const  float &value) const;
+		/// \brief multiply a ratio with a constant value
+		/// \param value : multiplicate factor, must be a int, float or double
+		/// \return the multiplication ratio
+		template<typename U>
+		constexpr Ratio operator/=(const U &value); 
+
+
+
+
 
 		/*****************************************************************
 		COMPARE OPERATORS
@@ -367,22 +390,6 @@ namespace ratio {
 		/*****************************************************************
 		STATIC VARIABLE
 		******************************************************************/
-		// /// \brief fonction which multiply by infinte the calling ratio
-		// /// \return ratio 1/0
-		// constexpr static Ratio multiplyInfinite()noexcept{return Ratio(1/0);};
-
-		// /// \brief fonction which multiply by the zero the calling ratio
-		// /// \return ratio 0/1
-		// constexpr static Ratio multiplyZero()noexcept{return Ratio(0/1);};
-
-		// /// \brief fonction which givr the pi ratio
-		// /// \return ratio M_Pi/1
-		// constexpr static Ratio pi()noexcept{return Ratio(M_PI/1);};
-
-
-		/*****************************************************************
-		STATIC VARIABLE
-		******************************************************************/
 		/// \brief give the ratio zero
 		inline constexpr static Ratio<T> zero(){return Ratio<T>(0,1);}
 
@@ -422,7 +429,14 @@ namespace ratio {
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator+(const U &value) const{
-		return ((*this) + Ratio(value,1)).irreductible();
+		return ((*this) + Ratio(value)).irreductible();
+	}
+
+	template<typename T>
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator+=(const U &value){
+		(*this) = (*this) + Ratio(value);
+		return (*this).irreductible();
 	}
 
 	template<typename T>
@@ -442,6 +456,13 @@ namespace ratio {
 	}
 
 	template<typename T>
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator-=(const U &value){
+		(*this) = (*this) - Ratio(value);
+		return (*this).irreductible();
+	}
+
+	template<typename T>
 	constexpr Ratio<T> Ratio<T>::operator*(const Ratio &r) const{
 		return (Ratio((this->m_num*r.m_num),(this->m_denom*r.m_denom))).irreductible();
 	}
@@ -450,6 +471,13 @@ namespace ratio {
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator*(const U &value) const{
 		return ((*this)*Ratio(value)).irreductible();
+	}
+
+	template<typename T>
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator*=(const U &value){
+		(*this) = (*this) * Ratio(value);
+		return (*this).irreductible();
 	}
 
 
@@ -464,11 +492,12 @@ namespace ratio {
 		return Ratio((*this)/Ratio(value)).irreductible();
 	}
 
-	// template<typename T>
-	// Ratio<T> Ratio<T>::operator/(const float &value) const{
-	// 	float temporary = this->ConvertRatioToFloat()/value;
-	// 	return Ratio(temporary).irreductible();	
-	// }
+	template<typename T>
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::operator/=(const U &value){
+		(*this) = (*this) / Ratio(value);
+		return (*this).irreductible();
+	}
 
 	/*****************************************************************
 	COMPARE OPERATORS
