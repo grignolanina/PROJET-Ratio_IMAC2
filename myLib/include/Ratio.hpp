@@ -102,10 +102,6 @@ namespace ratio {
 		Ratio(const Ratio & r):m_num(r.m_num), m_denom(r.m_denom){};
 
 
-		//rajouter constructeur
-		//long int en int
-
-
 		/*****************************************************************
 		DESTRUCTOR
 		******************************************************************/
@@ -153,56 +149,64 @@ namespace ratio {
 		/// \brief add a ratio to *this
 		/// \param r : ratio to add to the calling ratio
 		/// \return the sum of the current ratio and the argument ratio
-		Ratio operator+(const Ratio &r);
+		Ratio operator+(const Ratio &r) const;
 
 		/// \brief add a value to *this
 		/// \param value : value to add to the calling ratio
 		/// \return the sum of the current ratio and the value
-		Ratio operator+(const int &value);
+		Ratio operator+(const int &value) const;
 
 		/// \brief substract a ratio to *this
 		/// \param r : ratio to substract to the calling ratio
 		/// \return the substract of the current ratio and the argument ratio
-		Ratio operator-(const Ratio &r);
+		Ratio operator-(const Ratio &r) const;
 
 		/// \brief substract a value to *this
 		/// \param value : value to substract to the calling ratio
 		/// \return the substract of the current ratio and the value
-		Ratio operator-(const int &value);
+		Ratio operator-(const int &value) const;
 
 		/// \brief unary minus
 		/// \return the minus of the calling ratio
-		Ratio operator-();
+		Ratio operator-() const;
 
 		/// \brief multiply a ratio to *this
 		/// \param r : ratio to multiplicate to the calling ratio
 		/// \return the multiplication ratio
-		Ratio operator*(const Ratio &r);
-
-		/// \brief multiply a ratio with a constant value
-		/// \param value : multiplicate factor
-		/// \return the multiplication ratio
-		Ratio operator*(const T &value);
+		Ratio operator*(const Ratio &r) const;
 
 		// /// \brief multiply a ratio with a constant value
 		// /// \param value : multiplicate factor
 		// /// \return the multiplication ratio
-		// Ratio operator*(const float &value); //surement faire Ratio operator*(const T &value) au final
+		// Ratio operator*(const int &value);
+
+		/// \brief multiply a ratio with a constant value
+		/// \param value : multiplicate factor, must be a int, float or double
+		/// \return the multiplication ratio
+		template<typename U>
+		Ratio operator*(const U &value) const; 
+
+		/// \brief multiply a constant value with a ratio
+		/// \param value : multiplicate factor
+		/// \return the multiplication ratio
+		template<typename U>
+		friend Ratio operator*(const U &value, const Ratio &r); 
 
 		/// \brief divide a ratio to *this
 		/// \param r : ratio to divide to the calling ratio
 		/// \return the divided ratio
-		Ratio operator/(const Ratio &r);
+		Ratio operator/(const Ratio &r) const;
 
 		/// \brief divide a ratio with a constant value
 		/// \param value : deviding factor
 		/// \return the divided ratio
-		Ratio operator/(const int &value);
+		template<typename U>
+		Ratio operator/(const U &value) const;
 
 		/// \brief divide a ratio with a constant value
 		/// \param value : float deviding factor
 		/// \return the divided ratio
-		Ratio operator/(const  float &value);
+		Ratio operator/(const  float &value) const;
 
 		/*****************************************************************
 		COMPARE OPERATORS
@@ -210,32 +214,32 @@ namespace ratio {
 		/// \brief compare the equality of a ratio with *this
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator==(const Ratio &r);
+		bool operator==(const Ratio &r) const;
 
 		/// \brief compare the non-equality of a ratio with *this
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator!=(const Ratio &r);
+		bool operator!=(const Ratio &r) const;
 
 		/// \brief test if *this is strictly higher than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator>(const Ratio &r);
+		bool operator>(const Ratio &r) const;
 
 		/// \brief test if *this is higher(or equal) than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator>=(const Ratio &r);
+		bool operator>=(const Ratio &r) const;
 
 		/// \brief test if *this is strictly lower than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator<(const Ratio &r);
+		bool operator<(const Ratio &r) const;
 
 		/// \brief test if *this is lower (or equal) than an other ratio
 		/// \param r : ratio to compare to the calling ratio
 		/// \return the boolean result of the comparation
-		bool operator<=(const Ratio &r);
+		bool operator<=(const Ratio &r) const;
 
 
 		/*****************************************************************
@@ -243,61 +247,61 @@ namespace ratio {
 		******************************************************************/
 		/// \brief inverse the calling ratio
 		/// \return the inverse ratio
-		Ratio inverse();
+		Ratio inverse() const;
 
 		/// \brief fonction which gives the absoluture quotient of a ratio
 		/// \return the absolute value of the ratio
-		Ratio abs();
+		Ratio abs() const;
 
 		/// \brief fonction which gives the square root of a ratio by square rooting a and b separately
 		/// \return the square root value of the ratio
-		double sqrt();
+		double sqrt() const;
 
 		/// \brief fonction which gives the square root of a ratio by taking a/b in the square root
 		/// \return the square root value of the ratio
-		double sqrt2();
+		double sqrt2() const;
 
 		/// \brief fonction which gives the cosinus of a ratio
 		/// \return the value of the cosinus of the ratio
-		double cosinus();
+		double cosinus() const;
 
 		/// \brief fonction which gives an approciamtion of the cosinus of a ratio
 		/// \return the value of the approximated cosinus of the ratio
-		double cosinus2();
+		double cosinus2() const;
 
 		/// \brief fonction which gives the sinus of a ratio
 		/// \return the value of the sinus of the ratio
-		double sinus();
+		double sinus() const;
 
 		/// \brief fonction which gives the tangent of a ratio
 		/// \return the value of the tangent of the ratio
-		double tan();
+		double tan() const;
 
 		/// \brief fonction which gives a ratio powered by an int number
 		/// \param k : power of the ratio
 		/// \return the ratio powered by k
-		Ratio pow1(int k);
+		Ratio pow1(int k) const;
 
 		/// \brief fonction which gives a ratio powered by an int number
 		/// \param k : power of the ratio
 		/// \return the ratio powered by k
-		Ratio pow2(int k);
+		Ratio pow2(int k) const;
 
 		/// \brief fonction which gives the integer part of a ratio
 		/// \return the value of the interger part of the ratio
-		Ratio intPart();
+		Ratio intPart() const;
 
 		///\brief fonction which gives the value of the exponential of the rational called
 		/// \return the value of the exponentiel of the ratio
-		Ratio exp();
+		Ratio exp() const;
 
 		///\brief fonction which gives the value of the exponential of the rational called
 		/// \return the value of the exponentiel of the ratio
-		Ratio expLib();
+		Ratio expLib() const;
 
 		///\brief fonction which gives the value of the logarithm of the rational called
 		/// \return the value of the logarithm of the ratio
-		Ratio log();
+		Ratio log() const;
 
 
 		/*****************************************************************
@@ -315,7 +319,7 @@ namespace ratio {
 		/// \param x : float we want to convert
 		///\param nb_iter : number of iterations we want to do to find the ratio
 		/// \return the sum of the current ratio and the argument ratio
-		static Ratio ConvertFloatRatio(float x, int nb_iter);
+		static Ratio ConvertFloatRatio( const float &x,  const int &nb_iter);
 
 
 		/// \brief fonction which gives the irreductible quotient of a ratio
@@ -325,7 +329,7 @@ namespace ratio {
 
 		/// \brief convert this calling ratio in a float
 		/// \param x
-		float ConvertRatioToFloat();
+		float ConvertRatioToFloat() const;
 
 		/*****************************************************************
 		STATIC VARIABLE
@@ -369,73 +373,75 @@ namespace ratio {
 	ARITHMETICS CLASSICS OPERATORS
 	******************************************************************/
 	template<typename T>
-	Ratio<T> Ratio<T>::operator+(const Ratio &r){
+	Ratio<T> Ratio<T>::operator+(const Ratio &r)const{
 		return (Ratio((this->m_num * r.m_denom + this->m_denom * r.m_num),( this->m_denom*r.m_denom))).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator+(const int &value){
+	Ratio<T> Ratio<T>::operator+(const int &value) const{
 		return ((*this) + Ratio(value,1)).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator-(){
+	Ratio<T> Ratio<T>::operator-() const{
 		return Ratio(((-1) * this->m_num),(this->m_denom)).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator-(const Ratio &r){
+	Ratio<T> Ratio<T>::operator-(const Ratio &r) const{
 		return (Ratio(((this->m_num*r.m_denom) - (this->m_denom*r.m_num)),(this->m_denom*r.m_denom))).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator-(const int &value){;
+	Ratio<T> Ratio<T>::operator-(const int &value) const{;
 		return (Ratio((*this) - Ratio(value,1))).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator*(const Ratio &r){
+	Ratio<T> Ratio<T>::operator*(const Ratio &r) const{
 		return (Ratio((this->m_num*r.m_num),(this->m_denom*r.m_denom))).irreductible();
 	}
 
-	template<typename T>
-	Ratio<T> Ratio<T>::operator*(const T &value){
-		if(std::is_integral<T>::value){
-			return Ratio((this->m_num*value),(this->m_denom)).irreductible();
-		}
-		else{
-			float temporary = this->ConvertRatioToFloat()*value;
-			return Ratio(temporary).irreductible();
-		}
-	}
-
 	// template<typename T>
-	// Ratio<T> Ratio<T>::operator*(const float &value){
-	// 	float temporary = this->ConvertRatioToFloat()*value;
-	// 	return Ratio(temporary).irreductible();
+	// Ratio<T> Ratio<T>::operator*(const int &value){
+	// 		std::cout << std::is_integral<T>::value << std::endl; 
+			
+	// 			return Ratio((this->m_num*value),(this->m_denom)).irreductible();
 	// }
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator/(const Ratio &r){
+	template<typename U>
+	Ratio<T> Ratio<T>::operator*(const U &value) const{
+		return ((*this)*Ratio(value)).irreductible();
+	}
+
+	// template<typename T>
+	// Ratio<T> operator*(const float &value, const Ratio<T> &r) const{
+	// 	return Ratio((r.getNum()*value),(r.getDenom()));
+	// }
+
+	template<typename T>
+	Ratio<T> Ratio<T>::operator/(const Ratio &r) const{
 		return Ratio((this->m_num*r.m_denom),(this->m_denom*r.m_num)).irreductible();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::operator/(const int &value){
-		return Ratio((this->m_num),(this->m_denom*value)).irreductible();
+	template<typename U>
+	Ratio<T> Ratio<T>::operator/(const U &value) const{
+		return Ratio((*this)/Ratio(value)).irreductible();
 	}
 
-	template<typename T>
-	Ratio<T> Ratio<T>::operator/(const float &value){
-		float temporary = this->ConvertRatioToFloat()/value;
-		return Ratio(temporary).irreductible();
-}
+	// template<typename T>
+	// Ratio<T> Ratio<T>::operator/(const float &value) const{
+	// 	float temporary = this->ConvertRatioToFloat()/value;
+	// 	return Ratio(temporary).irreductible();	
+	// }
 
 	/*****************************************************************
 	COMPARE OPERATORS
 	******************************************************************/
 	template<typename T>
-	bool Ratio<T>::operator==(const Ratio &r){
+	bool Ratio<T>::operator==(const Ratio &r) const{
 		if(this->m_num == r.m_num && this->m_denom == r.m_denom){
 			return true;
 		}
@@ -443,7 +449,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	bool Ratio<T>::operator!=(const Ratio &r){
+	bool Ratio<T>::operator!=(const Ratio &r) const{
 		if(this->m_num != r.m_num || this->m_denom != r.m_denom){
 			return true;
 		}
@@ -451,7 +457,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	bool Ratio<T>::operator>(const Ratio &r){
+	bool Ratio<T>::operator>(const Ratio &r) const{
 		if( (*this-r).m_num > 0){
 			return true;
 		}
@@ -460,7 +466,7 @@ namespace ratio {
 
 
 	template<typename T>
-	bool Ratio<T>::operator>=(const Ratio &r){
+	bool Ratio<T>::operator>=(const Ratio &r) const{
 		if( (*this-r).m_num >= 0){
 			return true;
 		}
@@ -468,7 +474,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	bool Ratio<T>::operator<(const Ratio &r){
+	bool Ratio<T>::operator<(const Ratio &r) const{
 		if( ((*this)-r).m_num < 0){
 			return true;
 		}
@@ -476,7 +482,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	bool Ratio<T>::operator<=(const Ratio &r){
+	bool Ratio<T>::operator<=(const Ratio &r) const{
 		if( ((*this)-r).m_num <= 0){
 			return true;
 		}
@@ -488,7 +494,7 @@ namespace ratio {
 	ARITHMETICS OTHERS OPERATORS
 	******************************************************************/
 	template<typename T>
-	Ratio<T> Ratio<T>::inverse(){
+	Ratio<T> Ratio<T>::inverse() const{
 		if(this->m_num < 0){
 			return (Ratio(-(this->m_denom),-(this->m_num))).irreductible();
 		}
@@ -499,7 +505,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::abs(){  
+	Ratio<T> Ratio<T>::abs() const{  
 		if((*this)<0){
 			return -(*this);
 		}else{
@@ -508,7 +514,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	double Ratio<T>::sqrt(){  
+	double Ratio<T>::sqrt() const{  
 		if((*this)<0){
 			throw RatioException("Square root of negative is not allowed", 2, ErrorType::fatal);
 		}
@@ -516,7 +522,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	double Ratio<T>::sqrt2(){ 
+	double Ratio<T>::sqrt2() const{ 
 		if((*this)<0){
 			throw RatioException("Square root of negative is not allowed", 3, ErrorType::fatal);
 		} 
@@ -524,37 +530,37 @@ namespace ratio {
 	}
 
 	template<typename T>
-	double Ratio<T>::cosinus(){  
+	double Ratio<T>::cosinus() const{  
 		return std::cos((double)m_num/m_denom);
 	}
 
 	template<typename T>
-	double Ratio<T>::cosinus2(){  
+	double Ratio<T>::cosinus2() const{  
 		return std::cos(m_num)/std::cos(m_denom);
 	}
 
 	template<typename T>
-	double Ratio<T>::sinus(){  
+	double Ratio<T>::sinus() const{  
 		return std::sin((double)m_num/m_denom);
 	}
 
 	template<typename T>
-	double Ratio<T>::tan(){  
+	double Ratio<T>::tan() const{  
 		return this->sinus()/this->cosinus();
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::pow1(int k){  
+	Ratio<T> Ratio<T>::pow1(int k) const{  
 		return (k > 0)? (*this) * pow1(k-1) : 1;
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::pow2(int k){  
+	Ratio<T> Ratio<T>::pow2(int k) const{  
 		return std::pow(m_num,k)/std::pow(m_denom,k);
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::intPart(){ 
+	Ratio<T> Ratio<T>::intPart() const{ 
 
 		return Ratio((int)(m_num/m_denom), 1);
 	}
@@ -564,17 +570,17 @@ namespace ratio {
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::exp(){
+	Ratio<T> Ratio<T>::exp() const{
 		return pow(std::exp(m_num), pow(m_denom, -1));
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::expLib(){
+	Ratio<T> Ratio<T>::expLib() const{
 		return Ratio(std::exp((float)m_num/m_denom));
 	}
 
 	template<typename T>
-	Ratio<T> Ratio<T>::log(){
+	Ratio<T> Ratio<T>::log() const{
 		return std::log(m_num)-std::log(m_denom);
 	}
 
@@ -629,11 +635,8 @@ namespace ratio {
 	CONVERTION
 	******************************************************************/
 	template<typename T>
-	Ratio<T> Ratio<T>::ConvertFloatRatio(float x, int nb_iter){
+	Ratio<T> Ratio<T>::ConvertFloatRatio(const float &x, const int &nb_iter){
 		Ratio<T> r; // valeur par défaut est 0/1
-
-		
-
 
 		if( x == 0 || nb_iter == 0){
 			return r; //return 0/1
@@ -666,7 +669,7 @@ namespace ratio {
 	}
 
 	template<typename T>
-	float Ratio<T>::ConvertRatioToFloat(){
+	float Ratio<T>::ConvertRatioToFloat() const{
 		return this->m_num/(float)this->m_denom;
 	}
 
