@@ -300,7 +300,7 @@ int main() {
 	std::cout << "    Expected : " << exactValueCos  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << cosApprox << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(cosApprox - exactValueCos)  << std::endl;
-	std::cout << "\033[2m=> Difference beetween both cos  :"<< std::setprecision(20) << std::abs(cosApprox - cosRatio)<< "\033[0m"  << std::endl << std::endl;
+	std::cout << "\033[32m> Difference beetween both cos  :"<< std::setprecision(20) << std::abs(cosApprox - cosRatio)<< "\033[0m"  << std::endl << std::endl;
 
 
 
@@ -320,7 +320,7 @@ int main() {
 	std::cout << "    Expected : " << exactValueSin  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << sinApprox << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(sinApprox - exactValueSin)  << std::endl;
-	std::cout << "\033[2m=> Difference beetween both sin  :"<< std::setprecision(20) << std::abs(sinApprox - sinRatio)<< "\033[0m"  << std::endl << std::endl;
+	std::cout << "\033[32m=> Difference beetween both sin  :"<< std::setprecision(20) << std::abs(sinApprox - sinRatio)<< "\033[0m"  << std::endl << std::endl;
 
 
     // ------ 3(bis). TEST OF TAGENT -----
