@@ -222,11 +222,13 @@ int main() {
 	std::cout << "We will use the ratio1 from the other part on the following test and news ratio3, PI/3 and PI/6 : " << std::endl;
 	ratio::Ratio<int> piSurTrois = ratio::Ratio<int>::pi()/3;
 	ratio::Ratio<int> piSurSix = ratio::Ratio<int>::pi()/6;
+	ratio::Ratio<int> piSurQuatre = ratio::Ratio<int>::pi()/4;
 	ratio::Ratio<int> ratio3(-25,4);
 	std::cout << "• ratio1 : " << ratio1 << std::endl;
 	std::cout << "• ratio3 : " << ratio3 << std::endl;
 	std::cout << "• PI/3 : "<< piSurTrois << std::endl;
 	std::cout << "• PI/6 : "<< piSurSix << std::endl << std::endl;
+	std::cout << "• PI/4 : "<< piSurQuatre << std::endl << std::endl;
 	
 
 
@@ -285,7 +287,7 @@ int main() {
 	
     
 	std::cout << "\033[36mCosinus : \033[0m" << std::endl;
-	std::cout << "We want to test of the implementation ( cosinus() ) and of one bad approximation ( cosinus2 () )" << std::endl;
+	std::cout << "We want to test of the implementation ( cosinus() ) and of one bad approximation ( cosinus2() )" << std::endl;
 
     double exactValueCos = 0.5;
 
@@ -304,8 +306,8 @@ int main() {
 
 
 
-    	std::cout << "\033[36mSinus : \033[0m" << std::endl;
-	std::cout << "We want to test the implementation of the sinus ( sinus() )" << std::endl;
+    std::cout << "\033[36mSinus : \033[0m" << std::endl;
+	std::cout << "We want to test of the implementation ( sinus() ) and of one bad approximation ( sinus2() )" << std::endl;
 
     double exactValueSin = 0.5;
 
@@ -323,7 +325,23 @@ int main() {
 	std::cout << "\033[32m=> Difference beetween both sin  :"<< std::setprecision(20) << std::abs(sinApprox - sinRatio)<< "\033[0m"  << std::endl << std::endl;
 
 
-    // ------ 3(bis). TEST OF TAGENT -----
+    std::cout << "\033[36mTangent : \033[0m" << std::endl;
+	std::cout << "We want to test of the implementation ( tan() ) and of one bad approximation ( tan2() )" << std::endl;
+
+    double exactValueTan = 1.0;
+
+    double tanRatio = piSurQuatre.tan();
+	std::cout << "• piSurSix.tan() "<< std::endl;
+	std::cout << "    Expected : " << exactValueTan  << std::endl;
+	std::cout << "    Current : "<< std::setprecision(30) << tanRatio << std::endl;
+	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(tanRatio - exactValueTan)  << std::endl << std::endl;
+
+	double tanApprox = piSurQuatre.tan2();
+	std::cout << "• piSurTrois.tan2() "<< std::endl;
+	std::cout << "    Expected : " << exactValueTan  << std::endl;
+	std::cout << "    Current : "<< std::setprecision(30) << tanApprox << std::endl;
+	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(tanApprox - exactValueTan)  << std::endl;
+	std::cout << "\033[32m=> Difference beetween both sin  :"<< std::setprecision(20) << std::abs(tanApprox - tanRatio)<< "\033[0m"  << std::endl << std::endl;
 
 
 

@@ -339,6 +339,10 @@ namespace ratio {
 		/// \return the value of the tangent of the ratio
 		constexpr double tan() const;
 
+		/// \brief fonction which gives an approciamtion of the tangent of a ratio
+		/// \return  the value of the approximated tangent of the ratio
+		constexpr double tan2() const;
+
 		/// \brief fonction which gives a ratio powered by an int number
 		/// \param k : power of the ratio
 		/// \return the ratio powered by k
@@ -683,6 +687,11 @@ namespace ratio {
 	template<typename T>
 	constexpr double Ratio<T>::tan() const{  
 		return this->sinus()/this->cosinus();
+	}
+
+	template<typename T>
+	constexpr double Ratio<T>::tan2() const{  
+		return std::tan(m_num)/std::tan(m_denom);
 	}
 
 	template<typename T>
