@@ -162,9 +162,18 @@ int main() {
     }
     #endif
 
-    #if 1
+    #if 0
         try {
            ratio::Ratio<int> rtest("hah");
+        }
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
+    #endif
+
+    #if 0
+        try {
+           ratio::Ratio<int> rtest("a", "b");
         }
         catch(const RatioException &e){
             std::cerr << e.what() << std::endl;

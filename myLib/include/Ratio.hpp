@@ -71,6 +71,12 @@ namespace ratio {
 		/// \param num denom : the num of the ratio
 		/// \param denom denom : the denum of the ratio
 		constexpr Ratio(T num, T denom): m_num(num), m_denom(denom){
+			// if constexpr(!std::is_integral<T>::value){
+			// 	throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+			// }
+
+
+			verifyConstructorType();
 			if(this->m_denom <0){
 				this->m_num= -this->m_num;
 				this->m_denom = -this->m_denom;
@@ -81,7 +87,7 @@ namespace ratio {
 			}
 		};
 
-		/// \brief parameters constructor with a given float number
+		/// \brief parameters constructor with a given float number (with 7 iterations)
 		/// \param x : the float which will be convert in a ratio
 		template<typename U>
 		constexpr Ratio(U x):Ratio(ConvertFloatRatio(x,7)){};
@@ -130,6 +136,10 @@ namespace ratio {
 		/// \brief fonction to access to the denominator of a vector
 		/// \return ratio.denom() 
 		constexpr const int& getDenom()const;
+
+		/// \brief
+		/// \return 
+		constexpr void verifyConstructorType() const;
 
 
 		/*****************************************************************
@@ -210,7 +220,7 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator/(const U &value) const;
 
-		/// \brief multiply a ratio with a constant value
+		/// \brief divide a ratio with a constant value
 		/// \param value : multiplicate factor, must be a int, float or double
 		/// \return the multiplication ratio
 		template<typename U>
@@ -674,7 +684,7 @@ namespace ratio {
 	}
 
 
-	//no more used ?
+	//no more used 
 	int fact(int n){
 		return (n==0) ? 1 : n*fact(n-1);
 	}
@@ -715,6 +725,13 @@ namespace ratio {
 	template<typename T>
 	constexpr const int& Ratio<T>::getDenom() const{
 		return m_denom;
+	}
+
+	template<typename T>
+	constexpr void Ratio<T>::verifyConstructorType() const {
+		if constexpr(!std::is_integral<T>::value){
+			throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+		}
 	}
 
 
