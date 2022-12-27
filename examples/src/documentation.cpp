@@ -1,8 +1,4 @@
 #include <iostream>
-#include <iomanip>
-#include <math.h>
-
-#include "Ratio.hpp"
 
 int main(){
 	std::cout << "WELCOME IN THE RATIO LIB !" << std::endl << std::endl;
@@ -56,11 +52,8 @@ int main(){
 	std::cout <<"• << : the classic characters" << std::endl << std::endl;
 
 	std::cout << "And there you go ! you are ready to construct your ratios and do lots of tests on the ratio lib. However, if you want more informations, we invite you to compile HTML utility and open the index.html present in the build/INTERFACE/doc/doc-doxygen/html. It will present you a complete lib create thanks to dowygen !" << std::endl;
+	std::cout << "You can also watch the examples.cpp which will show you more about the use of the lib !" << std::endl;
 	std::cout << "IT'S YOUR MOVE !" << std::endl;
-
-
-
-
 
 	return 0;
 }

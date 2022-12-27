@@ -171,9 +171,12 @@ int main() {
         }
     #endif
 
-    #if 0
+    #if 1
         try {
-           ratio::Ratio<int> rtest("a", "b");
+            char cc = 'c';
+            char aa = 'a';
+           ratio::Ratio<int> rtest(aa,cc);
+           rtest.display();
         }
         catch(const RatioException &e){
             std::cerr << e.what() << std::endl;
