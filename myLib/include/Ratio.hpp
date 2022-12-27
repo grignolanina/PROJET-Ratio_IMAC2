@@ -71,6 +71,12 @@ namespace ratio {
 		/// \param num denom : the num of the ratio
 		/// \param denom denom : the denum of the ratio
 		constexpr Ratio(T num, T denom): m_num(num), m_denom(denom){
+			// if constexpr(!std::is_integral<T>::value){
+			// 	throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+			// }
+
+
+			// verifyConstructorType();
 			if(this->m_denom <0){
 				this->m_num= -this->m_num;
 				this->m_denom = -this->m_denom;
@@ -81,7 +87,7 @@ namespace ratio {
 			}
 		};
 
-		/// \brief parameters constructor with a given float number
+		/// \brief parameters constructor with a given float number (with 7 iterations)
 		/// \param x : the float which will be convert in a ratio
 		template<typename U>
 		constexpr Ratio(U x):Ratio(ConvertFloatRatio(x,7)){};
@@ -130,6 +136,10 @@ namespace ratio {
 		/// \brief fonction to access to the denominator of a vector
 		/// \return ratio.denom() 
 		constexpr const int& getDenom()const;
+
+		/// \brief
+		/// \return 
+		constexpr inline void verifyConstructorType() const;
 
 
 		/*****************************************************************
@@ -210,7 +220,7 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator/(const U &value) const;
 
-		/// \brief multiply a ratio with a constant value
+		/// \brief divide a ratio with a constant value
 		/// \param value : multiplicate factor, must be a int, float or double
 		/// \return the multiplication ratio
 		template<typename U>
@@ -320,6 +330,11 @@ namespace ratio {
 		/// \return the value of the sinus of the ratio
 		constexpr double sinus() const;
 
+		/// \brief fonction which gives an approciamtion of the sinus of a ratio
+		/// \return  the value of the approximated sinus of the ratio
+		constexpr double sinus2() const;
+
+
 		/// \brief fonction which gives the tangent of a ratio
 		/// \return the value of the tangent of the ratio
 		constexpr double tan() const;
@@ -349,6 +364,10 @@ namespace ratio {
 		///\brief fonction which gives the value of the logarithm of the rational called
 		/// \return the value of the logarithm of the ratio
 		constexpr Ratio log() const;
+
+		///\brief fonction which gives the value of the logarithm of the rational called 
+		/// \return the value of the logarithm of the ratio
+		constexpr Ratio logLib() const;
 
 
 		/*****************************************************************
@@ -380,7 +399,7 @@ namespace ratio {
 		constexpr float ConvertRatioToFloat() const;
 
 		/*****************************************************************
-		STATIC VARIABLE
+		SPECIFIC RATIO
 		******************************************************************/
 		/// \brief give the ratio zero
 		inline constexpr static Ratio<T> zero(){return Ratio<T>(0,1);}
@@ -444,7 +463,7 @@ namespace ratio {
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator-(const U &value) const{;
-		return (Ratio((*this) - Ratio(value,1))).irreductible();
+		return (Ratio((*this) - Ratio(value))).irreductible();
 	}
 
 	template<typename T>
@@ -481,7 +500,11 @@ namespace ratio {
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator/(const U &value) const{
-		return Ratio((*this)/Ratio(value)).irreductible();
+		if(value==0){
+			return ratio::Ratio<U>::infinite();
+		}else{
+			return Ratio((*this)/Ratio(value)).irreductible();
+		}
 	}
 
 	template<typename T>
@@ -653,6 +676,11 @@ namespace ratio {
 	}
 
 	template<typename T>
+	constexpr double Ratio<T>::sinus2() const{  
+		return std::sin(m_num)/std::sin(m_denom);
+	}
+
+	template<typename T>
 	constexpr double Ratio<T>::tan() const{  
 		return this->sinus()/this->cosinus();
 	}
@@ -673,6 +701,8 @@ namespace ratio {
 		return Ratio((int)(m_num/m_denom), 1);
 	}
 
+
+	//no more used 
 	int fact(int n){
 		return (n==0) ? 1 : n*fact(n-1);
 	}
@@ -690,6 +720,11 @@ namespace ratio {
 	template<typename T>
 	constexpr Ratio<T> Ratio<T>::log() const{
 		return std::log(m_num)-std::log(m_denom);
+	}
+
+	template<typename T>
+	constexpr Ratio<T> Ratio<T>::logLib() const{
+		return Ratio(std::log((float)m_num/m_denom));
 	}
 
 	/*****************************************************************
@@ -715,6 +750,13 @@ namespace ratio {
 		return m_denom;
 	}
 
+	template<typename T>
+	constexpr inline void Ratio<T>::verifyConstructorType() const{
+		if (!std::is_integral<T>::value){
+			throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+		}
+	}
+
 
 
 
@@ -734,7 +776,6 @@ namespace ratio {
 		stream << r.getNum();
 		stream << "/"	;
 		stream << r.getDenom();
-		stream << "\n";
 
 		return stream;
 	}

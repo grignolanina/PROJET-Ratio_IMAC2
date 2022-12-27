@@ -31,13 +31,6 @@ TEST (RatioConstructor, paramConstructor){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
-	Ratio<int> r1(a,b);
-
-	ASSERT_EQ(r1.getNum(), a);
-	ASSERT_EQ(r1.getDenom(), b);
-
 	for(int run=0; run <100; run++){
 		int a = gen();
 		int b = gen();

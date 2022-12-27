@@ -28,19 +28,21 @@ TEST (RatioArithmetic, multipleRandomRatio) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int c = gen();
-	int b = gen();
-	int d = gen();
+	for(int run=0; run <100; run++){
+		int a = gen();
+		int c = gen();
+		int b = gen();
+		int d = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> r2(c,d);
-	Ratio<int> result;
-	result = r1*r2;
+		Ratio<int> r1(a,b);
+		Ratio<int> r2(c,d);
+		Ratio<int> result;
+		result = r1*r2;
 
 
-	ASSERT_EQ(result.getNum(), (a*c)/std::gcd((a*c), (b*d)));
-	ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*c), (b*d)));
+		ASSERT_EQ(result.getNum(), (a*c)/std::gcd((a*c), (b*d)));
+		ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*c), (b*d)));
+	}
 }
 
 TEST (RatioArithmetic, multipleByInverseRatio){
@@ -50,14 +52,16 @@ TEST (RatioArithmetic, multipleByInverseRatio){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int num = gen();
-	int denom = gen();
-	Ratio<int> r1(num,denom);
-	Ratio<int> inverser1;
-	inverser1=r1.inverse();
+	for(int run=0; run <100; run++){
+		int num = gen();
+		int denom = gen();
+		Ratio<int> r1(num,denom);
+		Ratio<int> inverser1;
+		inverser1=r1.inverse();
 
-	ASSERT_EQ(inverser1.getNum(), r1.getDenom());
-	ASSERT_EQ(inverser1.getDenom(), r1.getNum());
+		ASSERT_EQ(inverser1.getNum(), r1.getDenom());
+		ASSERT_EQ(inverser1.getDenom(), r1.getNum());
+	}
 }
 
 TEST (RatioArithmetic, multiplyByInverseEqualToOne){
@@ -67,13 +71,15 @@ TEST (RatioArithmetic, multiplyByInverseEqualToOne){
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	int a = gen();
-	int b = gen();
+	for(int run=0; run <100; run++){
+		int a = gen();
+		int b = gen();
 
-	Ratio<int> r1(a,b);
-	Ratio<int> resultMultipleInverse;
-	resultMultipleInverse = r1 * r1.inverse();
+		Ratio<int> r1(a,b);
+		Ratio<int> resultMultipleInverse;
+		resultMultipleInverse = r1 * r1.inverse();
 
-	ASSERT_EQ(resultMultipleInverse.getNum(), 1);
-	ASSERT_EQ(resultMultipleInverse.getDenom(), 1);
+		ASSERT_EQ(resultMultipleInverse.getNum(), 1);
+		ASSERT_EQ(resultMultipleInverse.getDenom(), 1);
+	}
 }
