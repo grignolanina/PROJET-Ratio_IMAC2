@@ -47,6 +47,9 @@ int main() {
     std::cout << "Multiplication (r1 * value): ";
     (r1*value).display();
 
+    std::cout << "Multiplication (r1 * fvalue): ";
+    std::cout << (r1*2.5) << std::endl;
+
     std::cout << "Division (r1 / r2): " ;
     (r1/r2).display();
 
@@ -93,6 +96,7 @@ int main() {
 
     std::cout << "Essai d'affichage avec ostream : " <<std::endl;
     std::cout<< r1;
+
 
     // std::cout << "pi : "<<  ratio::Pi() << std::endl;
 
@@ -156,6 +160,15 @@ int main() {
     catch(const RatioException &e){
             std::cerr << e.what() << std::endl;
     }
+    #endif
+
+    #if 1
+        try {
+           ratio::Ratio<int> rtest("hah");
+        }
+        catch(const RatioException &e){
+            std::cerr << e.what() << std::endl;
+        }
     #endif
 
 
