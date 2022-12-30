@@ -32,9 +32,9 @@ namespace ratio {
 		/// \param num denom : the num of the ratio
 		/// \param denom denom : the denum of the ratio
 		constexpr Ratio(T num, T denom): m_num(num), m_denom(denom){
-			// if constexpr(!std::is_integral<T>::value){
-			// 	throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
-			// }
+			if constexpr(!std::is_integral_v<T> || std::is_same_v<T, char>){
+				throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+			}
 
 
 			// verifyConstructorType();
@@ -283,26 +283,14 @@ namespace ratio {
 		/// \return the value of the cosinus of the ratio
 		constexpr double cosinus() const;
 
-		/// \brief fonction which gives an approciamtion of the cosinus of a ratio
-		/// \return the value of the approximated cosinus of the ratio
-		constexpr double cosinus2() const;
-
 		/// \brief fonction which gives the sinus of a ratio
 		/// \return the value of the sinus of the ratio
 		constexpr double sinus() const;
-
-		/// \brief fonction which gives an approciamtion of the sinus of a ratio
-		/// \return  the value of the approximated sinus of the ratio
-		constexpr double sinus2() const;
 
 
 		/// \brief fonction which gives the tangent of a ratio
 		/// \return the value of the tangent of the ratio
 		constexpr double tan() const;
-
-		/// \brief fonction which gives an approciamtion of the tangent of a ratio
-		/// \return  the value of the approximated tangent of the ratio
-		constexpr double tan2() const;
 
 		/// \brief fonction which gives a ratio powered by an int number
 		/// \param k : power of the ratio
@@ -631,28 +619,13 @@ namespace ratio {
 	}
 
 	template<typename T>
-	constexpr double Ratio<T>::cosinus2() const{  
-		return std::cos(m_num)/std::cos(m_denom);
-	}
-
-	template<typename T>
 	constexpr double Ratio<T>::sinus() const{  
 		return std::sin((double)m_num/m_denom);
 	}
 
 	template<typename T>
-	constexpr double Ratio<T>::sinus2() const{  
-		return std::sin(m_num)/std::sin(m_denom);
-	}
-
-	template<typename T>
 	constexpr double Ratio<T>::tan() const{  
 		return this->sinus()/this->cosinus();
-	}
-
-	template<typename T>
-	constexpr double Ratio<T>::tan2() const{  
-		return std::tan(m_num)/std::tan(m_denom);
 	}
 
 	template<typename T>
@@ -669,12 +642,6 @@ namespace ratio {
 	constexpr Ratio<T> Ratio<T>::intPart() const{ 
 
 		return Ratio((int)(m_num/m_denom), 1);
-	}
-
-
-	//no more used 
-	int fact(int n){
-		return (n==0) ? 1 : n*fact(n-1);
 	}
 
 	template<typename T>

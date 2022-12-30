@@ -171,11 +171,11 @@ int main() {
         }
     #endif
 
-    #if 1
+    #if 0
         try {
             char cc = 'c';
             char aa = 'a';
-           ratio::Ratio<int> rtest(aa,cc);
+           ratio::Ratio<char> rtest(aa,cc);
            rtest.display();
         }
         catch(const RatioException &e){
