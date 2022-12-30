@@ -297,7 +297,7 @@ int main() {
 	std::cout << "    Current : "<< std::setprecision(30) << cosRatio << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(cosRatio - exactValueCos)  << std::endl << std::endl;
 
-	double cosApprox = piSurTrois.cosinus2();
+	double cosApprox = std::cos(piSurTrois.getNum())/std::cos(piSurTrois.getDenom());
 	std::cout << "• piSurTrois.cosinus2() "<< std::endl;
 	std::cout << "    Expected : " << exactValueCos  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << cosApprox << std::endl;
@@ -317,7 +317,7 @@ int main() {
 	std::cout << "    Current : "<< std::setprecision(30) << sinRatio << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(sinRatio - exactValueSin)  << std::endl << std::endl;
 
-	double sinApprox = piSurSix.sinus2();
+	double sinApprox = std::sin(piSurSix.getNum())/std::sin(piSurSix.getDenom());
 	std::cout << "• piSurTrois.sinus2() "<< std::endl;
 	std::cout << "    Expected : " << exactValueSin  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << sinApprox << std::endl;
@@ -331,13 +331,13 @@ int main() {
     double exactValueTan = 1.0;
 
     double tanRatio = piSurQuatre.tan();
-	std::cout << "• piSurSix.tan() "<< std::endl;
+	std::cout << "• piSurQautre.tan() "<< std::endl;
 	std::cout << "    Expected : " << exactValueTan  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << tanRatio << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(tanRatio - exactValueTan)  << std::endl << std::endl;
 
-	double tanApprox = piSurQuatre.tan2();
-	std::cout << "• piSurTrois.tan2() "<< std::endl;
+	double tanApprox = std::tan(piSurQuatre.getNum())/std::tan(piSurQuatre.getDenom());
+	std::cout << "• piSurQautre.tan2() "<< std::endl;
 	std::cout << "    Expected : " << exactValueTan  << std::endl;
 	std::cout << "    Current : "<< std::setprecision(30) << tanApprox << std::endl;
 	std::cout << "    Difference with exact value  : "<< std::setprecision(20) << std::abs(tanApprox - exactValueTan)  << std::endl;
