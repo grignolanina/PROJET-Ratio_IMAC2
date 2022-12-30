@@ -10,45 +10,6 @@
 //static const unsigned int NB_ITER = 5;
 //dans l'idée ça pour PI mais en dehors de la classe
 
-// Doxygen menu
-/// \version 0.1
-/// \mainpage
-/// \image html accueil.jpg
-/// \tableofcontents
-/// \section instroduction_sec Ratio projet
-/// This is a student project realised at the French engineering school IMAC, for the third semester for object programming and computer science mathematics courses.This work focused on the representation of floating point numbers in the form of rationals. You will therefore find there a research work on rational numbers, the mathematical rules that apply to them and a library allowing their manipulation.
-/// \section dependencies_sec Dependencies
-/// \subsection is CMake (at least version  3.13)
-/// \li - Linux : sudo apt install cmake
-///\li - Mac : brew install cmake
-///\li - Windows : https://cmake.org/install
-/// \subsection Doxygen
-///\li - Linux : sudo apt install doxygen
-///\li - Mac : brew install doxygen
-///\li - Windows : https://www.doxygen.nl/manual/install.html
-/// \subsection Google Test
-///\li - Linux : sudo apt-get install libgtest-dev
-///\li - Mac : 
-/// \n       cd /tmp
-/// \n       git clone https://github.com/google/googletest.git
-/// \n       cd googletest
-/// \n       mkdir build && cd build
-/// \n       cmake ..
-/// \n       make && sudo make install
-/// \li - Windows : ?
-/// \section usage_sec Usage
-/// \li Please use the CMake in the IDE : VSCode
-/// \li Before starting the project make sure you have the following extensions :
-/// \li • C/C++ (microsoft)
-/// \li • C/C++ extension pack (microsoft)
-/// \li • C/C++ Themes (microsoft)
-/// \li • Clang-Format (xaver)
-/// \li • CMake (twxs)
-/// \section author_sec Authors
-/// \li GRIGNOLA Nina
-/// \li GOBE Pauline
-
-
 namespace ratio {
 
 	/// \class Ratio
@@ -71,6 +32,12 @@ namespace ratio {
 		/// \param num denom : the num of the ratio
 		/// \param denom denom : the denum of the ratio
 		constexpr Ratio(T num, T denom): m_num(num), m_denom(denom){
+			// if constexpr(!std::is_integral<T>::value){
+			// 	throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+			// }
+
+
+			// verifyConstructorType();
 			if(this->m_denom <0){
 				this->m_num= -this->m_num;
 				this->m_denom = -this->m_denom;
@@ -81,19 +48,10 @@ namespace ratio {
 			}
 		};
 
-		/// \brief parameters constructor with a given float number
+		/// \brief parameters constructor with a given float number (with 7 iterations)
 		/// \param x : the float which will be convert in a ratio
-		constexpr Ratio(float x):Ratio(ConvertFloatRatio(x,7)){
-		// 	if(! std::is_floating_point<T>::value){
-		// 	if(std::is_integral<T>::value){
-		// 		Ratio(x,1);
-		// 	}
-		// 	else{
-		// 		A REVOIR !!!!
-		// 		throw RatioException("ConvertFloatRatio(x, nb_iter) : " + std::to_string(x), 1, ErrorType::fatal);
-		// 	}	
-		// }
-		};
+		template<typename U>
+		constexpr Ratio(U x):Ratio(ConvertFloatRatio(x,7)){};
 
 
 		/// \brief copy-constructor
@@ -139,6 +97,10 @@ namespace ratio {
 		/// \brief fonction to access to the denominator of a vector
 		/// \return ratio.denom() 
 		constexpr const int& getDenom()const;
+
+		/// \brief
+		/// \return 
+		constexpr inline void verifyConstructorType() const;
 
 
 		/*****************************************************************
@@ -219,7 +181,7 @@ namespace ratio {
 		template<typename U>
 		constexpr Ratio operator/(const U &value) const;
 
-		/// \brief multiply a ratio with a constant value
+		/// \brief divide a ratio with a constant value
 		/// \param value : multiplicate factor, must be a int, float or double
 		/// \return the multiplication ratio
 		template<typename U>
@@ -329,9 +291,18 @@ namespace ratio {
 		/// \return the value of the sinus of the ratio
 		constexpr double sinus() const;
 
+		/// \brief fonction which gives an approciamtion of the sinus of a ratio
+		/// \return  the value of the approximated sinus of the ratio
+		constexpr double sinus2() const;
+
+
 		/// \brief fonction which gives the tangent of a ratio
 		/// \return the value of the tangent of the ratio
 		constexpr double tan() const;
+
+		/// \brief fonction which gives an approciamtion of the tangent of a ratio
+		/// \return  the value of the approximated tangent of the ratio
+		constexpr double tan2() const;
 
 		/// \brief fonction which gives a ratio powered by an int number
 		/// \param k : power of the ratio
@@ -359,6 +330,10 @@ namespace ratio {
 		/// \return the value of the logarithm of the ratio
 		constexpr Ratio log() const;
 
+		///\brief fonction which gives the value of the logarithm of the rational called 
+		/// \return the value of the logarithm of the ratio
+		constexpr Ratio logLib() const;
+
 
 		/*****************************************************************
 		AFFICHAGE
@@ -375,7 +350,8 @@ namespace ratio {
 		/// \param x : float we want to convert
 		///\param nb_iter : number of iterations we want to do to find the ratio
 		/// \return the sum of the current ratio and the argument ratio
-		constexpr static Ratio ConvertFloatRatio( const float &x,  const int &nb_iter);
+		template<typename U>
+		constexpr static Ratio ConvertFloatRatio( const U &x,  const int &nb_iter);
 
 
 		/// \brief fonction which gives the irreductible quotient of a ratio
@@ -388,7 +364,7 @@ namespace ratio {
 		constexpr float ConvertRatioToFloat() const;
 
 		/*****************************************************************
-		STATIC VARIABLE
+		SPECIFIC RATIO
 		******************************************************************/
 		/// \brief give the ratio zero
 		inline constexpr static Ratio<T> zero(){return Ratio<T>(0,1);}
@@ -452,7 +428,7 @@ namespace ratio {
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator-(const U &value) const{;
-		return (Ratio((*this) - Ratio(value,1))).irreductible();
+		return (Ratio((*this) - Ratio(value))).irreductible();
 	}
 
 	template<typename T>
@@ -489,7 +465,11 @@ namespace ratio {
 	template<typename T>
 	template<typename U>
 	constexpr Ratio<T> Ratio<T>::operator/(const U &value) const{
-		return Ratio((*this)/Ratio(value)).irreductible();
+		if(value==0){
+			return ratio::Ratio<U>::infinite();
+		}else{
+			return Ratio((*this)/Ratio(value)).irreductible();
+		}
 	}
 
 	template<typename T>
@@ -661,8 +641,18 @@ namespace ratio {
 	}
 
 	template<typename T>
+	constexpr double Ratio<T>::sinus2() const{  
+		return std::sin(m_num)/std::sin(m_denom);
+	}
+
+	template<typename T>
 	constexpr double Ratio<T>::tan() const{  
 		return this->sinus()/this->cosinus();
+	}
+
+	template<typename T>
+	constexpr double Ratio<T>::tan2() const{  
+		return std::tan(m_num)/std::tan(m_denom);
 	}
 
 	template<typename T>
@@ -681,6 +671,8 @@ namespace ratio {
 		return Ratio((int)(m_num/m_denom), 1);
 	}
 
+
+	//no more used 
 	int fact(int n){
 		return (n==0) ? 1 : n*fact(n-1);
 	}
@@ -698,6 +690,11 @@ namespace ratio {
 	template<typename T>
 	constexpr Ratio<T> Ratio<T>::log() const{
 		return std::log(m_num)-std::log(m_denom);
+	}
+
+	template<typename T>
+	constexpr Ratio<T> Ratio<T>::logLib() const{
+		return Ratio(std::log((float)m_num/m_denom));
 	}
 
 	/*****************************************************************
@@ -723,6 +720,13 @@ namespace ratio {
 		return m_denom;
 	}
 
+	template<typename T>
+	constexpr inline void Ratio<T>::verifyConstructorType() const{
+		if (!std::is_integral<T>::value){
+			throw RatioException("You can construct a ratio with this type of variables", 5, ErrorType::fatal);
+		}
+	}
+
 
 
 
@@ -742,7 +746,6 @@ namespace ratio {
 		stream << r.getNum();
 		stream << "/"	;
 		stream << r.getDenom();
-		stream << "\n";
 
 		return stream;
 	}
@@ -751,28 +754,36 @@ namespace ratio {
 	CONVERTION
 	******************************************************************/
 	template<typename T>
-	constexpr Ratio<T> Ratio<T>::ConvertFloatRatio(const float &x, const int &nb_iter){
+	template<typename U>
+	constexpr Ratio<T> Ratio<T>::ConvertFloatRatio(const U &x, const int &nb_iter){
 		Ratio<T> r; // valeur par défaut est 0/1
-
-		if( x == 0 || nb_iter == 0){
-			return r; //return 0/1
+		if constexpr (std::is_integral<U>::value){
+			return Ratio(x,1);
 		}
-
-		else if( std::abs(x)<1 ){
-			if(x<0){
-				r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+		else if constexpr(std::is_floating_point<U>::value){
+			if( x == 0 || nb_iter == 0){
+				return r; //return 0/1
 			}
+
+			else if( std::abs(x)<1 ){
+				if(x<0){
+					r = ConvertFloatRatio(((-1)/(-x)), nb_iter).inverse();
+				}
+				else{
+					r = ConvertFloatRatio((1/x), nb_iter).inverse();
+				}
+				return r.irreductible();
+			}
+
 			else{
-				r = ConvertFloatRatio((1/x), nb_iter).inverse();
+				int q = (int)x;
+				Ratio<T> qRatio(q,1);
+				r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
+				return r.irreductible();
 			}
-			return r.irreductible();
 		}
-
 		else{
-			int q = (int)x;
-			Ratio<T> qRatio(q,1);
-			r = qRatio + ConvertFloatRatio(x - q, nb_iter-1); 
-			return r.irreductible();
+			throw RatioException("Value with wrong type in constructor",4, ErrorType::fatal);
 		}
 	}
 

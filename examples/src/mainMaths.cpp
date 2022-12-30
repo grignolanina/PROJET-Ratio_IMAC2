@@ -101,7 +101,7 @@ int main(){
     // ----- 4. POWER -----
 
     //display pow
-    std::cout << "Power1(ratio) : " << r1.pow1(15) <<std::endl;
+    std::cout << "Power1(ratio) : " << r1.pow1(3) <<std::endl;
     ratio::Ratio<int> exactValuePow1(1,64);
 
     //calculates the execution time of pow1
