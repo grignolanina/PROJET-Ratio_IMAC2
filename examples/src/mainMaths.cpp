@@ -73,7 +73,7 @@ int main(){
 
     //calculates the cosinus
     double cosRatio = piSurTrois.cosinus();
-    double cosApprox = piSurTrois.cosinus2();
+    double cosApprox = std::cos(piSurTrois.getNum())/std::cos(piSurTrois.getDenom());
 
     std::cout << "cos1(ratio) : " << std::setprecision(20) << cosRatio << std::endl;
     std::cout << "cos2(ratio)  : " << std::setprecision(20) << cosApprox << std::endl;
