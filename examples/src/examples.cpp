@@ -118,11 +118,6 @@ int main() {
 	std::cout << "    Expected : 0/1"  << std::endl;
 	std::cout << "    Current : "<< ratio1*0 << std::endl <<std::endl;
 
-	std::cout << "• ratio1 *= 2 " << ratio1 << " *=1"<<std::endl;
-	std::cout << "    Expected : 3/2"  << std::endl;
-	std::cout << "    Current : "<< (ratio1 *= 2) << std::endl<<std::endl;
-	
-
 
 	std::cout << "\033[36mDivision : \033[0m" << std::endl;
 	std::cout << "• ratio1 / ratio2 = " << ratio1 << " / "<< ratio2<< std::endl;
@@ -141,9 +136,23 @@ int main() {
 	std::cout << "    Expected : 1/0 (infinity)"  << std::endl;
 	std::cout << "    Current : "<< ratio1/0<< std::endl << std::endl;
 
-	std::cout << "• ratio1 /= ratio1 = " << ratio1 << " /=" << ratio1<<std::endl;
+	std::cout << "\033[36mAffectation after operations : \033[0m" << std::endl;
+	std::cout << "• ratio2 += ratio1  = " << ratio2 << " += "<< ratio1<<std::endl;
 	std::cout << "    Expected : 3/4"  << std::endl;
-	std::cout << "    Current : "<< (ratio1/=1) << std::endl<<std::endl;
+	std::cout << "    Current : "<< (ratio2 += ratio1) << std::endl;
+
+	std::cout << "• ratio2 -= 2 = " << ratio2 << " -= 2"<<std::endl;
+	std::cout << "    Expected : -5/4"  << std::endl;
+	std::cout << "    Current : "<< (ratio2 -= 2) << std::endl;
+
+	std::cout << "• ratio2 *= 2  = " << ratio2 << " *= 2" <<std::endl;
+	std::cout << "    Expected : -5/2"  << std::endl;
+	std::cout << "    Current : "<< (ratio2 *= 2) << std::endl;
+
+	std::cout << "• ratio2 /= ratio2 = " << ratio2 << " /= " << ratio1<<std::endl;
+	std::cout << "    Expected : -10/1"  << std::endl;
+	std::cout << "    Current : "<< (ratio2/=ratio1) << std::endl<<std::endl;
+
 
 
 
@@ -151,7 +160,7 @@ int main() {
 
 	std::cout << "\033[94m \033[4mCompare operators :\033[0m" << std::endl;
 	std::cout << "We will use the same variables as for the other part" << std::endl << std::endl;
-
+	
 	std::cout << "\033[36mOperator == : \033[0m" << std::endl;
 	std::cout << "• (ratio1==ratio2) : (" << ratio1 << " == "<< ratio2 << ")"<< std::endl;
 	std::cout << "   Expected : 0"  << std::endl;
@@ -191,7 +200,7 @@ int main() {
 
 	std::cout << "\033[36mOperator > : \033[0m" << std::endl;
 	std::cout << "• (ratio1>ratio2) : (" << ratio1 << " > "<< ratio2<< ")"<< std::endl;
-	std::cout << "   Expected : 0"  << std::endl;
+	std::cout << "   Expected : 1"  << std::endl;
 	std::cout << "   Current : "<< (ratio1>ratio2) << std::endl;
 
 	std::cout << "• (ratio1>ivalue) : (" << ratio1 << " > "<< ivalue<< ")"<< std::endl;
@@ -206,7 +215,7 @@ int main() {
 
 	std::cout << "\033[36mOperator < : \033[0m" << std::endl;
 	std::cout << "• (ratio1<ratio2) : (" << ratio1 << " < "<< ratio2<< ")"<< std::endl;
-	std::cout << "   Expected : 1"  << std::endl;
+	std::cout << "   Expected : 0"  << std::endl;
 	std::cout << "   Current : "<< (ratio1<ratio2) << std::endl;
 
 	std::cout << "• (ratio1<ivalue) : (" << ratio1 << " < "<< ivalue<< ")"<< std::endl;
@@ -227,7 +236,7 @@ int main() {
 	std::cout << "• ratio1 : " << ratio1 << std::endl;
 	std::cout << "• ratio3 : " << ratio3 << std::endl;
 	std::cout << "• PI/3 : "<< piSurTrois << std::endl;
-	std::cout << "• PI/6 : "<< piSurSix << std::endl << std::endl;
+	std::cout << "• PI/6 : "<< piSurSix << std::endl;
 	std::cout << "• PI/4 : "<< piSurQuatre << std::endl << std::endl;
 	
 
