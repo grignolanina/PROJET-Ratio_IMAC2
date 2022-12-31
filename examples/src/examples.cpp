@@ -27,22 +27,46 @@ int main() {
 
 
 	/// put if on 1 to activate the exception test 
-	#if 0 
+	#if 0
 	std::cout << "\033[94m \033[4mConstructor exceptions :\033[0m put if on 1 to activate the exception test you want" <<std::endl;
 
 		//test with a 0 at the denominator
 		#if 0
 			std::cout << "• Constructors with denom equal to 0 (param : num = 2 et denom = 0) : " << std::endl<< std::endl;
 			ratio::Ratio<int> exceptConstructor(2,0);
+			// try {
+			//    ratio::Ratio<int> exceptConstructor(2,0);
+			// }
+			// catch(const RatioException &e){
+			//     std::cerr << e.what() << std::endl;
+			// }
 		#endif
 
-		//test about the type in the constructor
+		//test about the type in the constructor with the convertFloatToRatio
 		#if 0
 			std::cout << "• Constructors with char (param : 'hah') : " << std::endl;
 			ratio::Ratio<int> rtest("hah");
 
 			// try {
 			//    ratio::Ratio<int> rtest("hah");
+			// }
+			// catch(const RatioException &e){
+			//     std::cerr << e.what() << std::endl;
+			// }
+		#endif
+
+		//test about the type in the constructor
+		#if 0
+			char char1 = '1';
+			char char2 = '2';
+			std::cout << "• Constructors with char (param : char1 ='1' and char2='2') : " << std::endl;
+			ratio::Ratio<char> rtest(char1, char2);
+
+			// try {
+			//    char char1 = '1';
+			// 	char char2 = '2';
+			// 	std::cout << "• Constructors with char (param : char1 ='1' and char2='2') : " << std::endl;
+			// 	ratio::Ratio<char> rtest(char1, char2);
 			// }
 			// catch(const RatioException &e){
 			//     std::cerr << e.what() << std::endl;
