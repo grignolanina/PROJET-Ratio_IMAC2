@@ -35,17 +35,35 @@ int main() {
     std::cout << "Addition (r1 + value): ";
     (r1+value).display();
 
+    std::cout << "Addition (r1 += value): ";
+    (r1+=value).display();
+
+    std::cout << "r1 after operations: (check of r1 +=value)";
+    r1.display();
+
     std::cout << "Subtraction (r1 - r2): ";
     (r1-r2).display();
 
     std::cout << "Subtraction (r1 - value): ";
     (r1-value).display();
 
+    std::cout << "Subtraction (r1 -=value): ";
+    (r1-=value).display();
+
+    std::cout << "r1 after operations: (check of r1-=value) ";
+    r1.display();
+
     std::cout << "Multiplication (r1 * r2): ";
     (r1*r2).display();
 
     std::cout << "Multiplication (r1 * value): ";
     (r1*value).display();
+
+    std::cout << "Multiplication (r1 *= value): ";
+    (r1*=value).display();
+
+    std::cout << "r1 after operations: (check of r1*=value) ";
+    r1.display();
 
     std::cout << "Multiplication (r1 * fvalue): ";
     std::cout << (r1*2.5) << std::endl;
@@ -55,6 +73,15 @@ int main() {
 
     std::cout << "Division (r1 / value): " ;
     (r1/value).display();
+
+    std::cout << "Division (r1 /= value): " ;
+    (r1/=value).display();
+
+    std::cout << "Division (r1 /= 2): " ;
+    (r1/=2).display();
+
+    std::cout << "r1 after operations: (check of r1/=value) ";
+    r1.display();
 
     std::cout << "Inverse de r2: ";
     (r2.inverse()).display();
