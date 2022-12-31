@@ -118,10 +118,10 @@ int main() {
 	std::cout << "    Expected : 0/1"  << std::endl;
 	std::cout << "    Current : "<< ratio1*0 << std::endl <<std::endl;
 
-	// std::cout << "• ratio1 *= 2 " << ratio1 << " *=1"<<std::endl;
-	// std::cout << "    Expected : 3/2"  << std::endl;
-	// std::cout << "    Current : "<< ratio1*=2 <<std::endl<<std::endl;
-
+	std::cout << "• ratio1 *= 2 " << ratio1 << " *=1"<<std::endl;
+	std::cout << "    Expected : 3/2"  << std::endl;
+	std::cout << "    Current : "<< (ratio1 *= 2) << std::endl<<std::endl;
+	
 
 
 	std::cout << "\033[36mDivision : \033[0m" << std::endl;
@@ -141,9 +141,9 @@ int main() {
 	std::cout << "    Expected : 1/0 (infinity)"  << std::endl;
 	std::cout << "    Current : "<< ratio1/0<< std::endl << std::endl;
 
-	// std::cout << "• ratio1 /= ratio1 = " << ratio1 << " /=" << ratio1<<std::endl;
-	// std::cout << "    Expected : 3/4"  << std::endl;
-	// std::cout << "    Current : "<< ratio1/=1 << std::endl<<std::endl;
+	std::cout << "• ratio1 /= ratio1 = " << ratio1 << " /=" << ratio1<<std::endl;
+	std::cout << "    Expected : 3/4"  << std::endl;
+	std::cout << "    Current : "<< (ratio1/=1) << std::endl<<std::endl;
 
 
 
