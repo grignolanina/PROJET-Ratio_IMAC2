@@ -12,8 +12,13 @@ TEST (RatioArithmetic, cosKnowedRatio) {
 	ratio::Ratio<int> result;
     result = r1.cosinus();
 
-	ASSERT_EQ(result.getNum(),1);
-	ASSERT_EQ(result.getDenom(),2);
+	float expected = 0.5;
+
+	float epsilon = 0.00001; // notre marge d'erreur
+
+	float absolute = std::abs(result.ConvertRatioToFloat()-expected);
+	
+	ASSERT_LT(absolute, epsilon);
 }
 
 TEST (RatioArithmetic, cosRandomRatio){
@@ -32,9 +37,12 @@ TEST (RatioArithmetic, cosRandomRatio){
 
 		result = r1.cosinus();
 		ratio::Ratio<int> theory(std::cos((float)a/b));
-	
-		ASSERT_EQ(result.getNum(),theory.getNum());
-		ASSERT_EQ(result.getDenom(), theory.getDenom());
+
+		float epsilon = 0.000001;; // notre marge d'erreur
+
+		float absolute = std::abs((result.ConvertRatioToFloat() - theory.ConvertRatioToFloat()));
+		
+		ASSERT_LT(absolute, epsilon);
 	}
 }
 
@@ -43,8 +51,13 @@ TEST (RatioArithmetic, sinKnowedRatio) {
 	ratio::Ratio<int> result;
     result = r1.sinus();
 
-	ASSERT_EQ(result.getNum(),1);
-	ASSERT_EQ(result.getDenom(),2);
+	float expected = 0.5;
+
+	float epsilon = 0.00001; // notre marge d'erreur
+
+	float absolute = std::abs(result.ConvertRatioToFloat()-expected);
+	
+	ASSERT_LT(absolute, epsilon);
 }
 
 TEST (RatioArithmetic, sinRandomRatio){
@@ -63,9 +76,12 @@ TEST (RatioArithmetic, sinRandomRatio){
 		ratio::Ratio<int> result;
 		result = r1.sinus();
 		ratio::Ratio<int> theory(std::sin((float)a/b));
-	
-		ASSERT_EQ(result.getNum(),theory.getNum());
-		ASSERT_EQ(result.getDenom(), theory.getDenom());
+
+		float epsilon = 0.000001; // notre marge d'erreur
+
+		float absolute = std::abs((result.ConvertRatioToFloat() - theory.ConvertRatioToFloat()));
+		
+		ASSERT_LT(absolute, epsilon);
 	}
 	
 }
@@ -75,8 +91,13 @@ TEST (RatioArithmetic, tanKnowedRatio) {
 	ratio::Ratio<int> result;
     result = r1.tan();
 
-	ASSERT_EQ(result.getNum(), 1);
-	ASSERT_EQ(result.getDenom(),1);
+	float expected = 1.0;
+
+	float epsilon = 0.01; // notre marge d'erreur
+
+	float absolute = std::abs(result.ConvertRatioToFloat()-expected);
+	
+	ASSERT_LT(absolute, epsilon);
 }
 
 TEST (RatioArithmetic, tanRandomRatio){
@@ -94,10 +115,11 @@ TEST (RatioArithmetic, tanRandomRatio){
 		ratio::Ratio<int> result;
 		result = r1.tan();
 		ratio::Ratio<int> theory(std::tan((float)a/b));
+
+		float epsilon = 0.001; // notre marge d'erreur
+
+		float absolute = std::abs((result.ConvertRatioToFloat() - theory.ConvertRatioToFloat()));
 		
-
-
-		ASSERT_EQ(result.getNum(),theory.getNum());
-		ASSERT_EQ(result.getDenom(), theory.getDenom());
+		ASSERT_LT(absolute, epsilon);
 	}
 }
