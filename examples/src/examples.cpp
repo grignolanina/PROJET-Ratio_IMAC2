@@ -27,8 +27,8 @@ int main() {
 
 
 	/// put if on 1 to activate the exception test 
-	#if 0
-	std::cout << "\033[94m \033[4mConstructor exceptions :\033[0m put if on 1 to activate the exception test you want" <<std::endl;
+	#if 1
+	std::cout << "\033[94m \033[4mConstructor exceptions :\033[0m put if on 1 to activate the exception test you want" <<std::endl <<std::endl;
 
 		//test with a 0 at the denominator
 		#if 0
@@ -57,16 +57,12 @@ int main() {
 
 		//test about the type in the constructor
 		#if 0
-			char char1 = '1';
-			char char2 = '2';
-			std::cout << "• Constructors with char (param : char1 ='1' and char2='2') : " << std::endl;
-			ratio::Ratio<char> rtest(char1, char2);
+			std::cout << "• Constructors with char (param (char):'1' and '2') : " << std::endl;
+			ratio::Ratio<char> rtest('1','2');
 
 			// try {
-			//    char char1 = '1';
-			// 	char char2 = '2';
-			// 	std::cout << "• Constructors with char (param : char1 ='1' and char2='2') : " << std::endl;
-			// 	ratio::Ratio<char> rtest(char1, char2);
+			// 	std::cout << "• Constructors with char (param (char):'1' and '2') : " << std::endl;
+			// 	ratio::Ratio<char> rtest('1','2');
 			// }
 			// catch(const RatioException &e){
 			//     std::cerr << e.what() << std::endl;
