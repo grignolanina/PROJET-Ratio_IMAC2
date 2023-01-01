@@ -1,11 +1,13 @@
 #pragma once
+
 #include <random>
 
 #include <iomanip>
 #include <numeric>
 #include "Ratio.hpp"
 
-TEST (RatioArithmetic, diviseKnowedRatio) {
+
+TEST (RatioArithmetic, multipleEqualKnowedRatio) {
 	int a = 2;
 	int c = 3;
 	int b = 3;
@@ -14,13 +16,13 @@ TEST (RatioArithmetic, diviseKnowedRatio) {
 	ratio::Ratio<int> r1(a,b);
 	ratio::Ratio<int> r2(c,d);
 	ratio::Ratio<int> result;
-	result = r1/r2;
+	result = r1*=r2;
 
-	ASSERT_EQ(result.getNum(), 8);
-	ASSERT_EQ(result.getDenom(), 9);
+	ASSERT_EQ(result.getNum(), 1);
+	ASSERT_EQ(result.getDenom(), 2);
 }
 
-TEST (RatioArithmetic, diviseRandomRatio){
+TEST (RatioArithmetic, multipleEqualRandomRatio) {
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
@@ -36,14 +38,15 @@ TEST (RatioArithmetic, diviseRandomRatio){
 		ratio::Ratio<int> r1(a,b);
 		ratio::Ratio<int> r2(c,d);
 		ratio::Ratio<int> result;
-		result = r1/r2;
+		result = r1*=r2;
 
-		ASSERT_EQ(result.getNum(), (a*d)/std::gcd((a*d), (b*c)));
-		ASSERT_EQ(result.getDenom(), (b*c)/std::gcd((a*d), (b*c)));
+
+		ASSERT_EQ(result.getNum(), (a*c)/std::gcd((a*c), (b*d)));
+		ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*c), (b*d)));
 	}
 }
 
-// TEST (RatioArithmetic, diviseRandomRatioConvert){
+// TEST (RatioArithmetic, multipleEqualRandomRatioConvert){
 // 	const size_t maxSize = 1000;  // max size of the tested vectors
 // 	std::mt19937 generator(0);
 // 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
@@ -57,42 +60,14 @@ TEST (RatioArithmetic, diviseRandomRatio){
 // 		ratio::Ratio<int> r1(a);
 // 		ratio::Ratio<int> r2(b);
 // 		ratio::Ratio<int> result;
-// 		result = r1/r2;
+// 		result = r1*=r2;
 
-// 		ratio::Ratio<int> r3(a/b);
+// 		ratio::Ratio<int> r3(a*=b);
 
-// 		float epsilon = 0.0001; // notre marge d'erreur
+// 		float epsilon = 0.001; // notre marge d'erreur
 
 // 		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 
 // 		ASSERT_LT(absolute, epsilon);
 // 	}
 // }
-
-TEST (RatioArithmetic, diviseEqualToMultipleInverseRatio){
-	const size_t maxSize = 1000;  // max size of the tested vectors
-	std::mt19937 generator(0);
-	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
-	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
-	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
-
-	for(int run=0; run <100; run++){
-
-		int a = gen();
-		int c = gen();
-		int b = gen();
-		int d = gen();
-
-		ratio::Ratio<int> r1(a,b);
-		ratio::Ratio<int> r2(c,d);
-		ratio::Ratio<int> resultDivise;
-		resultDivise = r1/r2;
-		ratio::Ratio<int> resultMultipleInverse;
-		resultMultipleInverse = r1 * r2.inverse();
-	
-
-		ASSERT_EQ(resultDivise.getNum(), resultMultipleInverse.getNum());
-		ASSERT_EQ(resultDivise.getDenom(), resultMultipleInverse.getDenom());
-	}
-}
-
