@@ -83,3 +83,12 @@ TEST (RatioArithmetic, logRandomRatio) {
     }
 }
 
+TEST (RatioArithmetic, logExpEqualToRatio) {
+	ratio::Ratio<int> r1(1,1);
+    
+	ratio::Ratio<int> result;
+    result = r1.log().exp();
+
+	ASSERT_EQ(r1.getNum(), result.getNum());
+	ASSERT_EQ(r1.getDenom(), result.getDenom());
+}
