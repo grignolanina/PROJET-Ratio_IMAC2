@@ -5,13 +5,9 @@
 
 #include "constructor.hpp"
 #include "plus.hpp"
-#include "plusEqual.hpp"
 #include "minus.hpp"
-#include "minusEqual.hpp"
 #include "multiple.hpp"
-#include "multipleEqual.hpp"
 #include "divise.hpp"
-#include "diviseEqual.hpp"
 
 #include "cosSinTan.hpp"
 #include "pow.hpp"
