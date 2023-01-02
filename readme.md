@@ -31,14 +31,22 @@ This is a student project realised at the French engineering school IMAC, for th
 
 ## Usage
 Please use the CMake in the IDE : VSCode
+
 Before starting the project make sure you have the following extensions :
+
 • C/C++ (microsoft)
+
 • C/C++ extension pack (microsoft)
+
 • C/C++ Themes (microsoft)
+
 • Clang-Format (xaver)
+
 • CMake (twxs)
+
 
 
 ## Authors
 GRIGNOLA Nina
+
 GOBE Pauline
