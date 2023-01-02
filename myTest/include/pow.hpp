@@ -25,6 +25,8 @@ TEST (RatioArithmetic, powKnowedRatio) {
 // 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 // 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
+// 	int k = 3;
+
 //     for(int run=0; run <100; run++){
 //         int a = gen();
 //         int b = gen();
