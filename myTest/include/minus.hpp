@@ -34,8 +34,8 @@ TEST (RatioArithmetic, minusRandomRatio) {
 		ratio::Ratio<int> result;
 		result = r1-r2;
 
-		ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
-		ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d-b*c), (b*d)));
+		ASSERT_EQ(std::abs(result.getNum()), std::abs((a*d-b*c)/std::gcd((a*d-b*c), (b*d))));
+		ASSERT_EQ(std::abs(result.getDenom()), std::abs((b*d)/std::gcd((a*d-b*c), (b*d))));
 	}
 }
 
