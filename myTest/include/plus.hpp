@@ -72,8 +72,8 @@ TEST (RatioArithmetic, plusRandomRatioConvert) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	//test ne fonctionne pas sur tous les nombres a cause de la fonction convert to ratio
-	// for(int run=0; run <100; run++){
+	
+	for(int run=0; run <100; run++){
 	float a = gen();
 	float b = gen();
 
@@ -92,7 +92,7 @@ TEST (RatioArithmetic, plusRandomRatioConvert) {
 	float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 
 	ASSERT_LT(absolute, epsilon);
-	// }
+	}
 }
 
 TEST (RatioArithmetic, plusEqualKnowedRatio) {
@@ -134,7 +134,7 @@ TEST (RatioArithmetic, plusEqualRandomRatioConvert) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	// for(int run=0; run <100; run++){
+	for(int run=0; run <100; run++){
 		float a = gen();
 		float b = gen();
 
@@ -152,5 +152,5 @@ TEST (RatioArithmetic, plusEqualRandomRatioConvert) {
 		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 
 		ASSERT_LT(absolute, epsilon);
-	// }
+	}
 }

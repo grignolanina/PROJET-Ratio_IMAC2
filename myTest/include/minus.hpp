@@ -70,7 +70,7 @@ TEST (RatioArithmetic, minusRandomRatioConvert) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	// for(int run=0; run <100; run++){
+	for(int run=0; run <100; run++){
 		float a = gen();
 		float b = gen();
 
@@ -88,7 +88,7 @@ TEST (RatioArithmetic, minusRandomRatioConvert) {
 		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 		
 		ASSERT_LT(absolute, epsilon);
-	// }
+	}
 
 }
 
@@ -133,7 +133,7 @@ TEST (RatioArithmetic, minusEqualRandomRatioConvert) {
 	std::uniform_real_distribution<double> uniformDistributionValue(-int(maxSize),maxSize);
 	auto gen = [&uniformDistributionValue, &generator](){ return uniformDistributionValue(generator);};
 
-	// for(int run=0; run <100; run++){
+	for(int run=0; run <100; run++){
 		float a = gen();
 		float b = gen();
 
@@ -151,6 +151,6 @@ TEST (RatioArithmetic, minusEqualRandomRatioConvert) {
 		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 		
 		ASSERT_LT(absolute, epsilon);
-	// }
+	}
 
 }
