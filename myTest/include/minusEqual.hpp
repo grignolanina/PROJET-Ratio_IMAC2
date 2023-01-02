@@ -6,18 +6,18 @@
 #include <numeric>
 #include "Ratio.hpp"
 
-TEST (RatioArithmetic, minusKnowedRatio) {
+TEST (RatioArithmetic, minusEqualKnowedRatio) {
 	ratio::Ratio<int> r1(1,2);
 	ratio::Ratio<int> r2(3,4);
 	ratio::Ratio<int> result;
-	result = r1-r2;
+	result = r1-=r2;
 
 
 	ASSERT_EQ(result.getNum(),-1);
 	ASSERT_EQ(result.getDenom(),4);
 }
 
-TEST (RatioArithmetic, minusRandomRatio) {
+TEST (RatioArithmetic, minusEqualRandomRatio) {
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
@@ -32,14 +32,14 @@ TEST (RatioArithmetic, minusRandomRatio) {
 		ratio::Ratio<int> r1(a,b);
 		ratio::Ratio<int> r2(c,d);
 		ratio::Ratio<int> result;
-		result = r1-r2;
+		result = r1-=r2;
 
 		ASSERT_EQ(result.getNum(), (a*d-b*c)/std::gcd((a*d-b*c), (b*d)));
 		ASSERT_EQ(result.getDenom(), (b*d)/std::gcd((a*d-b*c), (b*d)));
 	}
 }
 
-TEST (RatioArithmetic, minusRandomRatioConvert) {
+TEST (RatioArithmetic, minusEqualRandomRatioConvert) {
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);
 	std::uniform_int_distribution<int> uniformIntDistribution(1,maxSize);
@@ -55,7 +55,7 @@ TEST (RatioArithmetic, minusRandomRatioConvert) {
 
 
 		ratio::Ratio<int> result;
-		result = r1-r2;
+		result = r1-=r2;
 
 		ratio::Ratio<int> r3(a-b);
 
