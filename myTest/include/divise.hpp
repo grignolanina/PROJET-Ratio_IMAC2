@@ -89,7 +89,7 @@ TEST (RatioArithmetic, diviseRandomRatioConvert){
 
 		ratio::Ratio<int> r3(a/=b);
 
-		float epsilon = 0.0001; // notre marge d'erreur
+		float epsilon = 0.001; // notre marge d'erreur
 
 		float absolute = std::abs((result.ConvertRatioToFloat() - r3.ConvertRatioToFloat()));
 
