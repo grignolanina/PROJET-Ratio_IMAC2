@@ -16,6 +16,14 @@ TEST (RatioArithmetic, intPartKnowedRatio) {
 	ASSERT_EQ(result.getDenom(),1);
 }
 
+TEST (RatioArithmetic, intPartZeroRatio) {
+	ratio::Ratio<int> result;
+    result = ratio::Ratio<int>::zero().intPart();
+
+	ASSERT_EQ(result.getNum(),0);
+	ASSERT_EQ(result.getDenom(),1);
+}
+
 TEST (RatioArithmetic, intPartRandomRatio) {
 	const size_t maxSize = 1000;  // max size of the tested vectors
 	std::mt19937 generator(0);

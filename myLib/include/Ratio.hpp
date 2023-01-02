@@ -447,7 +447,11 @@ namespace ratio {
 
 	template<typename T>
 	constexpr Ratio<T> Ratio<T>::operator/(const Ratio &r) const{
-		return Ratio((this->m_num*r.m_denom),(this->m_denom*r.m_num)).irreductible();
+		if(r.getNum()== 0 && r.getDenom() == 1){
+			return ratio::Ratio<T>::infinite();
+		}else{
+			return Ratio((this->m_num*r.m_denom),(this->m_denom*r.m_num)).irreductible();
+		}
 	}
 
 	template<typename T>
